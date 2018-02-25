@@ -1,6 +1,6 @@
 # About Me
 
-Personal website about me ...
+Personal website about me.
 
 ## Technology included
 
@@ -13,5 +13,5 @@ PHP server
 ## Installation
 
 ```bash
-$ git clone https://github.com/didierkrux/about-me
+$ git clone https://github.com/didierkrux/about-me.git
 ```

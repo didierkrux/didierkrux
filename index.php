@@ -2,6 +2,8 @@
 	$root='/';
 	$selected_rub=str_replace($root, '', $_SERVER['REQUEST_URI']);
 	include_once('config.php');
+	if(!empty($selected_rub) && array_key_exists($selected_rub, $tab_rub))
+		$title.=' | '.$tab_rub[$selected_rub]['title'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -111,16 +113,6 @@
 							<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
 							<a href="mailto:didier@krux.co">didier@krux.co</a>
 						</li>
-						<?/*
-						<li>
-							<h3 class="icon fa-whatsapp"><span class="label">WhatsApp FR</span></h3>
-							+33679072669
-						</li>
-						<li>
-							<h3 class="icon fa-phone"><span class="label">Phone HK</span></h3>
-							(+852) 6996 1625
-						</li>
-						*/?>
 						<li>
 							<h3 class="icon fa-whatsapp"><span class="label">Phone HK</span></h3>
 							(+852) 6996 1625
@@ -154,7 +146,7 @@
 					</ul>
 					<ul class="icons" style="text-align: center;">
 						<li>
-							<a target="_blank" class="icon fa-download" href="http://krux.co/resume"> resume</a> - <a target="_blank" class="icon fa-download" href="http://krux.co/vcard"> vCard</a><?/* - <a target="_blank" class="icon fa-download" href="http://krux.co/qrcode"> QR code</a>*/?>
+							<a target="_blank" class="icon fa-download" href="http://krux.co/resume"> resume</a> - <a target="_blank" class="icon fa-download" href="http://krux.co/vcard"> vCard</a>
 						</li>
 					</ul>
 				</div>
@@ -168,9 +160,8 @@
 				echo '<div id="main">';
 				$rub=$tab_rub[$selected_rub];
 				if($rub['type']=='rss')
-					echo '<a target="_blank" class="link" href="'.$rub['website_url'].'">website</a>';
-				if($rub['type']=='rss')
 				{
+					echo '<a target="_blank" class="link" href="'.$rub['website_url'].'">website</a>';
 					$rss = new SimpleXMLElement(file_get_contents($rub['rss_url']));
 					foreach($rss->channel->item as $item)
 					{
@@ -186,10 +177,12 @@
 				}
 				echo '</div>';
 			}
-?>
-
-		<!-- Footer -->
-			
+			if($private=='accelerate'){
+				echo '<div id="main">';
+				include 'accelerate.php';
+				echo '</div>';
+			}
+?>			
 
 		<!-- Scripts -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

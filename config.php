@@ -1,15 +1,7 @@
 <?
 $title='Didier Krux';
-$description='Web Developer - Founder of Next Sound - DJ';
 
 $tab_rub=array();
-/*
-if(isset($_GET['private']))
-{
-	$private='private';
-	setcookie("private", $private, 2147483647);
-	header('Location: /');
-}*/
 
 if($selected_rub=='revolution')
 {
@@ -20,30 +12,15 @@ elseif($selected_rub=='accelerate')
 {
 	$private='accelerate';
 	setcookie("private", $private, 2147483647);
+	header('Location: /');
 }
 else
 	$private=@$_COOKIE['private'];
 
-
-/*
-$tab_rub['infos']=array(
-	'title'=>'Infos',
-	'type'=>'include',
-	'icon'=>'user',
-);*/
-
-if($private=='revolution')	// lien activé
+if($private=='revolution')
 {
 	$tab_rub['revolution']=array(
 		'title'=>'#revolution',
-		'type'=>'include',
-		'icon'=>'globe',
-	);
-}
-if($private=='accelerate')	// lien activé
-{
-	$tab_rub['accelerate']=array(
-		'title'=>'Accelerate',
 		'type'=>'include',
 		'icon'=>'globe',
 	);
