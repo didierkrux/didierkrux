@@ -79,6 +79,9 @@
 			max-width: 100%;
 			height: auto;
 		}
+		#main {
+		    padding: 4em;
+		}
 		@media screen and (max-width: 1280px) {
 			#header {
 				padding: 2em;
@@ -177,7 +180,7 @@
 				}
 				echo '</div>';
 			}
-			if($private=='accelerate'){
+			if(empty($selected_rub) && $private=='accelerate'){
 				echo '<div id="main">';
 				include 'accelerate.php';
 				echo '</div>';

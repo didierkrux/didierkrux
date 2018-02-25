@@ -4,7 +4,7 @@ Personal website about me.
 
 ## Technology included
 
-PHP, HTML, JQuery, CSS, font-awesome
+PHP, HTML, JQuery, CSS, font-awesome, responsive design.
 
 ## Requirements
 
@@ -15,3 +15,5 @@ PHP server
 ```bash
 $ git clone https://github.com/didierkrux/about-me.git
 ```
+
+Update config.php and accelerate.json
