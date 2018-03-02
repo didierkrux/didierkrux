@@ -2,18 +2,12 @@
 
 Personal website about me.
 
-## Technology included
+## Technology used
 
-PHP, HTML, JQuery, CSS, font-awesome, responsive design.
-
-## Requirements
-
-PHP server
+HTML, Bootstrap & Font Awesome.
 
 ## Installation
 
 ```bash
-\$ git clone https://github.com/AccelerateTech/didierkrux.git
+git clone https://github.com/didierkrux/about-me.git
 ```
-
-Update config.php and accelerate.json

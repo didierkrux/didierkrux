@@ -1,0 +1,107 @@
+@media (min-width: 992px) {
+    .navbar {
+        background: none!important;
+        transition: background-color 1s;
+        padding-top:0;
+    }
+    .navbar.active-top {
+        background-color:#f8f9fa!important;
+    }
+    .navbar-light .navbar-brand {
+        color: #337ab7;
+    }
+    .navbar .navbar-brand {
+        display: none;
+    }
+    .navbar.active-top .navbar-brand {
+        display: inline-block;
+    }
+    a.nav-item {
+        border-top:0;
+        padding-top:8px;
+    }
+    
+    a.nav-item.active {
+        border-top:solid 4px #337ab7;
+        padding-top:4px;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+    }
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: rgba(255,255,255,.7);
+    }
+    .navbar-light.active-top .navbar-nav .nav-link {
+        color: rgba(0,0,0,.5);
+    }
+    .navbar-light.active-top .navbar-nav .nav-link.active, .navbar-light.active-top .navbar-nav .nav-link:focus, .navbar-light.active-top .navbar-nav .nav-link:hover {
+        color: rgba(0,0,0,.7);
+    }
+}
+
+body {
+    position: relative;
+    overflow-y: scroll;
+}
+
+header {
+    background-image: url('../img/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding: 100px 20px;
+    padding-top: 57px;
+}
+
+header .row {
+    height: 100%;
+}
+
+section .container, footer .container {
+    padding-top:20px;
+}
+.container .row {
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+#top {
+    padding-top: 56px;
+}
+
+a, a:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+h2:after {
+    content: " ";
+    display: block;
+    width: 100px;
+    height: 2px;
+    margin: 20px auto 20px;
+    background: #337ab7;
+}
+
+footer {
+    background-color:#343a40;
+}
+
+#contact a i {
+    color:rgba(255,255,255,.5);
+}
+
+#contact a:hover i {
+    color:rgba(255,255,255,.75);
+}
+
+.card-img-left {
+    border-bottom-left-radius: calc(.25rem - 1px);
+    border-top-left-radius: calc(.25rem - 1px);
+    float: left;
+    padding-right: 1em;
+    margin-bottom: -1.25em;
+  }
+  
