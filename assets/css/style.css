@@ -70,12 +70,36 @@ section .container, footer .container {
     padding-top: 56px;
 }
 
+.typewriter h2 {
+    width: 813px;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
 a, a:hover {
     color: #337ab7;
     text-decoration: none;
 }
 
-h2:after {
+section h2:after {
     content: " ";
     display: block;
     width: 100px;
@@ -102,4 +126,16 @@ footer {
     float: left;
     padding-right: 1em;
     margin-bottom: -1.25em;
+}
+
+.device-wrapper {
+    max-width: none;
+}
+
+.screen .img-fluid {
+    border-radius: .15rem;
+}
+
+.device[data-device=MacbookPro][data-orientation=portrait][data-color=black] .screen {
+    top: 5.71429%;
 }
