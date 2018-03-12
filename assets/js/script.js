@@ -1,6 +1,7 @@
 // tooltip
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.typewriter h2').delay(1500).show(0);    // delay typing
 })
 
 // scroll animation

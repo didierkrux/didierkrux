@@ -72,14 +72,13 @@ section .container, footer .container {
 
 .typewriter h2 {
     width: 813px;
+    display: none;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     border-right: .15em solid orange; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
-    animation: 
-      typing 3.5s steps(40, end),
-      blink-caret .75s step-end infinite;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
   }
   
   /* The typing effect */
@@ -109,7 +108,8 @@ section h2:after {
 }
 
 footer {
-    background-color: #343a40;
+    background-color: #333333;
+    font-size: 1.3rem;
 }
 
 #contact a i {
@@ -126,6 +126,14 @@ footer {
     float: left;
     padding-right: 1em;
     margin-bottom: -1.25em;
+}
+
+.list-group-item span {
+    background: #ffe500;
+    border: 1px solid #ffbb1b;
+    border-radius:5px;
+    padding: 3px;
+    margin-right: 3px;
 }
 
 .device-wrapper {
