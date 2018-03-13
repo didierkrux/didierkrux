@@ -82,6 +82,10 @@ header .row {
     height: 100%;
 }
 
+.rounded-circle.img-fluid {
+    max-width: 70%;
+}
+
 section .container, footer .container {
     padding-top: 20px;
 }
