@@ -7,9 +7,6 @@
     .navbar.active-top {
         background-color: #f8f9fa!important;
     }
-    .navbar-light .navbar-brand {
-        color: #337ab7;
-    }
     .navbar .navbar-brand {
         display: none;
     }
@@ -36,6 +33,29 @@
     .navbar-light.active-top .navbar-nav .nav-link.active, .navbar-light.active-top .navbar-nav .nav-link:focus, .navbar-light.active-top .navbar-nav .nav-link:hover {
         color: rgba(0, 0, 0, .7);
     }
+    /* typing animation */
+    .typewriter h2 {
+        width: 813px;
+        display: none;
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: .15em solid orange; /* The typwriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .15em; /* Adjust as needed */
+        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+      }
+      
+      /* The typing effect */
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      /* The typewriter cursor effect */
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: orange; }
+      }
 }
 
 body {
@@ -51,6 +71,10 @@ header {
     height: 100vh;
     padding: 100px 20px;
     padding-top: 57px;
+}
+
+.navbar-light .navbar-brand {
+    color: #337ab7;
 }
 
 header .row {
@@ -70,29 +94,6 @@ section .container, footer .container {
     padding-top: 56px;
 }
 
-.typewriter h2 {
-    width: 813px;
-    display: none;
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid orange; /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
-  }
-
 a, a:hover {
     color: #337ab7;
     text-decoration: none;
@@ -102,9 +103,13 @@ section h2:after {
     content: " ";
     display: block;
     width: 100px;
-    height: 2px;
+    height: 4px;
     margin: 20px auto 20px;
     background: #337ab7;
+}
+
+#work {
+    background: lightgrey;
 }
 
 footer {
@@ -146,4 +151,27 @@ footer {
 
 .device[data-device=MacbookPro][data-orientation=portrait][data-color=black] .screen {
     top: 5.71429%;
+}
+
+/* Mobile screen */
+
+@media screen and (max-width: 991px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    #about .container {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    footer .col-md-4 {
+        margin-bottom: 30px;
+    }
+    .row .col-lg:nth-child(2) {
+        margin-top: 30px;
+    }
+    .list-inline-item:not(:last-child) {
+        margin-right: .3rem;
+    }
 }
