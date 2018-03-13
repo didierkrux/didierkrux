@@ -1,11 +1,13 @@
-// tooltip
 $(function () {
+    // tooltip
     $('[data-toggle="tooltip"]').tooltip();
+
+    // delay 2 sec for CSS typing
     if($('.typewriter h2').css('display') == 'none')
-        $('.typewriter h2').delay(2000).show(0);    // delay typing
+        $('.typewriter h2').delay(2000).show(0);
 })
 
-// scroll animation
+// smooth scroll animation
 $('.navbar a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function (event) {
     // On-page links
     if (
@@ -38,7 +40,7 @@ $('.navbar a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function (e
     }
 });
 
-// active scroll top
+// toggle active scroll top
 $(window).scroll(function() {
     if ($(window).scrollTop() > 0) {
         $('.navbar').addClass('active-top');

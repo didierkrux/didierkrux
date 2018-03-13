@@ -4,7 +4,7 @@ Personal website about me.
 
 ## Technology used
 
-HTML, Bootstrap & Font Awesome.
+HTML, CSS, Bootstrap, JQuery & Font Awesome.
 
 ## Installation
 

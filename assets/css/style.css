@@ -3,9 +3,11 @@
         background: none!important;
         transition: background-color 1s;
         padding-top: 0;
+        border-bottom: none;
     }
     .navbar.active-top {
         background-color: #f8f9fa!important;
+        border-bottom: solid 1px lightgrey;
     }
     .navbar .navbar-brand {
         display: none;
@@ -33,6 +35,7 @@
     .navbar-light.active-top .navbar-nav .nav-link.active, .navbar-light.active-top .navbar-nav .nav-link:focus, .navbar-light.active-top .navbar-nav .nav-link:hover {
         color: rgba(0, 0, 0, .7);
     }
+
     /* typing animation */
     .typewriter h2 {
         width: 813px;
@@ -44,13 +47,11 @@
         letter-spacing: .15em; /* Adjust as needed */
         animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
       }
-      
       /* The typing effect */
       @keyframes typing {
         from { width: 0 }
         to { width: 100% }
       }
-      
       /* The typewriter cursor effect */
       @keyframes blink-caret {
         from, to { border-color: transparent }
@@ -134,11 +135,14 @@ footer {
 }
 
 .list-group-item span {
-    background: #ffe500;
+    background: #ffe500ba;
     border: 1px solid #ffbb1b;
     border-radius:5px;
     padding: 3px;
     margin-right: 3px;
+    margin-bottom: 3px;
+    display: block;
+    float: left;
 }
 
 .device-wrapper {
@@ -158,6 +162,14 @@ footer {
 @media screen and (max-width: 991px) {
     .display-4 {
         font-size: 2.5rem;
+    }
+
+    .navbar {
+        border-bottom: solid 1px lightgrey;
+    }
+
+    header h2 {
+        text-align: center;
     }
 
     #about .container {
