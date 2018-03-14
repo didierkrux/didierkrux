@@ -1,0 +1,28 @@
+<IfModule mod_headers.c>
+
+    # MONTH Cache
+    <FilesMatch "\.(ico|gif|jpg|jpeg|png|flv|pdf)$">
+    Header set Cache-Control "max-age=2592000"
+    </FilesMatch>
+
+    # WEEK Cache
+    <FilesMatch "\.(js|css|swf)$">
+    Header set Cache-Control "max-age=604800"
+    </FilesMatch>
+
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+    RewriteBase /
+
+    ## Force HTTPS
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://www.didierkrux.com/$1 [R=301,L,QSA]
+
+    # redirection from . to www
+    RewriteCond %{HTTP_HOST} ^didierkrux\.com [NC]
+    RewriteRule (.*) https://www.didierkrux.com/$1 [R=301,L]
+
+</IfModule>
