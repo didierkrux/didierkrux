@@ -38,13 +38,14 @@
 
     /* typing animation */
     .typewriter h2 {
-        width: 813px;
+        width: 894px;
         display: none;
         overflow: hidden; /* Ensures the content is not revealed until the animation */
         border-right: .15em solid orange; /* The typwriter cursor */
         white-space: nowrap; /* Keeps the content on a single line */
         margin: 0 auto; /* Gives that scrolling effect as the typing happens */
         letter-spacing: .15em; /* Adjust as needed */
+        margin-top: 2rem;
         animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
       }
       /* The typing effect */
@@ -65,7 +66,7 @@ body {
 }
 
 header {
-    background-image: url('../img/bg.jpg');
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('../img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -187,6 +188,7 @@ footer {
     header h2 {
         text-align: center;
         font-size: 1.2rem;
+        margin-top: 2rem;
     }
 
     #about .container {
