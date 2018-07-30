@@ -65,7 +65,7 @@ body {
 }
 
 header {
-    background-image: url('../img/bg.png');
+    background-image: url('../img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -161,11 +161,23 @@ footer {
     top: 5.71429%;
 }
 
+/* Small screen */
+
+@media screen and (max-width: 1024px) {
+    header {
+        height: 43vh;
+    }
+}
+
 /* Mobile screen */
 
 @media screen and (max-width: 991px) {
+    header {
+        height: 52vh;
+    }
+    
     .display-4 {
-        font-size: 2.5rem;
+        font-size: 1.4rem;
     }
 
     .navbar {
@@ -174,6 +186,7 @@ footer {
 
     header h2 {
         text-align: center;
+        font-size: 1.2rem;
     }
 
     #about .container {
