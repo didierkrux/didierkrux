@@ -66,7 +66,7 @@ body {
 }
 
 header {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('../img/bg.jpg');
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('https://i.ytimg.com/vi/foPZYFAQNLY/maxresdefault.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
