@@ -13,7 +13,7 @@
         a,
         a:hover {
             color: #337ab7;
-            text-decoration: none;
+            text-decoration: none !important;
         }
 
         #name {
@@ -32,11 +32,19 @@
             padding-left: 0;
         }
 
+        .col-9 {
+            border-left: 1px solid #9E9E9E;
+        }
+
+        p {
+            margin-bottom: 0.2rem;
+        }
+
         section h2:after {
             content: " ";
             display: block;
             height: 2px;
-            margin: -18 0 50 300;
+            margin: -18 0 50 200;
             background: #337ab7;
         }
 
@@ -44,8 +52,13 @@
             font-weight: bold;
         }
 
+        .date {
+            font-size: 0.8rem;
+        }
+
         .company-logo {
-            width: 50px;
+            height: 40px;
+            margin-right: 5px;
         }
 
         .skills {
@@ -53,8 +66,8 @@
         }
 
         .skills span {
-            background: #ffe500ba;
-            border: 1px solid #ffbb1b;
+            background: #bbbbbb33;
+            border: 1px solid #9E9E9E;
             border-radius: 5px;
             padding: 1px 5px;
             margin-right: 4px;
@@ -87,11 +100,13 @@
                 <div class="col-3 text-center">
                     <img class="rounded-circle img-thumbnail img-fluid" src="assets/img/didierkrux.jpg" alt="Didier Krux" />
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <div id="name"><a href="https://www.didierkrux.com/">Didier Krux</a></div>
                     <div id="title">Full Stack Developer</div>
+                    <p>10 years of experience in high traffic websites. Passionate about new technology
+                            and music. Curious about Blockchain and the crypto space.</p>
                 </div>
-                <div class="col-4 text-right">
+                <div class="col-3 text-right">
                     <ul class="list-inline">
                         <li class="mt-1">
                             French, 32
@@ -129,18 +144,18 @@
         <div class="container">
             <h2>Experience</h2>
 
-            <div class="row mb-4">
+            <div class="row mb-3">
                 <div class="col-3 align-self-start text-right">
                     <div class="job-title">
                         Full Time Immersive Coding Bootcamp
                     </div>
                     <div class="company">
-                        <a href="https://www.accelerating.tech/">
+                        <a class="align-middle" href="https://www.accelerating.tech/">
                             <img class="company-logo" src="assets/img/accelerate.png" alt="Accelerate" /> Accelerate
                         </a>
                     </div>
                     <div class="location">
-                        Hong Kong <i class="fas fa-map-pin fa-lg"></i>
+                        Hong Kong 📍
                     </div>
                     <div class="date">
                         March 2018 - June 2018﹒4 months
@@ -175,7 +190,7 @@
                         <span>Google Play Store</span>
                         <span>Apple App Store</span>
                     </div>
-                    <div class="mb-3 clearfix"></div>
+                    <div class="mb-2 clearfix"></div>
                     <p><b>➤ Capstone Project: <a href="https://www.coinmarketnews.app/">CoinMarketNews</a></b></p>
                     <p>Realised a Cryptocurrency Tracking Mobile App for iOS and Android in 3 weeks.</p>
                     <p class="mb-0">‣ App features: Price on over 1600 coins in multiple currencies, favorites tracking,
@@ -193,22 +208,22 @@
                         <span>Native Base</span>
                         <span>Redux</span>
                     </div>
-                    <div class="mb-3 clearfix"></div>
+                    <div class="mb-2 clearfix"></div>
                 </div>
             </div>
 
-            <div class="row mb-4">
+            <div class="row mb-3">
                 <div class="col-3 align-self-start text-right">
                     <div class="job-title">
                         Full Stack LAMP Developer
                     </div>
                     <div class="company">
-                        <a href="https://www.sdv.fr/">
+                        <a class="align-middle" href="https://www.sdv.fr/">
                             <img class="company-logo" src="assets/img/sdvplurimedia.png" alt="SdV Plurimedia" /> SdV Plurimedia
                         </a>
                     </div>
                     <div class="location">
-                        France <i class="fas fa-map-pin fa-lg"></i>
+                        France 📍
                     </div>
                     <div class="date">
                         Nov. 2008 - May 2017﹒9 years
@@ -247,22 +262,22 @@
                         <span>SEO</span>
                         <span>Facebook API</span>
                     </div>
-                    <div class="mb-3 clearfix"></div>
+                    <div class="mb-2 clearfix"></div>
                 </div>
             </div>
 
-            <div class="row mb-4">
+            <div class="row mb-3">
                 <div class="col-3 align-self-start text-right">
                     <div class="job-title">
                         Web Developer Training
                     </div>
                     <div class="company">
-                        <a href="https://www.ircad.fr/">
+                        <a class="align-middle" href="https://www.ircad.fr/">
                             <img class="company-logo" src="assets/img/ircad.png" alt="IRCAD - WeBSurg" /> IRCAD - WeBSurg
                         </a>
                     </div>
                     <div class="location">
-                        France <i class="fas fa-map-pin fa-lg"></i>
+                        France 📍
                     </div>
                     <div class="date">
                         Sept. 2007 - Sept. 2008﹒1 year
@@ -284,22 +299,22 @@
                         <span>CSV</span>
                         <span>Google API</span>
                     </div>
-                    <div class="mb-3 clearfix"></div>
+                    <div class="mb-2 clearfix"></div>
                 </div>
             </div>
 
-            <div class="row mb-4">
+            <div class="row mb-3">
                 <div class="col-3 align-self-start text-right">
                     <div class="job-title">
                         Web Developer Internship
                     </div>
                     <div class="company">
-                        <a href="https://www.linkedin.com/company/ip-media/">
+                        <a class="align-middle" href="https://www.linkedin.com/company/ip-media/">
                             <img class="company-logo" src="assets/img/ipmedia.png" alt="IP-Media" /> IP-Media
                         </a>
                     </div>
                     <div class="location">
-                        France <i class="fas fa-map-pin fa-lg"></i>
+                        France 📍
                     </div>
                     <div class="date">
                         April 2007 - August 2007﹒5 months
@@ -319,12 +334,90 @@
                         <span>CSV</span>
                         <span>Google API</span>
                     </div>
-                    <div class="mb-3 clearfix"></div>
+                    <div class="mb-2 clearfix"></div>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+
+            <div class="row mb-3">
+                <div class="col-3 align-self-start text-right">
+                    <div class="company">
+                        <a class="align-middle" href="https://www.accelerating.tech/">
+                            <img class="company-logo" src="assets/img/accelerate.png" alt="Accelerate" /> Accelerate
+                        </a>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>
+                        <b>Full Time Immersive Coding Bootcamp</b>﹒2018﹒Hong Kong
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-3 align-self-start text-right">
+                    <div class="company">
+                        <a class="align-middle" href="http://iutrs.unistra.fr/formation/licence-professionnelle/informatique/cdad">
+                            <img class="company-logo" src="assets/img/unistra.png" alt="University of Strasbourg" /> University
+                            of Strasbourg
+                        </a>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>
+                        <b>Bachelor's Degree in Computer Science</b>﹒2008﹒France
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-3 align-self-start text-right">
+                    <div class="company">
+                        <a class="align-middle" href="http://iutrs.unistra.fr/formation/dut/dut-informatique">
+                            <img class="company-logo" src="assets/img/unistra.png" alt="University of Strasbourg" /> University
+                            of Strasbourg
+                        </a>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>
+                        <b>Associate Degree in Computer Science</b>﹒2007﹒France
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="languages">
+        <div class="container">
+            <h2>Languages</h2>
+
+            <div class="row mb-3">
+                <div class="col-3 align-self-start text-right">
+
+                </div>
+                <div class="col-9">
+                    <p>
+                        <b>Native French. Fluent in English & German.</b>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="text-right">
+        <div class="container">
+            <p>Download latest version: <a href="https://krux.co/resume">krux.co/resume</a></p>
+        </div>
+    </footer>
 
 </body>
 
