@@ -3,7 +3,7 @@
 <head>
     <title>Didier Krux - About Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -14,7 +14,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2794987-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-2794987-1');
     </script>
@@ -33,7 +33,7 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="#about">About</a>
                     <a class="nav-item nav-link" href="#work">Work</a>
-                    <a class="nav-item nav-link" href="#fun">Fun</a>
+                    <a class="nav-item nav-link" href="#projects">Projects</a>
                     <a class="nav-item nav-link" href="#contact">Contact</a>
                 </div>
             </div>
@@ -59,9 +59,8 @@
                 </div>
                 <div class="col-lg">
                     <h2 class="text-center">About me</h2>
-                    <p class="lead">I'm a Web Developer with 10 years of experience in high traffic websites and CMS.</p>
-                    <p class="lead">I like to write simple and efficient code. "write less, do more" (by JQuery) is one of my favorite quote.</p>
-                    <p class="lead">I'm passionate about new technology and music. I'm open minded, creative and think different!</p>
+                    <p class="lead">Full Stack Developer with 10 years of experience in high traffic websites. Passionate
+                        about new technology and music. Curious about Blockchain and the crypto space.</p>
                 </div>
             </div>
         </div>
@@ -88,7 +87,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Le Parisien</h5>
-                            <p class="card-text">French newspaper website with millions of daily visitors. Custom CMS and front-end development.</p>
+                            <p class="card-text">French newspaper website with millions of daily visitors. Custom CMS and
+                                front-end development.</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Sept 2008 - May 2015</li>
@@ -129,7 +129,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Les Echos</h5>
-                            <p class="card-text">Number one French financial newspaper website. Custom CMS and front-end development.</p>
+                            <p class="card-text">Number one French financial newspaper website. Custom CMS and front-end
+                                development.
+                            </p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Mai 2016 - April 2017</li>
@@ -154,15 +156,52 @@
         </div>
     </section>
 
-    <section id="fun">
+    <section id="projects">
         <div class="container">
             <h2 class="text-center">
-                <i class="fas fa-child"></i> Fun</h2>
+                <i class="fas fa-child"></i> Projects</h2>
 
             <div class="row align-items-center">
                 <div class="col-lg">
                     <div class="device-wrapper">
-                        <a href="https://www.nextsound.co" target="_blank" class="d-block">
+                        <a href="https://www.coinmarketnews.app/" target="_blank" class="d-block mr-5 ml-5 text-center">
+                            <img class="img-fluid" src="assets/img/coinmarketnews.app.png" alt="CoinMarketNews">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg d-flex align-content-stretch">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">CoinMarketNews</h5>
+                            <p class="card-text">Realised a Cryptocurrency Tracking Mobile App for iOS and Android in 3 weeks.
+                            <br>App features: Price on over 1600 coins in multiple currencies, favorites tracking, coin price sorting, news with coin tagging, custom news/price alerts, simple UI, efficient UX and dark mode.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">June 2018</li>
+                            <li class="list-group-item">
+                                    <span>Node.js</span>
+                                    <span>PostgreSQL</span>
+                                    <span>scraping tools</span>
+                                    <span>cron</span>
+                                    <span>Docker</span>
+                                    <span>AWS</span>
+                                    <span>RESTful API</span>
+                                    <span>React Native</span>
+                                    <span>Native Base</span>
+                                    <span>Redux</span>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="https://www.coinmarketnews.app/" target="_blank" class="card-link">coinmarketnews.app</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-lg">
+                    <div class="device-wrapper">
+                        <a href="https://www.nextsound.co/" target="_blank" class="d-block">
                             <div class="device" data-device="MacbookPro" data-orientation="portrait" data-color="black">
                                 <div class="screen">
                                     <img class="img-fluid" src="assets/img/nextsound.co.png" alt="Next Sound">
@@ -175,15 +214,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Next Sound</h5>
-                            <p class="card-text">Personal project about electronic music news. Custom responsive back-office and automatic music importation via API.</p>
+                            <p class="card-text">Personal project about electronic music news. Custom responsive back-office
+                                and automatic music importation via API.</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">June 2010 - Present</li>
                             <li class="list-group-item">
+                                <span>PHP</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JQuery</span>
+                                <span>AJAX</span>
                                 <span>Wordpress</span>
                                 <span>Bootstrap</span>
                                 <span>Responsive Design</span>
-                                <span>Crontab</span>
+                                <span>Cron</span>
                                 <span>Youtube</span>
                                 <span>Soundcloud</span>
                                 <span>iTunes</span>
@@ -191,10 +236,9 @@
                                 <span>Shazam</span>
                                 <span>UX/UI</span>
                                 <span>Photoshop</span>
-                                <span>AJAX</span>
                             </li>
                             <li class="list-group-item">
-                                <a href="https://www.nextsound.co" target="_blank" class="card-link">nextsound.co</a>
+                                <a href="https://www.nextsound.co/" target="_blank" class="card-link">nextsound.co</a>
                             </li>
                         </ul>
                     </div>
@@ -204,7 +248,7 @@
             <div class="row align-items-center">
                 <div class="col-lg">
                     <div class="device-wrapper">
-                        <a href="https://www.digitalkrux.com" target="_blank" class="d-block">
+                        <a href="https://www.digitalkrux.com/" target="_blank" class="d-block">
                             <div class="device" data-device="MacbookPro" data-orientation="portrait" data-color="black">
                                 <div class="screen">
                                     <img class="img-fluid" src="assets/img/digitalkrux.com.png" alt="Digital Krux">
@@ -222,14 +266,15 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Mai 2007 - Present</li>
                             <li class="list-group-item">
-                                <span>Wordpress</span>
+                                <span>PHP</span>
                                 <span>HTML</span>
                                 <span>CSS</span>
+                                <span>Wordpress</span>
                                 <span>RSS Feed</span>
                                 <span>Photoshop</span>
                             </li>
                             <li class="list-group-item">
-                                <a href="https://www.digitalkrux.com" target="_blank" class="card-link">digitalkrux.com</a>
+                                <a href="https://www.digitalkrux.com/" target="_blank" class="card-link">digitalkrux.com</a>
                             </li>
                         </ul>
                     </div>
@@ -239,7 +284,7 @@
             <div class="row align-items-center">
                 <div class="col-lg">
                     <div class="device-wrapper">
-                        <a href="http://www.gofindyourself.today" target="_blank" class="d-block">
+                        <a href="http://www.gofindyourself.today/" target="_blank" class="d-block">
                             <div class="device" data-device="MacbookPro" data-orientation="portrait" data-color="black">
                                 <div class="screen">
                                     <img class="img-fluid" src="assets/img/gofindyourself.today.png" alt="Go Find Your SELF">
@@ -252,18 +297,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Go Find Your SELF</h5>
-                            <p class="card-text">Blog recently made for a friend. She write articles about life coaching.</p>
+                            <p class="card-text">Realised a Wordpress blog for a friend. She write articles about life coaching.</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">June 2017 - September 2017</li>
                             <li class="list-group-item">
+                                <span>PHP</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
                                 <span>Wordpress</span>
                                 <span>Fusion Builder</span>
                                 <span>Responsive Design</span>
                                 <span>MailChimp</span>
                             </li>
                             <li class="list-group-item">
-                                <a href="http://www.gofindyourself.today" target="_blank" class="card-link">gofindyourself.today</a>
+                                <a href="http://www.gofindyourself.today/" target="_blank" class="card-link">gofindyourself.today</a>
                             </li>
                         </ul>
                     </div>
