@@ -4,7 +4,7 @@ if (strpos($_SERVER['HTTP_REFERER'], 'linkedin') !== false) {
 } else { // display og:image, title & description for linkedin profile
     $title = 'Juven is hiring';
     $description = 'Want to join our growing team? Juven is hiring senior developers, apply here!';
-    $img = 'https://www.didierkrux.com/assets/img/talen_wanted.png';
+    $img = 'https://www.didierkrux.com/assets/img/talent_wanted.png';
     echo '<html>
     <head>
         <title>' . $title . '</title>
