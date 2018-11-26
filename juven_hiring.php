@@ -12,6 +12,8 @@ if (strpos($_SERVER['HTTP_REFERER'], 'linkedin') !== false) {
         <meta property="og:image" content="' . $img . '" />
     </head>
     <body>
+    <h2>How to add this link to your LinkedIn profile:</h2>
+    <img src="http://g.recordit.co/nvZ248vaND.gif" />
     </body>
     </html>';
 }
