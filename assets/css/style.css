@@ -194,6 +194,9 @@ h2.text-center {
         margin-top: 56px;
         padding-top: 0;
     }
+    header .row {
+        height: 56.25vw;
+    }
     .display-4 {
         font-size: 1.4rem;
     }
