@@ -120,9 +120,8 @@ a, a:hover {
 section h2:after {
     content: " ";
     display: block;
-    width: 100px;
     height: 4px;
-    margin: 20px auto 20px;
+    margin: 20px;
     background: #337ab7;
 }
 
@@ -173,6 +172,11 @@ footer {
 
 .device[data-device=MacbookPro][data-orientation=portrait][data-color=black] .screen {
     top: 5.71429%;
+}
+
+h2.text-center {
+    display: table;
+    margin: auto;
 }
 
 /* Small screen */
