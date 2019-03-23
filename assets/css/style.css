@@ -183,15 +183,16 @@ h2.text-center {
 
 @media screen and (max-width: 1024px) {
     header {
-        height: 43vh;
+        height: 56.25vw;
     }
 }
 
 /* Mobile screen */
 
 @media screen and (max-width: 991px) {
-    header {
-        height: 52vh;
+    #top {
+        margin-top: 56px;
+        padding-top: 0;
     }
     .display-4 {
         font-size: 1.4rem;
