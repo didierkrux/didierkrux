@@ -39,7 +39,7 @@
     }
     /* typing animation */
     .typewriter h2 {
-        width: 906px;
+        width: 910px;
         display: none;
         overflow: hidden;
         /* Ensures the content is not revealed until the animation */
@@ -181,6 +181,10 @@ h2.text-center {
     margin: auto;
 }
 
+.mobile-only {
+    display: none;
+}
+
 /* Small screen */
 
 @media screen and (max-width: 1024px) {
@@ -192,6 +196,12 @@ h2.text-center {
 /* Mobile screen */
 
 @media screen and (max-width: 991px) {
+    #top .container {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
     #top {
         margin-top: 56px;
         padding-top: 0;
