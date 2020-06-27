@@ -1,11 +1,8 @@
 # About Me
 
-Porfolio showcase & description of my professional & personal projects.
+Portfolio of my professional & personal projects + Resume
 
-## Resume
-
-Download the latest .pdf version on [krux.co/resume](krux.co/resume)
-[Source code](https://github.com/didierkrux/about-me/blob/master/resume.html) of the resume.
+Download the latest .pdf version of my Resume on [krux.co/resume](krux.co/resume) [[Source code](https://github.com/didierkrux/about-me/blob/master/resume.html "Source code of the Resume")]
 
 ## Technology used
 
