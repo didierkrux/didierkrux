@@ -1,4 +1,4 @@
-https://favicon.io/favicon-generator/?t=DK&ff=Raleway&fs=100&fc=%23337ab7&b=rounded&bc=transparent
+https://favicon.io/favicon-generator/?t=DK&ff=Noto+Sans&fs=100&fc=%23337ab7&b=rounded&bc=transparent
 
 <!-- favicons -->
 <link rel="shortcut icon" href="/favicon.ico">
