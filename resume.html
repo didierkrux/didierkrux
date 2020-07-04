@@ -1,819 +1,1093 @@
 <html>
 
 <head>
-    <title>Resume_Didier_Krux</title>
-    <meta name="description" content="⬇️ Download my Resume - Download latest version: krux.co/resume" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="https://www.didierkrux.com/assets/img/ogimage.jpg?1" />
-    <meta charset="UTF-8" />
+  <title>Resume_Didier_Krux</title>
+  <meta name="description" content="⬇️ Download my Resume - Download latest version: krux.co/resume" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://www.didierkrux.com/assets/img/ogimage.jpg?1" />
+  <meta charset="UTF-8" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/html5-device-mockups@3.2.1/dist/device-mockups.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/html5-device-mockups@3.2.1/dist/device-mockups.min.css">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
 
-        a, a:hover {
-            color: #337ab7;
-            text-decoration: none !important;
-        }
+    a,
+    a:hover {
+      color: #337ab7;
+      text-decoration: none !important;
+    }
 
-        #name {
-            font-size: 3rem;
-            font-weight: bold;
-            line-height: 1.2;
-        }
+    #name {
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
 
-        #title {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
+    #title {
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        #summary {
-            font-size: 1rem;
-            margin-bottom: 24px;
-        }
+    #summary {
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
 
-        .rounded-circle.img-fluid {
-            width: 140px;
-            margin-bottom: 20px;
-        }
+    .rounded-circle.img-fluid {
+      width: 140px;
+      margin-bottom: 20px;
+    }
 
-        .row {
-            margin-bottom: 1.3rem !important;
-        }
+    .col-3 {
+      padding-left: 0;
+    }
 
-        .col-3 {
-            padding-left: 0;
-        }
+    .col-9 {
+      border-left: 1px solid #9E9E9E;
+    }
 
-        .col-9 {
-            border-left: 1px solid #9E9E9E;
-        }
+    p {
+      margin-bottom: 7px;
+    }
 
-        p {
-            margin-bottom: 0.5rem;
-        }
+    section {
+      padding-bottom: 20px;
+    }
 
-        section {
-            padding-bottom: 20px;
-        }
+    section h2:after {
+      content: " ";
+      display: block;
+      height: 2px;
+      margin: -18 0 50 235;
+      background: #337ab7;
+    }
 
-        section h2:after {
-            content: " ";
-            display: block;
-            height: 2px;
-            margin: -18 0 50 200;
-            background: #337ab7;
-        }
+    .job-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-        .job-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
+    .date {
+      font-size: 14px;
+      color: #9e9e9e;
+    }
 
-        .date {
-            font-size: 0.9rem;
-            color: #9e9e9e;
-        }
+    .company-logo {
+      height: 40px;
+      margin-right: 5px;
+      border-radius: 3px;
+    }
 
-        .company-logo {
-            height: 40px;
-            margin-right: 5px;
-            border-radius: 3px;
-        }
+    .skills {
+      float: left;
+    }
 
-        .skills {
-            float: left;
-        }
+    .skills span {
+      background: #bbbbbb33;
+      border: 1px solid #9E9E9E;
+      border-radius: 5px;
+      padding: 1px 5px;
+      margin-right: 4px;
+      margin-bottom: 4px;
+      display: block;
+      float: left;
+    }
 
-        .skills span {
-            background: #bbbbbb33;
-            border: 1px solid #9E9E9E;
-            border-radius: 5px;
-            padding: 1px 5px;
-            margin-right: 4px;
-            margin-bottom: 4px;
-            display: block;
-            float: left;
-        }
+    .skills span.type {
+      background: none;
+      border: none;
+      margin-right: 0px;
+    }
 
-        .skills span.type {
-            background: none;
-            border: none;
-            margin-right: 0px;
-        }
+    .personality {
+      height: 230px;
+    }
 
-        .pt-page2 {
-            padding-top: 10px;
-        }
+    h2 {
+      font-size: 32px;
+    }
 
-        .footer1 {
-            padding-top: 18px;
-        }
+    #experience .row {
+      margin-bottom: 12px !important;
+    }
 
-        .footer2 {
-            padding-top: 17px;
-        }
-    </style>
+    #projects .row {
+      margin-bottom: 50px !important;
+    }
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2794987-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-2794987-1');
-    </script>
+    #education .row {
+      margin-bottom: 35px !important;
+    }
+
+    #experience .footer1 {
+      padding-top: 24px;
+      margin-bottom: 12px !important;
+    }
+
+    #projects .footer2 {
+      padding-top: 62px;
+      margin-bottom: 12px !important;
+    }
+
+    .footer3 {
+      padding-top: 48px;
+      margin-bottom: 12px !important;
+    }
+
+    .vp1,
+    .vp2,
+    .vp3 {
+      position: absolute;
+      height: 1513px;
+      width: 100%;
+      border-bottom: 1px solid red;
+      border-top: 1px solid green;
+      z-index: -1;
+      /* background-color: #9e9e9e; */
+      display: none;
+    }
+
+    .vp1 {
+      top: 0;
+    }
+
+    .vp2 {
+      top: 1513px;
+    }
+
+    .vp3 {
+      top: 3026px;
+    }
+  </style>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2794987-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-2794987-1');
+  </script>
 </head>
 
 <body>
 
-    <header id="infos">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-2 text-center">
-                    <img class="rounded-circle img-thumbnail img-fluid" src="assets/img/didierkrux.jpg" alt="Didier Krux" />
-                </div>
-                <div class="col-7">
-                    <div id="name"><a href="https://krux.co/">Didier Krux</a></div>
-                    <div id="title">Full Stack Developer</div>
-                    <div id="summary">
-                        10+ years of experience in high traffic websites. Passionate about new technology & music. Curious about Blockchain & the crypto space.
-                    </div>
-                </div>
-                <div class="col-3 text-right">
-                    <ul class="list-inline">
-                        <li class="mt-1">
-                            French, 32
-                        </li>
-                        <li class="mt-1">
-                            2-year HK Employment Visa
-                        </li>
-                        <li class="mt-1">
-                            <a data-toggle="tooltip" title="Call / WhatsApp" href="https://wa.me/85269961625">
-                                (+852) 6996 1625 <i class="fab fa-whatsapp fa-lg fa-fw"></i>
-                            </a>
-                        </li>
-                        <li class="mt-1">
-                            <a data-toggle="tooltip" title="Email" href="mailto:didier@krux.co">
-                                didier@krux.co <i class="far fa-envelope fa-lg fa-fw"></i>
-                            </a>
-                        </li>
-                        <li class="mt-1">
-                            <a data-toggle="tooltip" title="LinkedIn" href="https://linkedin.com/in/didierkrux">
-                                linkedin.com/in/DidierKrux <i class="fab fa-linkedin-in fa-lg fa-fw"></i>
-                            </a>
-                        </li>
-                        <li class="mt-1">
-                            <a data-toggle="tooltip" title="Portfolio" href="https://krux.co/">
-                                Portfolio: krux.co <i class="fas fa-desktop fa-lg fa-fw"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="vp1"></div>
+  <div class="vp2"></div>
+  <div class="vp3"></div>
+
+  <header id="infos">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-2 text-center">
+          <img class="rounded-circle img-thumbnail img-fluid" src="assets/img/didierkrux.jpg" alt="Didier Krux" />
         </div>
-    </header>
+        <div class="col-7">
+          <div id="name"><a href="https://krux.co/">Didier Krux</a></div>
+          <div id="title">Full Stack Developer</div>
+          <div id="summary">
+            10+ years of experience in high traffic newspaper websites & startups.
+            <br />Passionate about new technologies, music & blockchain.
+          </div>
+        </div>
+        <div class="col-3 text-right">
+          <ul class="list-inline">
+            <li class="mt-1">
+              French, 34
+            </li>
+            <li class="mt-1">
+              2-year HK Employment Visa
+            </li>
+            <li class="mt-1">
+              <a data-toggle="tooltip" title="Call / WhatsApp" href="https://wa.me/85269961625">
+                (+852) 6996 1625 <i class="fab fa-whatsapp fa-lg fa-fw"></i>
+              </a>
+            </li>
+            <li class="mt-1">
+              <a data-toggle="tooltip" title="Email"
+                href="mailto:didier@krux.co?subject=Full Time Blockchain opportunity&body=Hi Didier,%0A...">
+                didier@krux.co <i class="far fa-envelope fa-lg fa-fw"></i>
+              </a>
+            </li>
+            <li class="mt-1">
+              <a data-toggle="tooltip" title="LinkedIn" href="https://linkedin.com/in/didierkrux">
+                linkedin.com/in/DidierKrux <i class="fab fa-linkedin-in fa-lg fa-fw"></i>
+              </a>
+            </li>
+            <li class="mt-1">
+              <a data-toggle="tooltip" title="Portfolio" href="https://krux.co/">
+                Portfolio: krux.co <i class="fas fa-desktop fa-lg fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section id="experience">
-        <div class="container">
-            <h2>Experience</h2>
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
 
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Software Engineer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://juven.co/">
-                            <img class="company-logo" src="assets/img/juven.jpg" alt="Juven" /> Juven
-                        </a>
-                    </div>
-                    <div class="location">
-                        Hong Kong 📍
-                    </div>
-                    <div class="date">
-                        Sept. 2018 - Present
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Programming modern web & mobile application. Improving UX/UI of the product.
-                    </p>
-                    <p>
-                        Deployed a dynamic image resizing architecture on AWS using Thumbor, Lambda Serverless & CloudFront that had a great impact to loading speed (up to 15x faster).
-                        <br>SEO optimization & custom dashboard for Google Analytics using Data Studio.
-                        <br>Currently working on the event & membership discovery platform.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>React</span>
-                        <span>Next.js</span>
-                        <span>React Native</span>
-                        <span>Redux</span>
-                        <span>SEO</span>
-                        <span>Node.js</span>
-                        <span>MySQL</span>
-                        <span>Knex.js</span>
-                        <span>AWS</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Full Stack
+            <br>Blockchain Engineer
+          </div>
+          <div class="company">
+            <a class="align-middle"
+              href="mailto:didier@krux.co?subject=Full Time Blockchain opportunity&body=Hi Didier,%0A...">
+              <img class="company-logo" src="assets/img/blockchain.png" alt="Blockchain Company" /> Blockchain Company
+            </a>
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            1-month notice
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ For my next job, I am looking to work as a Full Stack <b>Blockchain</b> Engineer.
+          </p>
+          <p>
+            Thanks to my work experience, I have the skills to bootstrap a robust project from end to end
+            <br>in no time using the latest technologies.
+            <br>Over the past 2 years, I have also been accumulating knowledge in my free time in various blockchain
+            technologies, which I find very fascinating.
+            <br>It is time that I put my skills & interests into use to contribute to the crypto revolution.
+          </p>
+          <div class="skills">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Node.js</span>
+            <span>Blockchain</span>
+            <span>Smart Contracts</span>
+            <span>...</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
 
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Full Stack LAMP Developer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.sdv.fr/">
-                            <img class="company-logo" src="assets/img/sdvplurimedia.png" alt="SdV Plurimedia" /> SdV Plurimedia
-                        </a>
-                    </div>
-                    <div class="location">
-                        France 📍
-                    </div>
-                    <div class="date">
-                        Nov. 2008 - May 2017﹒9 years
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Developed custom CMS & dynamic websites for the newspaper industry for almost 9 years.
-                        <br>Worked for Top 10 French newspapers: <a href="http://www.leparisien.fr/">LeParisien.fr</a>, <a href="http://www.lepoint.fr/">LePoint.fr</a>, <a href="https://www.lesechos.fr/">LesEchos.fr</a>
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣ Backend:</span>
-                        <span>PHP</span>
-                        <span>MySQL</span>
-                        <span>Symfony framework</span>
-                        <span>Laravel</span>
-                        <span>SVN</span>
-                        <span>Git</span>
-                        <span>XML</span>
-                        <span>CSV</span>
-                        <span>cron</span>
-                        <span>SSO</span>
-                        <span>OAuth</span>
-                        <span>Bash Scripting</span>
-                        <span>ElasticSearch</span>
-                        <span>Payment Gateways</span>
-                    </div>
-                    <div class="skills">
-                        <span class="type">‣ Frontend:</span>
-                        <span>Javascript</span>
-                        <span>JQuery</span>
-                        <span>AJAX</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Responsive Design</span>
-                        <span>HTTPS</span>
-                        <span>SEO</span>
-                        <span>Facebook API</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Senior Software Engineer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://toasty.ai/">
+              <img class="company-logo" src="assets/img/toasty.png" alt="Toasty" /> Toasty
+            </a> (formerly, Juven)
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            June 2019 - Present
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Video conferencing platform to run super interactive virtual meetings.
+          </p>
+          <p>
+            Admin panel & interactive videoconference Web App.
+            <br>Setup & deployed a dedicated Jitsi videoconference server with live monitoring on AWS.
+            <br>Writing technical specs, code review & deployment.
+            <br>Suggested & implemented major changes in backend structure to save time in development.
+            <br>Improved the flow of the product to minimize time to value for customers.
+          </p>
+          <p>
+            ‣ Business matchmaking platform using AI to match people.
+          </p>
+          <p>
+            Admin panel, meeting scheduler & Mobile Web App.
+            <br>Developed a Serverless matching engine using NLP to calculate matching scores.
+          </p>
+          <div class="skills">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Redux-Saga</span>
+            <span>Node.js</span>
+            <span>WebSocket</span>
+            <span>Redis</span>
+            <span>PostgreSQL</span>
+            <span>Python</span>
+            <span>NLP</span>
+            <span>Material UI</span>
+            <span>Jitsi</span>
+            <span>AWS</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
 
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Web Developer Training
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.ircad.fr/">
-                            <img class="company-logo" src="assets/img/ircad.png" alt="IRCAD - WeBSurg" /> IRCAD - WeBSurg
-                        </a>
-                    </div>
-                    <div class="location">
-                        France 📍
-                    </div>
-                    <div class="date">
-                        Sept. 2007 - Sept. 2008﹒1 year
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Website development for a leading international Medical Research Institute: <a href="https://www.ircad.fr/">IRCAD</a> - <a href="https://www.websurg.com/">WeBSurg</a>
-                        <br>Developed internal tools: geolocation map with Google Maps, email filtering & dynamic generation of seating course map.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>PHP</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Javascript</span>
-                        <span>XML</span>
-                        <span>CSV</span>
-                        <span>Google API</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Software Engineer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://juven.co/">
+              <img class="company-logo" src="assets/img/juven.jpg" alt="Juven" /> Juven
+            </a>
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            Sept. 2018 - June 2019﹒10 months
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Event management, membership & online ticketing platform.
+          </p>
+          <p>
+            Admin panel, event discovery platform & ticket purchasing.
+            <br>Deployed a dynamic image resizing architecture on AWS using Thumbor, Lambda Serverless & CloudFront that
+            had a great impact on loading speed (up to 15x faster).
+            <br>SEO optimization & custom dashboard for Google Analytics using Data Studio.
+            <br>Constantly improving the UX/UI of the product.
+          </p>
+          <div class="skills">
+            <span>React</span>
+            <span>Next.js</span>
+            <span>React Native</span>
+            <span>Redux</span>
+            <span>SEO</span>
+            <span>Node.js</span>
+            <span>MySQL</span>
+            <span>Knex.js</span>
+            <span>AWS</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
 
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Web Developer Internship
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.linkedin.com/company/ip-media/">
-                            <img class="company-logo" src="assets/img/ipmedia.png" alt="IP-Media" /> IP-Media
-                        </a>
-                    </div>
-                    <div class="location">
-                        France 📍
-                    </div>
-                    <div class="date">
-                        April 2007 - August 2007﹒5 months
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Custom back-office development for a videoconferencing software. Jabber server web-interface.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>PHP</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Javascript</span>
-                        <span>XML</span>
-                        <span>CSV</span>
-                        <span>Google API</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Full Stack LAMP Developer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.sdv.fr/">
+              <img class="company-logo" src="assets/img/sdvplurimedia.png" alt="SdV Plurimedia" /> SdV Plurimedia
+            </a>
+          </div>
+          <div class="location">
+            France 📍
+          </div>
+          <div class="date">
+            Nov. 2008 - May 2017﹒9 years
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Top 10 French newspapers (<a
+              href="https://www.similarweb.com/website/leparisien.fr/#overview">Millions</a> of daily visitors): <a
+              href="http://www.leparisien.fr/">LeParisien.fr</a>, <a href="http://www.lepoint.fr/">LePoint.fr</a>, <a
+              href="https://www.lesechos.fr/">LesEchos.fr</a>
+          </p>
+          <p>
+            Developed custom CMS & dynamic websites for the newspaper industry for almost 9 years.
+            <br>Learned to work in a large-scale infrastructure & follow high quality standards.
+          </p>
+          <div class="skills">
+            <span class="type">Backend:</span>
+            <span>PHP</span>
+            <span>MySQL</span>
+            <span>Symfony framework</span>
+            <span>Laravel</span>
+            <span>SVN</span>
+            <span>Git</span>
+            <span>XML</span>
+            <span>CSV</span>
+            <span>cron</span>
+            <span>SSO</span>
+            <span>OAuth</span>
+            <span>Bash Scripting</span>
+            <span>ElasticSearch</span>
+            <span>Facebook API</span>
+            <span>Payment Gateways</span>
+          </div>
+          <div class="skills">
+            <span class="type">Frontend:</span>
+            <span>Javascript</span>
+            <span>JQuery</span>
+            <span>AJAX</span>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Responsive Design</span>
+            <span>HTTPS</span>
+            <span>SEO</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Web Developer Training
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.ircad.fr/">
+              <img class="company-logo" src="assets/img/ircad.png" alt="IRCAD - WeBSurg" /> IRCAD - WeBSurg
+            </a>
+          </div>
+          <div class="location">
+            France 📍
+          </div>
+          <div class="date">
+            Sept. 2007 - Sept. 2008﹒1 year
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Leading international Medical Research Institute: <a href="https://www.ircad.fr/">IRCAD</a> - <a
+              href="https://www.websurg.com/">WeBSurg</a>
+          </p>
+          <p>
+            Website & internal tools development: geolocation map with Google Maps, email filtering & dynamic
+            generation of seating course map.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Javascript</span>
+            <span>XML</span>
+            <span>CSV</span>
+            <span>Google API</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Web Developer Internship
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.linkedin.com/company/ip-media/">
+              <img class="company-logo" src="assets/img/ipmedia.png" alt="IP-Media" /> IP-Media
+            </a>
+          </div>
+          <div class="location">
+            France 📍
+          </div>
+          <div class="date">
+            April 2007 - August 2007﹒5 months
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Videoconferencing software
+          </p>
+          <p>
+            Admin panel & Jabber server web-interface.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Javascript</span>
+            <span>XML</span>
+            <span>SVN</span>
+            <span>Jabber</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3 footer1">
+        <div class="col-6 text-left">
+          <p>
+            Page 1/3
+          </p>
+        </div>
+        <div class="col-6 text-right">
+          <p>
+            Download latest version: <a href="https://krux.co/resume">krux.co/resume</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Founder - Developer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://virtualgames.fun/">
+              <img class="company-logo" src="assets/img/VirtualGames-logo.png" alt="VirtualGames.fun" />
+              VirtualGames.fun
+            </a>
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            April 2020
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Open source online gaming platform with built-in videoconference.
+          </p>
+          <p>
+            Side project based on Jitsi developed during COVID-19 to have fun with friends online.
+          </p>
+          <div class="skills">
+            <span>Open Source</span>
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Jitsi</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Product - Mobile Developer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.coinmarketnews.app/">
+              <img class="company-logo" src="assets/img/CoinMarketNews-logo.png" alt="CoinMarketNews" /> CoinMarketNews
+            </a>
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            June 2018﹒3 weeks
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Cryptocurrency Tracking Mobile App for iOS & Android. Built this project in 3 weeks as a Capstone Project
+            during a Coding Bootcamp.
+          </p>
+          <p>
+            App features: Price on over 1600 coins in multiple currencies, favorites tracking, coin price sorting, news
+            with coin tagging, custom news/price alerts, simple UI, efficient UX & dark mode.
+            <br>First experience of building a Native Mobile App from scratch. Designed the project from end to end:
+            prototype, architecture, development, deployment & marketing page.
+          </p>
+          <div class="skills">
+            <span>Node.js</span>
+            <span>PostgreSQL</span>
+            <span>scraping tools</span>
+            <span>cron</span>
+            <span>Docker</span>
+            <span>AWS</span>
+            <span>RESTful API</span>
+            <span>React Native</span>
+            <span>Native Base</span>
+            <span>OneSignal</span>
+            <span>Redux</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Product - Developer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://pieneer.live/">
+              <img class="company-logo" src="assets/img/pieneer.live-logo.jpg" alt="Pieneer.live" /> Pieneer.live
+            </a>
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            May 2018﹒1 week
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Easy to use educational tool to interact with your audience during a presentation.
+          </p>
+          <p>
+            Product features: Create a dynamic slideshow. Live interaction during presentation with integrated drawing
+            tool, Q&A & live polling charts using WebSocket. Mobile Web App to ask questions & vote.
+          </p>
+          <div class="skills">
+            <span>UX/UI</span>
+            <span>Node.js</span>
+            <span>WebSocket</span>
+            <span>JQuery</span>
+            <span>Chart.js</span>
+            <span>Mobile Web App</span>
+            <span>Responsive Design</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Web Developer Volunteer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.gofindyourself.today/">
+              <img class="company-logo" src="assets/img/gofindyourself.today-logo.png" alt="Go Find Your SELF" /> Go
+              Find Your SELF
+            </a>
+          </div>
+          <div class="location">
+            Remote 🌎
+          </div>
+          <div class="date">
+            June 2017 - Sept. 2017﹒4 months
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Wordpress blog about life coaching.
+          </p>
+          <p>
+            Built this project from scratch in a fully remote environment for a friend: design, advising & development.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Wordpress</span>
+            <span>Fusion Builder</span>
+            <span>Responsive Design</span>
+            <span>MailChimp</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Web Developer Volunteer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="http://www.webelong-foundation.org/">
+              <img class="company-logo" src="assets/img/webelong-foundation.org.png" alt="WeBelong Foundation" />
+              WeBelong Foundation
+            </a>
+          </div>
+          <div class="location">
+            Remote 🌎
+          </div>
+          <div class="date">
+            Oct 2016﹒1 month
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ International, cutting-edge platform for sustainable lifestyle & innovation.
+          </p>
+          <p>
+            Helped finalize the website before a major conference in China: transferred the website to a new hosting
+            platform, fixed issues for desktop & mobile & improved loading speed by 10 times.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Wordpress</span>
+            <span>Responsive Design</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Founder - Developer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.nextsound.co/">
+              <img class="company-logo" src="assets/img/nextsound.co-logo.png" alt="Next Sound" /> Next Sound
+            </a>
+          </div>
+          <div class="location">
+            France 📍
+          </div>
+          <div class="date">
+            June 2010 - Present
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Personal project about electronic music news.
+          </p>
+          <p>
+            Custom made responsive admin panel & automatic music importation via API.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JQuery</span>
+            <span>AJAX</span>
+            <span>Wordpress</span>
+            <span>Bootstrap</span>
+            <span>Responsive Design</span>
+            <span>Cron</span>
+            <span>Youtube</span>
+            <span>Soundcloud</span>
+            <span>iTunes</span>
+            <span>Beatport</span>
+            <span>Shazam</span>
+            <span>UX/UI</span>
+            <span>Photoshop</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            DJ - Developer
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://www.digitalkrux.com/">
+              <img class="company-logo" src="assets/img/Digital-Krux-Logo.png" alt="Digital Krux" /> Digital Krux
+            </a>
+          </div>
+          <div class="location">
+            France 📍
+          </div>
+          <div class="date">
+            May 2007 - Present
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            ‣ Personal DJ website based on Wordpress.
+          </p>
+          <p>
+            Synchronized RSS feed to iTunes Podcast.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Wordpress</span>
+            <span>RSS Feed</span>
+            <span>Photoshop</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3 footer2">
+        <div class="col-6 text-left">
+          <p>
+            Page 2/3
+          </p>
+        </div>
+        <div class="col-6 text-right">
+          <p>
+            Download latest version: <a href="https://krux.co/resume">krux.co/resume</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <h2>Education</h2>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Smart Contract Programming
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://ivanontech.teachable.com/courses/287053/lectures/4422118">
+              <img class="company-logo" src="assets/img/ivan-on-tech-academy.png" alt="Ivan on Tech Academy" /> Ivan on
+              Tech Academy
+            </a>
+          </div>
+          <div class="location">
+            Remote 🌎
+          </div>
+          <div class="date">
+            2019
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            Programming Smart Contracts & building DApps on Ethereum, EOS & NEM. Use of Developer Tools. Deployment to
+            Test Net & Main Net.
+          </p>
+          <div class="skills">
+            <span>DApps</span>
+            <span>Smart Contracts</span>
+            <span>Ethereum</span>
+            <span>Solidity</span>
+            <span>web3.js</span>
+            <span>MetaMask</span>
+            <span>EOS</span>
+            <span>EOSIO.CDT</span>
+            <span>NEM</span>
+            <span>NEM-sdk</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Blockchain Deep Fundamentals
+          </div>
+          <div class="company">
+            <a class="align-middle"
+              href="https://ivanontech.teachable.com/courses/blockchain-fundamentals/lectures/4284700">
+              <img class="company-logo" src="assets/img/ivan-on-tech-academy.png" alt="Ivan on Tech Academy" /> Ivan on
+              Tech Academy
+            </a>
+          </div>
+          <div class="location">
+            Remote 🌎
+          </div>
+          <div class="date">
+            2018
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            Benefits of using Blockchain, Cryptography, Bitcoin & Ethereum Basics, Scaling, Consensus Algorithms &
+            Mining, UTXO Model, Tokens, ICO, Smart Contracts & Blockchain Use Cases.
+          </p>
+          <div class="skills">
+            <span>Blockchain</span>
+            <span>Bitcoin</span>
+            <span>Ethereum</span>
+            <span>Smart Contracts</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="job-title">
+            Full Time Immersive Coding Bootcamp
+          </div>
+          <div class="company">
+            <a class="align-middle" href="https://xccelerate.co/">
+              <img class="company-logo" src="assets/img/accelerate.png" alt="Accelerate" /> Accelerate
+            </a>
+          </div>
+          <div class="location">
+            Hong Kong 📍
+          </div>
+          <div class="date">
+            March 2018 - June 2018﹒4 months
+          </div>
+        </div>
+        <div class="col-9">
+          <p>
+            Full Time 16-week Immersive Coding Bootcamp with 1000+ hours of learning how to build Modern Web & Mobile
+            Applications.
+          </p>
+          <div class="skills">
+            <span class="type">Backend:</span>
+            <span>Node.js</span>
+            <span>Express.js</span>
+            <span>Jasmine</span>
+            <span>WebSocket</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>Firebase</span>
+            <span>OAuth</span>
+          </div>
+          <div class="skills">
+            <span class="type">Frontend:</span>
+            <span>ReactJS</span>
+            <span>React Native (iOS & Android)</span>
+            <span>Typescript</span>
+            <span>Redux</span>
+          </div>
+          <div class="skills">
+            <span class="type">Deployment:</span>
+            <span>AWS EC2</span>
+            <span>Docker</span>
+            <span>CI/CD with CircleCI</span>
+            <span>Google Play Store</span>
+            <span>Apple App Store</span>
+          </div>
+          <div class="mb-2 clearfix"></div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="company">
+            <a class="align-middle" href="http://iutrs.unistra.fr/formation/licence-professionnelle/informatique/cdad">
+              <img class="company-logo" src="assets/img/iut-robert-schuman.png" alt="University of Strasbourg" />
+              Institut Universitaire de Technologie Robert Schuman
+            </a>
+          </div>
+        </div>
+        <div class="col-9 align-self-center">
+          <span>
+            <b>Bachelor's Degree in Computer Science & Software</b>, Distributed System Designer-Developer
+            <br>
+            <span class="location">
+              France 📍
+            </span>
+            ﹒
+            <span class="date">
+              2008
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-3 align-self-start text-right">
+          <div class="company">
+            <a class="align-middle" href="http://iutrs.unistra.fr/formation/dut/dut-informatique">
+              <img class="company-logo" src="assets/img/iut-robert-schuman.png" alt="University of Strasbourg" />
+              Institut Universitaire de Technologie Robert Schuman
+            </a>
+          </div>
+        </div>
+        <div class="col-9 align-self-center">
+          <span>
+            <b>Associate Degree in Computer Science</b>
+            <br>
+            <span class="location">
+              France 📍
+            </span>
+            ﹒
+            <span class="date">
+              2007
+            </span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Personal skills</h2>
+
+      <div class="row mb-3">
+        <div class="col-3">
+          <a class="align-middle" href="https://www.16personalities.com/profiles/db827a0cfdbdd">
+            <img class="personality" src="assets/img/enfj-protagonist-male.svg" alt="ENFJ Personality" />
+          </a>
+        </div>
+        <div class="col-9 align-self-center">
+          <p>
+            ‣ <a class="align-middle" href="https://www.16personalities.com/profiles/db827a0cfdbdd">ENFJ</a>
+            personality type.
+          </p>
+          <p>
+            ‣ Growth mindset, learning attitude & constant improving.
+          </p>
+          <p>
+            ‣ Flexible, adaptive to new challenges & ready to take ownership.
+          </p>
+          <p>
+            ‣ Very creative & likes to think outside-the-box.
+          </p>
+          <p>
+            ‣ Good communicator & team player. Happy to learn from others or mentor junior team members.
+          </p>
+          <p>
+            ‣ Attentive to details, passionate to build beautiful interfaces & user experience that spark joy 🙂✨
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="languages">
+    <div class="container">
+      <h2>Languages</h2>
+
+      <div class="row mb-3">
+        <div class="col-3">
 
         </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Product - Mobile Developer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.coinmarketnews.app/">
-                            <img class="company-logo" src="assets/img/CoinMarketNews-logo.png" alt="CoinMarketNews" /> CoinMarketNews
-                        </a>
-                    </div>
-                    <div class="location">
-                        Hong Kong 📍
-                    </div>
-                    <div class="date">
-                        June 2018﹒3 weeks
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Realised a Cryptocurrency Tracking Mobile App for iOS & Android in 3 weeks as Capstone Project during Coding Bootcamp.
-                    </p>
-                    <p>
-                        App features: Price on over 1600 coins in multiple currencies, favorites tracking, coin price sorting, news with coin tagging, custom news/price alerts, simple UI, efficient UX & dark mode.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>Node.js</span>
-                        <span>PostgreSQL</span>
-                        <span>scraping tools</span>
-                        <span>cron</span>
-                        <span>Docker</span>
-                        <span>AWS</span>
-                        <span>RESTful API</span>
-                        <span>React Native</span>
-                        <span>Native Base</span>
-                        <span>OneSignal</span>
-                        <span>Redux</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Product - Web Developer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://pieneer.live/">
-                            <img class="company-logo" src="assets/img/pieneer.live-logo.jpg" alt="Pieneer.live" /> Pieneer.live
-                        </a>
-                    </div>
-                    <div class="location">
-                        Hong Kong 📍
-                    </div>
-                    <div class="date">
-                        May 2018﹒1 week
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Built a easy to use educational tool to help you interact with your audience during a Powerpoint presentation.
-                    </p>
-                    <p>
-                        Product features: Create a dynamic Powerpoint. Live interaction during presentation with integrated drawing tool, Q&A results & live charts using WebSocket. Mobile Web App to ask questions & vote.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>UX/UI</span>
-                        <span>Node.js</span>
-                        <span>WebSocket</span>
-                        <span>JQuery</span>
-                        <span>Chart.js</span>
-                        <span>Mobile Web App</span>
-                        <span>Responsive Design</span>
-                        <span>Knex.js</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3 footer1">
-                <div class="col-6 text-left">
-                    <p>
-                        Page 1/2
-                    </p>
-                </div>
-                <div class="col-6 text-right">
-                    <p>
-                        Download latest version: <a href="https://krux.co/resume">krux.co/resume</a>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="row mb-3 pt-page2">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Web Developer Volunteer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.gofindyourself.today/">
-                            <img class="company-logo" src="assets/img/gofindyourself.today-logo.png" alt="Go Find Your SELF" /> Go Find Your SELF
-                        </a>
-                    </div>
-                    <div class="location">
-                        Remote 🌎
-                    </div>
-                    <div class="date">
-                        June 2017 - Sept. 2017﹒4 months
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Realised a Wordpress blog for a friend. She writes articles about life coaching.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>PHP</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Wordpress</span>
-                        <span>Fusion Builder</span>
-                        <span>Responsive Design</span>
-                        <span>MailChimp</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                    <div class="col-3 align-self-start text-right">
-                        <div class="job-title">
-                            Web Developer Volunteer
-                        </div>
-                        <div class="company">
-                            <a class="align-middle" href="http://www.webelong-foundation.org/">
-                                <img class="company-logo" src="assets/img/webelong-foundation.org.png" alt="WeBelong Foundation" /> WeBelong Foundation
-                            </a>
-                        </div>
-                        <div class="location">
-                            Remote 🌎
-                        </div>
-                        <div class="date">
-                            Oct 2016﹒1 month
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <p>
-                            Helped finalise the website before the biggest conference in China about sustainable lifestyle & innovation: transferred the website & domain to another hosting platform, fixed issues for desktop & mobile & improved loading speed by 10 times.
-                        </p>
-                        <div class="skills">
-                            <span class="type">‣</span>
-                            <span>PHP</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Wordpress</span>
-                            <span>Responsive Design</span>
-                        </div>
-                        <div class="mb-2 clearfix"></div>
-                    </div>
-                </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Founder - Web Developer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.nextsound.co/">
-                            <img class="company-logo" src="assets/img/nextsound.co-logo.png" alt="Next Sound" /> Next Sound
-                        </a>
-                    </div>
-                    <div class="location">
-                        France 📍
-                    </div>
-                    <div class="date">
-                        June 2010 - Present
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Personal project about electronic music news. Custom responsive back-office & automatic music importation via API.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>PHP</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JQuery</span>
-                        <span>AJAX</span>
-                        <span>Wordpress</span>
-                        <span>Bootstrap</span>
-                        <span>Responsive Design</span>
-                        <span>Cron</span>
-                        <span>Youtube</span>
-                        <span>Soundcloud</span>
-                        <span>iTunes</span>
-                        <span>Beatport</span>
-                        <span>Shazam</span>
-                        <span>UX/UI</span>
-                        <span>Photoshop</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        DJ - Web Developer
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://www.digitalkrux.com/">
-                            <img class="company-logo" src="assets/img/Digital-Krux-Logo.png" alt="Digital Krux" /> Digital Krux
-                        </a>
-                    </div>
-                    <div class="location">
-                        France 📍
-                    </div>
-                    <div class="date">
-                        May 2007 - Present
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Personal DJ website based on Wordpress. Synchonized RSS feed to iTunes Podcast.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>PHP</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Wordpress</span>
-                        <span>RSS Feed</span>
-                        <span>Photoshop</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
+        <div class="col-9 align-self-center">
+          <p>
+            ‣ Native in French
+          </p>
+          <p>
+            ‣ Working proficiency in English
+          </p>
+          <p>
+            ‣ Limited working proficiency in German
+          </p>
+          <p>
+            ‣ 我學緊廣東話
+          </p>
         </div>
-    </section>
+      </div>
 
-    <section id="education">
-        <div class="container">
-            <h2>Education</h2>
+    </div>
+  </section>
 
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Smart Contract Programming
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://ivanontech.teachable.com/courses/287053/lectures/4422118">
-                            <img class="company-logo" src="assets/img/ivan-on-tech-academy.png" alt="Ivan on Tech Academy" /> Ivan on Tech Academy
-                        </a>
-                    </div>
-                    <div class="location">
-                        Remote 🌎
-                    </div>
-                    <div class="date">
-                        2019
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Programming Smart Contracts & building DApps on Ethereum, EOS & NEM. Use of Developer Tools. Deployment to Test Net & Main Net.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>DApps</span>
-                        <span>Smart Contracts</span>
-                        <span>Ethereum</span>
-                        <span>Solidity</span>
-                        <span>web3.js</span>
-                        <span>MetaMask</span>
-                        <span>EOS</span>
-                        <span>EOSIO.CDT</span>
-                        <span>NEM</span>
-                        <span>NEM-sdk</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Blockchain Deep Fundamentals
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://ivanontech.teachable.com/courses/blockchain-fundamentals/lectures/4284700">
-                            <img class="company-logo" src="assets/img/ivan-on-tech-academy.png" alt="Ivan on Tech Academy" /> Ivan on Tech Academy
-                        </a>
-                    </div>
-                    <div class="location">
-                        Remote 🌎
-                    </div>
-                    <div class="date">
-                        2018
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Benefits of using Blockchain, Cryptography, Bitcoin & Ethereum Basics, Scaling, Consensus Algorithms & Mining, UTXO Model, Tokens, ICO, Smart Contracts & Blockchain Use Cases.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣</span>
-                        <span>Blockchain</span>
-                        <span>Bitcoin</span>
-                        <span>Ethereum</span>
-                        <span>Smart Contracts</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="job-title">
-                        Full Time Immersive Coding Bootcamp
-                    </div>
-                    <div class="company">
-                        <a class="align-middle" href="https://xccelerate.co/">
-                            <img class="company-logo" src="assets/img/accelerate.png" alt="Accelerate" /> Accelerate
-                        </a>
-                    </div>
-                    <div class="location">
-                        Hong Kong 📍
-                    </div>
-                    <div class="date">
-                        March 2018 - June 2018﹒4 months
-                    </div>
-                </div>
-                <div class="col-9">
-                    <p>
-                        Full Time 16-week Immersive Coding Bootcamp with 1000+ hours of learning how to build Modern Web & Mobile Application.
-                    </p>
-                    <div class="skills">
-                        <span class="type">‣ Backend:</span>
-                        <span>Node.js</span>
-                        <span>Express.js</span>
-                        <span>Jasmine</span>
-                        <span>WebSocket</span>
-                        <span>PostgreSQL</span>
-                        <span>Redis</span>
-                        <span>Firebase</span>
-                        <span>OAuth</span>
-                    </div>
-                    <div class="skills">
-                        <span class="type">‣ Frontend:</span>
-                        <span>ReactJS</span>
-                        <span>React Native (iOS & Android)</span>
-                        <span>Typescript</span>
-                        <span>Redux</span>
-                    </div>
-                    <div class="skills">
-                        <span class="type">‣ Deployment:</span>
-                        <span>AWS EC2</span>
-                        <span>Docker</span>
-                        <span>CI/CD with CircleCI</span>
-                        <span>Google Play Store</span>
-                        <span>Apple App Store</span>
-                    </div>
-                    <div class="mb-2 clearfix"></div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="company">
-                        <a class="align-middle" href="http://iutrs.unistra.fr/formation/licence-professionnelle/informatique/cdad">
-                            <img class="company-logo" src="assets/img/unistra.png" alt="University of Strasbourg" /> University of Strasbourg
-                        </a>
-                    </div>
-                </div>
-                <div class="col-9 align-self-center">
-                    <span>
-                        <b>Bachelor's Degree in Computer Science</b>
-                        ﹒
-                        <span class="location">
-                            France 📍
-                        </span>
-                        ﹒
-                        <span class="date">
-                            2008
-                        </span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-3 align-self-start text-right">
-                    <div class="company">
-                        <a class="align-middle" href="http://iutrs.unistra.fr/formation/dut/dut-informatique">
-                            <img class="company-logo" src="assets/img/unistra.png" alt="University of Strasbourg" /> University of Strasbourg
-                        </a>
-                    </div>
-                </div>
-                <div class="col-9 align-self-center">
-                    <span>
-                        <b>Associate Degree in Computer Science</b>
-                        ﹒
-                        <span class="location">
-                            France 📍
-                        </span>
-                        ﹒
-                        <span class="date">
-                            2007
-                        </span>
-                    </span>
-                </div>
-            </div>
-
+  <footer class="text-right pt-custom">
+    <div class="container">
+      <div class="row mb-3 footer3">
+        <div class="col-2 text-left">
+          <p>
+            Page 3/3
+          </p>
         </div>
-    </section>
-
-    <section id="languages">
-        <div class="container">
-            <h2>Languages</h2>
-
-            <div class="row mb-3">
-                <div class="col-3">
-
-                </div>
-                <div class="col-9 align-self-center">
-                    <span>
-                        <b>Native French. Fluent in English & German.</b>
-                    </span>
-                </div>
-            </div>
-
+        <div class="col-6 text-center">
+          <p>
+            Made with HTML-CSS: <a href="https://github.com/didierkrux/about-me/blob/master/resume.html">GitHub source
+              code</a>
+          </p>
         </div>
-    </section>
-
-    <footer class="text-right pt-custom">
-        <div class="container">
-            <div class="row mb-3 footer2">
-                <div class="col-2 text-left">
-                    <p>
-                        Page 2/2
-                    </p>
-                </div>
-                <div class="col-6 text-center">
-                    <p>
-                        Made with HTML-CSS: <a href="https://github.com/didierkrux/about-me/blob/master/resume.html">GitHub source code</a>
-                    </p>
-                </div>
-                <div class="col-4 text-right">
-                    <p>
-                        Download latest version: <a href="https://krux.co/resume">krux.co/resume</a>
-                    </p>
-                </div>
-            </div>
+        <div class="col-4 text-right">
+          <p>
+            Download latest version: <a href="https://krux.co/resume">krux.co/resume</a>
+          </p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
