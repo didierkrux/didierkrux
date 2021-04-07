@@ -39,7 +39,7 @@
     }
     /* typing animation */
     .typewriter h2 {
-        width: 910px;
+        width: 720px;
         display: none;
         overflow: hidden;
         /* Ensures the content is not revealed until the animation */
@@ -60,7 +60,7 @@
             width: 0
         }
         to {
-            width: 100%
+            width: 70%
         }
     }
     /* The typewriter cursor effect */
