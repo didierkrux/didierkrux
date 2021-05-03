@@ -2,15 +2,15 @@
 
 <div align="center"> 
   <a href="https://www.linkedin.com/in/didierkrux/"><img alt="LinkedIn" src="https://img.shields.io/badge/-Didier_Krux-blue?logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/didierkrux/"></a>
-  <a href="https://twitter.com/didierkrux"><img alt="Twitter" src="https://img.shields.io/twitter/url?label=Didier%20Krux&style=social&url=https://twitter.com/didierkrux"></a>
+  <a href="https://twitter.com/intent/follow?screen_name=didierkrux"><img alt="Twitter" src="https://img.shields.io/twitter/url?label=Didier%20Krux&style=social&url=https://twitter.com/didierkrux"></a>
 </div>
 
 ## 👨‍💻 About Me
 
 -  💻 **Working :** Full-Stack developer
-- 🛠 **Tech Stack :** ![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
-![Node.js](https://img.shields.io/badge/-Node.js-05122A?style=flat&logo=node.js)&nbsp;
-- 👨‍🏫 **Learning :** ![Web3](https://img.shields.io/badge/-Web3-05122A?style=flat&logo=ethereum)&nbsp;
+- 🛠 **Tech Stack :** <img alt="React" src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=222">&nbsp;
+<img alt="Node.js" src="https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white">&nbsp;
+- 👨‍🏫 **Learning :** <img alt="Web3" src="https://img.shields.io/badge/-Web3-3C3C3D?logo=ethereum">&nbsp;
 - 🤩 **Interests :** 🔐 blockchain | 👾 new technologies | 🎵 music
 
 ## Resume
