@@ -11,7 +11,7 @@
 - 🛠 **Tech Stack :** <a href="https://reactjs.org/"><img alt="React" src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=222"></a>&nbsp;
 <a href="https://nodejs.org/en/"><img alt="Node.js" src="https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white"></a>&nbsp;
 <a href="https://nextjs.org/docs"><img alt="Next.js" src="https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white"></a>&nbsp;
-<a href="https://chakra-ui.com/docs/getting-started"><img alt="Next.js" src="https://img.shields.io/badge/-Chakra UI-319795?logo=nextdotjs&logoColor=white"></a>&nbsp;
+<a href="https://chakra-ui.com/docs/getting-started"><img alt="Next.js" src="https://img.shields.io/badge/-Chakra UI-319795?logo=chakraui&logoColor=white"></a>&nbsp;
 - 👨‍🏫 **Learning :** <a href="https://ethereum.org/en/developers/docs/web2-vs-web3/"><img alt="Web3" src="https://img.shields.io/badge/-Web3-3C3C3D?logo=ethereum"></a>&nbsp;
 - 🤩 **Interests :** 🔐 blockchain | 👾 new technologies | 🎵 music
 
