@@ -1,8 +1,5 @@
 <div align="center">
   <h1>Hello, I'm Didier Krux ✌️😎👾🎵 </h1>
-  <img src="https://i.imgur.com/tAyGwjk.png" width="200" />
-  <br/>
-  <br/>
   <a href="https://www.linkedin.com/in/didierkrux/"><img alt="LinkedIn" src="https://img.shields.io/badge/-Didier_Krux-blue?logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/didierkrux/"></a>
   <a href="https://twitter.com/intent/follow?screen_name=didierkrux"><img alt="Twitter" src="https://img.shields.io/twitter/url?label=Didier%20Krux&style=social&url=https://twitter.com/didierkrux"></a>
 </div>
