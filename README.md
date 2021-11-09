@@ -1,4 +1,4 @@
-<div style="center">
+<div align="center">
   <h1>Hello, I'm Didier Krux ✌️😎👾🎵 </h1>
   <img src="https://i.imgur.com/tAyGwjk.png" width="200" />
   <br/>
