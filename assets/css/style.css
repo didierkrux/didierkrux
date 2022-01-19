@@ -39,7 +39,7 @@
     }
     /* typing animation */
     .typewriter h2 {
-        width: 720px;
+        width: fit-content;
         display: none;
         overflow: hidden;
         /* Ensures the content is not revealed until the animation */
@@ -52,7 +52,7 @@
         letter-spacing: .15em;
         /* Adjust as needed */
         margin-top: 2rem;
-        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        animation: typing 2s steps(20, end), blink-caret .75s step-end infinite;
     }
     /* The typing effect */
     @keyframes typing {
@@ -60,7 +60,7 @@
             width: 0
         }
         to {
-            width: 70%
+            width: 35%
         }
     }
     /* The typewriter cursor effect */
