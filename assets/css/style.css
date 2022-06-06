@@ -185,6 +185,10 @@ h2.text-center {
     display: none;
 }
 
+.card {
+  min-width: -webkit-fill-available;
+}
+
 /* Small screen */
 
 @media screen and (max-width: 1024px) {
