@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Octahedral Ethereum Logo</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #saveButton {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #61aee4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+    }
+
+    #saveButton:hover {
+      background-color: #4d8cb3;
+    }
+
+    #idControls {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    #idControls button {
+      padding: 10px 20px;
+      background-color: #61aee4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    #idControls button:hover {
+      background-color: #4d8cb3;
+    }
+
+    #idControls button.random {
+      background-color: #9250d2;
+    }
+
+    #idControls button.random:hover {
+      background-color: #7a3fb0;
+    }
+
+    #idControls input {
+      width: 80px;
+      padding: 10px;
+      border: 1px solid #61aee4;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #colorInfo {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(34, 34, 34, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+      max-width: 300px;
+    }
+
+    .color-swatch {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
+
+    .layer-info {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="idControls">
+    <button id="prevButton">Previous [←]</button>
+    <input type="number" id="idInput" min="1" value="1">
+    <button id="nextButton">Next [→]</button>
+    <button id="randomButton" class="random">Random [R]</button>
+  </div>
+  <button id="saveButton">Save Position [S]</button>
+  <div id="colorInfo"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.body.appendChild(renderer.domElement);
+
+    scene.background = new THREE.Color(0x222222);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+
+    const blockSize = 5.0;
+    const gap = 0.0;
+    const numLayers = 5;
+
+    const colors = [
+      0x61aee4, 0xff7ca6, 0xffb300, 0xffffff, 0x9250d2, 0xf2de00, 0x00e1b9
+    ];
+    const colorNames = ['Light Blue', 'Pink', 'Orange/Gold', 'White', 'Purple', 'Yellow', 'Mint/Teal'];
+
+    // Calculate total combinations using n^r (allowing repetition)
+    const maxCombinations = Math.pow(colors.length, numLayers);
+
+    const octahedronGroup = new THREE.Group();
+    scene.add(octahedronGroup);
+
+    const center = Math.floor(numLayers / 2);
+    const layerConfigs = [];
+    for (let i = 0; i < numLayers; i++) {
+      const z = i - center;
+      const size = 1 + 2 * (center - Math.abs(z));
+      layerConfigs.push({ z, size });
+    }
+
+    function getCombinationWithRepetition(n, r, id) {
+      const result = [];
+      for (let i = 0; i < r; i++) {
+        const index = id % n;
+        result.push(index);
+        id = Math.floor(id / n);
+      }
+      return result;
+    }
+
+    function generateColorsFromId(id) {
+      const uniqueZValues = [...new Set(layerConfigs.map(config => config.z))].sort((a, b) => a - b);
+      const layerColors = new Map();
+
+      // Generate combination allowing repetition
+      const combination = getCombinationWithRepetition(colors.length, numLayers, id - 1);
+
+      // Map the combination to layers
+      uniqueZValues.forEach((z, i) => {
+        const colorIndex = combination[i];
+        layerColors.set(z, colorIndex);
+      });
+
+      return layerColors;
+    }
+
+    const geometry = new THREE.BoxGeometry(blockSize, blockSize, blockSize);
+
+    let currentCombinationId = Math.floor(Math.random() * maxCombinations) + 1;
+    let layerColors = generateColorsFromId(currentCombinationId);
+
+    function createCubeBlock(offsetX, offsetY, offsetZ) {
+      const group = new THREE.Group();
+      const matrix = new THREE.Matrix4();
+      matrix.setPosition(offsetX, offsetY, offsetZ);
+
+      const z = Math.round(offsetZ / (blockOffset * scale * zScale));
+      const colorIndex = layerColors.get(z);
+      const material = new THREE.MeshPhongMaterial({ color: colors[colorIndex] });
+      const instancedMesh = new THREE.InstancedMesh(geometry, material, 1);
+      instancedMesh.setMatrixAt(0, matrix);
+      group.add(instancedMesh);
+
+      // Store the z position in the group for later reference
+      group.position.z = offsetZ;
+
+      return group;
+    }
+
+    const blockOffset = blockSize;
+    const scale = 1.0;
+    const zScale = 0.8;
+    let blockIndex = 0;
+
+    function updateOctahedronColors() {
+      octahedronGroup.children.forEach((block) => {
+        const z = Math.round(block.position.z / (blockOffset * scale * zScale));
+        const colorIndex = layerColors.get(z);
+        if (block.children[0]) {
+          const newMaterial = new THREE.MeshPhongMaterial({ color: colors[colorIndex] });
+          block.children[0].material = newMaterial;
+        }
+      });
+    }
+
+    const sortedLayerConfigs = [...layerConfigs].sort((a, b) => Math.abs(a.z) - Math.abs(b.z));
+    sortedLayerConfigs.forEach(config => {
+      const { z, size } = config;
+      const halfSize = Math.floor(size / 2);
+
+      for (let x = -halfSize; x <= halfSize; x++) {
+        for (let y = -halfSize; y <= halfSize; y++) {
+          const manhattanDist = Math.abs(x) + Math.abs(y);
+          if (manhattanDist === halfSize) {
+            const blockZ = z * blockOffset * scale * zScale;
+            const block = createCubeBlock(
+              x * blockOffset * scale,
+              y * blockOffset * scale,
+              blockZ
+            );
+            octahedronGroup.add(block);
+            blockIndex++;
+          }
+        }
+      }
+    });
+
+    const colorInfo = document.getElementById('colorInfo');
+    function updateColorInfo() {
+      let html = '<div>Total Color Variants: ' + maxCombinations.toLocaleString() + '</div>';
+      html += '<div style="margin-top: 10px;">Current Combination ID: ' + currentCombinationId.toLocaleString() + '</div>';
+      html += '<div style="margin-top: 10px;">Available Colors: ' + colors.length + '</div>';
+      html += '<div style="margin-top: 10px;">Total Layers: ' + numLayers + '</div>';
+      colors.forEach((color, index) => {
+        html += `<div style="margin-top: 5px;">
+          <span class="color-swatch" style="background-color: #${color.toString(16).padStart(6, '0')}"></span>
+          ${colorNames[index]}
+        </div>`;
+      });
+
+      html += '<div class="layer-info">Layer Colors:</div>';
+      const uniqueZValues = [...new Set(layerConfigs.map(config => config.z))].sort((a, b) => a - b);
+      uniqueZValues.forEach(z => {
+        const colorIndex = layerColors.get(z);
+        html += `<div style="margin-top: 5px;">
+          <span class="color-swatch" style="background-color: #${colors[colorIndex].toString(16).padStart(6, '0')}"></span>
+          Layer z=${z}: ${colorNames[colorIndex]}
+        </div>`;
+      });
+
+      colorInfo.innerHTML = html;
+    }
+    updateColorInfo();
+
+    const idInput = document.getElementById('idInput');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const randomButton = document.getElementById('randomButton');
+
+    function updateCombinationId(newId) {
+      currentCombinationId = Math.max(1, Math.min(maxCombinations, newId));
+      idInput.value = currentCombinationId;
+      layerColors = generateColorsFromId(currentCombinationId);
+      updateOctahedronColors();
+      updateColorInfo();
+    }
+
+    idInput.addEventListener('change', (e) => {
+      updateCombinationId(parseInt(e.target.value) || 1);
+    });
+
+    prevButton.addEventListener('click', () => {
+      updateCombinationId(currentCombinationId - 1);
+    });
+
+    nextButton.addEventListener('click', () => {
+      updateCombinationId(currentCombinationId + 1);
+    });
+
+    randomButton.addEventListener('click', () => {
+      const randomId = Math.floor(Math.random() * maxCombinations) + 1;
+      updateCombinationId(randomId);
+    });
+
+    const saveButton = document.getElementById('saveButton');
+    let savedPositions = [];
+
+    saveButton.addEventListener('click', () => {
+      const position = {
+        camera: {
+          x: camera.position.x,
+          y: camera.position.y,
+          z: camera.position.z
+        },
+        target: {
+          x: controls.target.x,
+          y: controls.target.y,
+          z: controls.target.z
+        }
+      };
+      savedPositions.push(position);
+      console.log('Saved position:', position);
+      saveButton.style.backgroundColor = '#00e1b9';
+      setTimeout(() => {
+        saveButton.style.backgroundColor = '#61aee4';
+      }, 200);
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        if (event.key === 'ArrowRight') {
+          updateCombinationId(currentCombinationId + 1);
+        } else {
+          updateCombinationId(currentCombinationId - 1);
+        }
+      } else if (event.key.toLowerCase() === 'r') {
+        const randomId = Math.floor(Math.random() * maxCombinations) + 1;
+        updateCombinationId(randomId);
+      } else if (event.key.toLowerCase() === 'c' && savedPositions.length > 0) {
+        const lastPosition = savedPositions[savedPositions.length - 1];
+        camera.position.set(lastPosition.camera.x, lastPosition.camera.y, lastPosition.camera.z);
+        controls.target.set(lastPosition.target.x, lastPosition.target.y, lastPosition.target.z);
+        controls.update();
+      } else if (event.key.toLowerCase() === 's') {
+        const position = {
+          camera: {
+            x: camera.position.x,
+            y: camera.position.y,
+            z: camera.position.z
+          },
+          target: {
+            x: controls.target.x,
+            y: controls.target.y,
+            z: controls.target.z
+          }
+        };
+        savedPositions.push(position);
+        console.log('Saved position:', position);
+        saveButton.style.backgroundColor = '#00e1b9';
+        setTimeout(() => {
+          saveButton.style.backgroundColor = '#61aee4';
+        }, 200);
+      }
+    });
+
+    camera.position.set(0, 60, 0);
+    camera.lookAt(0, 0, 0);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 40;
+    controls.maxDistance = 150;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.0;
+    controls.maxPolarAngle = Math.PI;
+    controls.minPolarAngle = 0;
+    controls.enableZoom = true;
+    controls.enablePan = true;
+    controls.screenSpacePanning = true;
+    controls.rotateSpeed = 1.0;
+    controls.target.set(0, 0, 0);
+
+    let lastTime = 0;
+    function animate(time) {
+      requestAnimationFrame(animate);
+      if (time - lastTime < 16) return;
+      lastTime = time;
+
+      octahedronGroup.rotation.z += 0.005;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate(0);
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+  </script>
+</body>
+
+</html>
