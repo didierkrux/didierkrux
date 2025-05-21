@@ -109,6 +109,12 @@
     <input type="number" id="idInput" min="1" value="1">
     <button id="nextButton">Next [→]</button>
     <button id="randomButton" class="random">Random [R]</button>
+    <button id="toggleShapeButton">Toggle Shape [T]</button>
+    <span style="color:white; font-size:14px; margin-left:10px;">Layers:
+      <button id="decreaseLayers" style="margin:0 2px;">-</button>
+      <span id="layerCountDisplay">5</span>
+      <button id="increaseLayers" style="margin:0 2px;">+</button>
+    </span>
   </div>
   <button id="saveButton">Save Position [S]</button>
   <div id="colorInfo"></div>
@@ -132,7 +138,9 @@
 
     const blockSize = 5.0;
     const gap = 0.0;
-    const numLayers = 5;
+                                            let numLayers = 5; // Default to 5 for central layer
+                                            const minLayers = 3;
+                                            const maxLayers = 9;
 
     const colors = [
       0x61aee4, 0xff7ca6, 0xffb300, 0xffffff, 0x9250d2, 0xf2de00, 0x00e1b9
@@ -140,7 +148,7 @@
     const colorNames = ['Light Blue', 'Pink', 'Orange/Gold', 'White', 'Purple', 'Yellow', 'Mint/Teal'];
 
     // Calculate total combinations using n^r (allowing repetition)
-    const maxCombinations = Math.pow(colors.length, numLayers);
+                                            let maxCombinations = Math.pow(colors.length, numLayers);
 
     const octahedronGroup = new THREE.Group();
     scene.add(octahedronGroup);
@@ -207,45 +215,141 @@
     const zScale = 0.8;
     let blockIndex = 0;
 
-    function updateOctahedronColors() {
-      octahedronGroup.children.forEach((block) => {
-        const z = Math.round(block.position.z / (blockOffset * scale * zScale));
-        const colorIndex = layerColors.get(z);
-        if (block.children[0]) {
-          const newMaterial = new THREE.MeshPhongMaterial({ color: colors[colorIndex] });
-          block.children[0].material = newMaterial;
-        }
-      });
-    }
+                                            let isFlatDiamond = false;
 
-    const sortedLayerConfigs = [...layerConfigs].sort((a, b) => Math.abs(a.z) - Math.abs(b.z));
-    sortedLayerConfigs.forEach(config => {
-      const { z, size } = config;
-      const halfSize = Math.floor(size / 2);
+                                            function renderShape() {
+                                              // Remove all previous children
+                                              while (octahedronGroup.children.length > 0) {
+                                                octahedronGroup.remove(octahedronGroup.children[0]);
+                                              }
 
-      for (let x = -halfSize; x <= halfSize; x++) {
-        for (let y = -halfSize; y <= halfSize; y++) {
-          const manhattanDist = Math.abs(x) + Math.abs(y);
-          if (manhattanDist === halfSize) {
-            const blockZ = z * blockOffset * scale * zScale;
-            const block = createCubeBlock(
-              x * blockOffset * scale,
-              y * blockOffset * scale,
-              blockZ
-            );
-            octahedronGroup.add(block);
-            blockIndex++;
-          }
-        }
-      }
-    });
+                                            if (!isFlatDiamond) {
+                                              // Blocky octahedron (original)
+                                              let blockIndex = 0;
+                                            const sortedLayerConfigs = [...layerConfigs].sort((a, b) => Math.abs(a.z) - Math.abs(b.z));
+                                            sortedLayerConfigs.forEach(config => {
+                                              const { z, size } = config;
+                                              const halfSize = Math.floor(size / 2);
+                                            for (let x = -halfSize; x <= halfSize; x++) {
+                                              for (let y = -halfSize; y <= halfSize; y++) {
+                                                const manhattanDist = Math.abs(x) + Math.abs(y);
+                                                if (manhattanDist === halfSize) {
+                                                  const blockZ = z * blockOffset * scale * zScale;
+                                                  const block = createCubeBlock(
+                                                    x * blockOffset * scale,
+                                                    y * blockOffset * scale,
+                                                    blockZ
+                                                  );
+                                                  octahedronGroup.add(block);
+                                                  blockIndex++;
+                                                }
+                                              }
+                                            }
+                                          });
+                                                                                      } else if (isFlatDiamond) {
+                                                                                        // Diamond mode: stack of colored frustums (bands)
+                                                                                        const octaHeight = 40;
+                                                                                        const octaWidth = 28;
+                                                                                        const n = numLayers;
+                                                                                        const bandHeight = octaHeight / n;
+                                                                                        for (let i = 0; i < n; i++) {
+                                                                                          // Top and bottom y of the band
+                                                                                          const yTop = octaHeight / 2 - i * bandHeight;
+                                                                                          const yBot = octaHeight / 2 - (i + 1) * bandHeight;
+                                                                                          // Octahedron cross-section width at top and bottom y
+                                                                                          const wTop = octaWidth * (1 - 2 * Math.abs(yTop) / octaHeight);
+                                                                                          const wBot = octaWidth * (1 - 2 * Math.abs(yBot) / octaHeight);
+                                                                                          // Avoid zero-size geometry at tips
+                                                                                          const minSize = 0.01;
+                                                                                          const topRadius = Math.max(wTop / 2, minSize);
+                                                                                          const bottomRadius = Math.max(wBot / 2, minSize);
+                                                                                          // Create a truncated pyramid (frustum)
+                                                                                          const geometry = new THREE.CylinderGeometry(topRadius, bottomRadius, bandHeight, 4, 1, true);
+                                                                                          // Color
+                                                                                          const z = i - Math.floor(n / 2);
+                                                                                          const colorIndex = layerColors.get(z);
+                                                                                          const material = new THREE.MeshPhongMaterial({ color: colors[colorIndex], side: THREE.DoubleSide });
+                                                                                          const mesh = new THREE.Mesh(geometry, material);
+                                                                                          // Position along Y axis (centered)
+                                                                                          mesh.position.y = (yTop + yBot) / 2;
+                                                                                          // Rotate to diamond orientation
+                                                                                          mesh.rotation.y = Math.PI / 4;
+                                                                                          octahedronGroup.add(mesh);
+                                                                                        }
+                                                                                      } else {
+                                                                                        // 3D Octahedron (Ethereum logo) - single solid with horizontal color bands
+                                                                                        const octaHeight = 40;
+                                                                                        const n = numLayers;
+                                                                                        let geometry = new THREE.OctahedronGeometry(octaHeight / 2, 0); // 0 = no subdivision
+                                                                                        geometry = geometry.toNonIndexed();
+                                                                                        // Compute y range
+                                                                                        let minY = Infinity, maxY = -Infinity;
+                                                                                        const pos = geometry.attributes.position;
+                                                                                        for (let i = 0; i < pos.count; i++) {
+                                                                                          const y = pos.getY(i);
+                                                                                          if (y < minY) minY = y;
+                                                                                          if (y > maxY) maxY = y;
+                                                                                        }
+                                                                                        // Prepare color attribute
+                                                                                        const color = new THREE.Color();
+                                                                                        const colorsArray = [];
+                                                                                        for (let i = 0; i < pos.count; i += 3) {
+                                                                                          // For each face (triangle)
+                                                                                          let ySum = 0;
+                                                                                          for (let j = 0; j < 3; j++) {
+                                                                                            ySum += pos.getY(i + j);
+                                                                                          }
+                                                                                          const yAvg = ySum / 3;
+                                                                                          // Map yAvg to a band
+                                                                                          const band = Math.floor(((-yAvg + octaHeight / 2) / octaHeight) * n);
+                                                                                          const z = band - Math.floor(n / 2);
+                                                                                          const colorIndex = layerColors.get(z);
+                                                                                          color.setHex(colors[colorIndex]);
+                                                                                          // Assign color to each vertex of the face
+                                                                                          for (let j = 0; j < 3; j++) {
+                                                                                            colorsArray.push(color.r, color.g, color.b);
+                                                                                          }
+                                                                                        }
+                                                                                        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colorsArray, 3));
+                                                                                        const material = new THREE.MeshPhongMaterial({ vertexColors: true, side: THREE.DoubleSide });
+                                                                                        const mesh = new THREE.Mesh(geometry, material);
+                                                                                        mesh.rotation.y = Math.PI / 4;
+                                                                                        octahedronGroup.add(mesh);
+                                                                                      }
+                                                                                    }
+
+                                                                                    // Replace original construction with renderShape
+                                                                                    renderShape();
+
+                                                                                    function updateOctahedronColors() {
+                                                                                      if (!isFlatDiamond) {
+                                                                                        octahedronGroup.children.forEach((block) => {
+                                                                                          const z = Math.round(block.position.z / (blockOffset * scale * zScale));
+                                                                                          const colorIndex = layerColors.get(z);
+                                                                                          if (block.children[0]) {
+                                                                                            const newMaterial = new THREE.MeshPhongMaterial({ color: colors[colorIndex] });
+                                                                                            block.children[0].material = newMaterial;
+                                                                                          }
+                                                                                        });
+                                                                                      } else {
+                                                                                        // For diamond, update mesh materials
+                                                                                        for (let i = 0; i < octahedronGroup.children.length; i++) {
+                                                                                          const mesh = octahedronGroup.children[i];
+                                                                                          const z = i - Math.floor(numLayers / 2);
+                                                                                          const colorIndex = layerColors.get(z);
+                                                                                          mesh.material = new THREE.MeshPhongMaterial({ color: colors[colorIndex] });
+                                                                                        }
+                                                                                      }
+                                                                                    }
 
     const colorInfo = document.getElementById('colorInfo');
     function updateColorInfo() {
-      let html = '<div>Total Color Variants: ' + maxCombinations.toLocaleString() + '</div>';
+      const currentMaxCombinations = Math.pow(colors.length, numLayers);
+      let html = '<div>Total Color Variants: ' + currentMaxCombinations.toLocaleString() + '</div>';
       html += '<div style="margin-top: 10px;">Current Combination ID: ' + currentCombinationId.toLocaleString() + '</div>';
       html += '<div style="margin-top: 10px;">Available Colors: ' + colors.length + '</div>';
       html += '<div style="margin-top: 10px;">Total Layers: ' + numLayers + '</div>';
+      html += '<div style="margin-top: 10px;">Shape Mode: ' + (isFlatDiamond ? 'Diamond' : 'Pixel') + '</div>';
       colors.forEach((color, index) => {
         html += `<div style="margin-top: 5px;">
           <span class="color-swatch" style="background-color: #${color.toString(16).padStart(6, '0')}"></span>
@@ -271,6 +375,41 @@
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
     const randomButton = document.getElementById('randomButton');
+                                            const toggleShapeButton = document.getElementById('toggleShapeButton');
+
+                                            const decreaseLayers = document.getElementById('decreaseLayers');
+                                            const increaseLayers = document.getElementById('increaseLayers');
+                                            const layerCountDisplay = document.getElementById('layerCountDisplay');
+
+                                            function setNumLayers(newNum) {
+                                              // Only allow odd values between minLayers and maxLayers
+                                              if (newNum < minLayers || newNum > maxLayers || newNum % 2 === 0) return;
+                                              numLayers = newNum;
+                                              layerCountDisplay.textContent = numLayers;
+                                              // Recompute layerConfigs and maxCombinations
+                                              layerConfigs.length = 0;
+                                              const center = Math.floor(numLayers / 2);
+                                              for (let i = 0; i < numLayers; i++) {
+                                                const z = i - center;
+                                                const size = 1 + 2 * (center - Math.abs(z));
+                                                layerConfigs.push({ z, size });
+                                              }
+                                              // Update maxCombinations
+                                              maxCombinations = Math.pow(colors.length, numLayers);
+                                              // Assign random currentCombinationId
+                                              currentCombinationId = Math.floor(Math.random() * maxCombinations) + 1;
+                                              layerColors = generateColorsFromId(currentCombinationId);
+                                              renderShape();
+                                              updateColorInfo();
+                                              idInput.value = currentCombinationId;
+                                            }
+
+                                            decreaseLayers.addEventListener('click', () => {
+                                              setNumLayers(numLayers - 2);
+                                            });
+                                            increaseLayers.addEventListener('click', () => {
+                                              setNumLayers(numLayers + 2);
+                                            });
 
     function updateCombinationId(newId) {
       currentCombinationId = Math.max(1, Math.min(maxCombinations, newId));
@@ -296,6 +435,12 @@
       const randomId = Math.floor(Math.random() * maxCombinations) + 1;
       updateCombinationId(randomId);
     });
+
+                                            toggleShapeButton.addEventListener('click', () => {
+                                              isFlatDiamond = !isFlatDiamond;
+                                              renderShape();
+                                              updateColorInfo();
+                                            });
 
     const saveButton = document.getElementById('saveButton');
     let savedPositions = [];
@@ -355,6 +500,10 @@
         setTimeout(() => {
           saveButton.style.backgroundColor = '#61aee4';
         }, 200);
+      } else if (event.key.toLowerCase() === 't') {
+        isFlatDiamond = !isFlatDiamond;
+        renderShape();
+        updateColorInfo();
       }
     });
 
