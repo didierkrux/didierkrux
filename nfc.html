@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read YubiKey Public Key</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+        #output { margin-top: 20px; white-space: pre-wrap; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Read YubiKey Public Key</h1>
+    <button onclick="readPublicKey()">Read YubiKey Public Key</button>
+    <p id="output"></p>
+
+    <script>
+        // Utility to convert ArrayBuffer to Base64
+        function arrayBufferToBase64(buffer) {
+            const bytes = new Uint8Array(buffer);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary);
+        }
+
+        // Generate a static challenge (not secure, for demo only)
+        function generateChallenge() {
+            const challenge = new Uint8Array(32);
+            crypto.getRandomValues(challenge);
+            return challenge.buffer;
+        }
+
+        // Update output display
+        function displayOutput(message) {
+            document.getElementById('output').textContent = message;
+        }
+
+        // Read public key from YubiKey
+        async function readPublicKey() {
+            if (!window.PublicKeyCredential) {
+                displayOutput('WebAuthn is not supported in this browser.');
+                return;
+            }
+
+            try {
+                displayOutput('Starting YubiKey registration to read public key...');
+
+                // Mock registration options (no server)
+                const options = {
+                    challenge: generateChallenge(),
+                    rp: {
+                        name: 'YubiKey Demo',
+                        id: window.location.hostname, // Must match the domain
+                    },
+                    user: {
+                        id: new TextEncoder().encode('user@example.com'),
+                        name: 'user@example.com',
+                        displayName: 'User Name',
+                    },
+                    pubKeyCredParams: [
+                        { type: 'public-key', alg: -7 }, // ES256 (common for YubiKey)
+                        { type: 'public-key', alg: -257 }, // RS256
+                    ],
+                    authenticatorSelection: {
+                        authenticatorAttachment: 'cross-platform', // YubiKey
+                        userVerification: 'preferred',
+                    },
+                    timeout: 60000,
+                    attestation: 'none',
+                };
+
+                // Create a new credential
+                const credential = await navigator.credentials.create({ publicKey: options });
+                displayOutput('Tap your YubiKey to read the public key...');
+
+                // Extract public key
+                let publicKey = 'Not available';
+                if (credential.response.getPublicKey) {
+                    publicKey = arrayBufferToBase64(credential.response.getPublicKey());
+                }
+
+                // Display public key
+                displayOutput(`Public Key (base64):\n${publicKey}\n\n` +
+                              `Credential ID: ${credential.id}`);
+            } catch (error) {
+                displayOutput(`Error reading public key: ${error.message}`);
+            }
+        }
+    </script>
+</body>
+</html>
