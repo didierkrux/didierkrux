@@ -432,12 +432,6 @@
    "category": "performance"
   },
   {
-   "id": "chu-tpose",
-   "name": "Chu T-Pose",
-   "file": "chu-tpose.glb",
-   "category": "performance"
-  },
-  {
    "id": "walk",
    "name": "Walk",
    "file": "walking.glb",

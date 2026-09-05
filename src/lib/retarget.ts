@@ -96,9 +96,14 @@ export function retargetMixamoClip(source: ClipSource, target: ClipTarget, name 
 
   const vrm0 = target.meta?.metaVersion === '0';
   const motionHips = findHips(source.scene);
-  const motionHipsHeight = motionHips?.position.y ?? 1;
+  // Hip height of the source rig. Some exports collapse the skeleton (hips at zero), so fall back to the hips track's
+  // own average height; a rig with no usable height keeps the target's hips where they rest.
+  const hipsTrack = motionHips ? clip.tracks.find((t) => t.name === `${motionHips.name}.position`) : undefined;
+  const trackMeanY = hipsTrack ? Array.from(hipsTrack.values).filter((_, i) => i % 3 === 1).reduce((a, b, _, arr) => a + b / arr.length, 0) : 0;
+  const motionHipsHeight = (motionHips?.position.y ?? 0) > 0.05 ? (motionHips as THREE.Object3D).position.y : trackMeanY;
   const targetHipsHeight = target.humanoid.normalizedRestPose.hips?.position?.[1] ?? motionHipsHeight;
-  const hipsScale = motionHipsHeight > 0 ? targetHipsHeight / motionHipsHeight : 1;
+  const usable = motionHipsHeight > 0.05;
+  const hipsScale = usable ? targetHipsHeight / motionHipsHeight : 0;
 
   const restInverse = new THREE.Quaternion();
   const parentRest = new THREE.Quaternion();
@@ -125,6 +130,7 @@ export function retargetMixamoClip(source: ClipSource, target: ClipTarget, name 
       }
       tracks.push(new THREE.QuaternionKeyframeTrack(`${targetNode.name}.${property}`, Array.from(track.times), values));
     } else if (track instanceof THREE.VectorKeyframeTrack && property === 'position') {
+      if (!usable) continue; // no trustworthy scale: leave the hips at rest height
       const values = Array.from(track.values).map((v, i) => (vrm0 && i % 3 !== 1 ? -v : v) * hipsScale);
       if (options.inPlace) for (let i = 0; i < values.length; i += 3) { values[i] = 0; values[i + 2] = 0; }
       tracks.push(new THREE.VectorKeyframeTrack(`${targetNode.name}.${property}`, Array.from(track.times), values));

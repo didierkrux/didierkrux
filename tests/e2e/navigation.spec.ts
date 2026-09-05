@@ -200,13 +200,13 @@ test.describe('desktop operating model', () => {
     await page.goto('/');
     const stage = page.locator('[data-stage]');
     await expect(stage).toHaveAttribute('data-ready', 'true', { timeout: 30_000 });
-    await expect(stage).toHaveAttribute('data-clip', 'wave-hey', { timeout: 30_000 }); // the intro greets
+    await expect(stage).toHaveAttribute('data-clip', 'wave-hello', { timeout: 30_000 }); // the intro greets
     await expect(stage).toHaveAttribute('data-clip', 'idle', { timeout: 30_000 }); // and settles into the idle
     await expect(stage.locator('.meebit-pose')).toHaveText('Idle');
     await expect(stage).toHaveAttribute('data-meebit', '11752');
     await expect(stage.locator('.meebit-name')).toHaveText('Meebit #11752');
     await stage.locator('.meebit-pose').click();
-    await expect(stage).toHaveAttribute('data-clip', 'wave-hello', { timeout: 30_000 });
+    await expect(stage).toHaveAttribute('data-clip', 'wave-hey', { timeout: 30_000 });
     await page.keyboard.press('m');
     await expect(stage).toHaveAttribute('data-meebit', '17273');
     await expect(stage.locator('.meebit-pose')).toBeVisible({ timeout: 30_000 }); // the new Meebit is up and animating

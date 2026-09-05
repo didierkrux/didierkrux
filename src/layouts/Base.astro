@@ -79,7 +79,7 @@ const tabLabels = { web3: copy.sections.web3, web2: copy.sections.web2, projects
     <script type="application/json" id="ambient-playlist" is:inline set:html={JSON.stringify(ambient)} />
     <script type="application/json" id="sets-playlist" is:inline set:html={JSON.stringify(sets)} />
     <div class="frame">
-      <Stage client:load transition:persist="stage" meebits={profile.meebits} still={profile.meebitStill} alt={copy.a11y.stageAlt} labels={copy.meebits} />
+      <Stage client:load transition:persist="stage" page={page} meebits={profile.meebits} still={profile.meebitStill} alt={copy.a11y.stageAlt} labels={copy.meebits} />
       <main id="main" class="content"><slot /></main>
     </div>
     <Tabs page={page} labels={tabLabels} label={copy.a11y.tabsLabel} />

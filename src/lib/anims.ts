@@ -29,20 +29,25 @@ export const roleOf = (id: string): ClipRole => (byId.get(id)?.category === 'idl
 /** The clips that share a category with this one, for cycling with a click. */
 export const siblingsOf = (id: string): string[] => { const c = byId.get(id)?.category; return c ? clipsIn(c) : [id]; };
 
-/** Mood pools: what the body does on its own. */
-export type Pool = 'greet' | 'idle' | 'look' | 'dance';
+/** Mood pools: what the body does on its own. One-shot clips in a pool play over the base idle, then hand back. */
+export type Pool = 'greet' | 'work' | 'look' | 'dance';
+export const BASE_IDLE = 'idle';
 export const POOLS: Record<Pool, readonly string[]> = {
-  greet: ['wave-hey', 'wave-hello', 'bow-1', 'bow-2'],
-  idle: ['idle', 'idle-2', 'idle-6', 'idle-7', 'chilling'],
+  greet: ['wave-hello', 'wave-hey', 'bow-1', 'bow-2'],
+  // Presenting the projects: a bit of talk and reaction between calm idles, one per project as you move along.
+  work: ['talking-1', 'thumbs-up', 'idle-6', 'look', 'talking-2', 'excited', 'chilling', 'talking-3', 'laughing', 'idle-7'],
   look: ['look-around', 'look-behind', 'look'],
   dance: clipsIn('dance'),
 };
 
-/** Which pool the body should be in: dancing beats everything, the intro greets, the world looks around, the work idles. */
+/** Pools whose clips loop as the base layer even when their category would run once (the world keeps looking around). */
+export const LOOP_POOLS: ReadonlySet<Pool> = new Set(['look']);
+
+/** Which pool the body should be in: dancing beats everything, the intro greets, the world looks around, the work presents. */
 export function poolFor(mood: Mood, dancing: boolean): Pool {
   if (dancing) return 'dance';
   if (mood === 'me') return 'greet';
-  return mood === 'world' ? 'look' : 'idle';
+  return mood === 'world' ? 'look' : 'work';
 }
 
 export const nextIn = (pool: Pool, index: number, dir: 1 | -1 = 1): number => (index + dir + POOLS[pool].length) % POOLS[pool].length;

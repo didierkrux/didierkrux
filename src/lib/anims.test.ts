@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { existsSync } from 'node:fs';
-import { ANIMS, CATEGORIES, POOLS, clipUrl, clipName, clipsIn, loops, roleOf, siblingsOf, poolFor, nextIn } from './anims';
+import { ANIMS, CATEGORIES, POOLS, BASE_IDLE, clipUrl, clipName, clipsIn, loops, roleOf, siblingsOf, poolFor, nextIn } from './anims';
 
 describe('anims catalog', () => {
   it('has unique ids, known categories, and a file on disk for each clip', () => {
@@ -16,9 +16,10 @@ describe('anims catalog', () => {
   });
   it('every pool clip exists and pools follow the mood', () => {
     for (const ids of Object.values(POOLS)) for (const id of ids) expect(clipName(id)).not.toBe(id);
+    expect(roleOf(BASE_IDLE)).toBe('idle');
     expect(POOLS.dance).toEqual(clipsIn('dance'));
     expect(poolFor('me', false)).toBe('greet');
-    expect(poolFor('work', false)).toBe('idle');
+    expect(poolFor('work', false)).toBe('work');
     expect(poolFor('world', false)).toBe('look');
     expect(poolFor('work', true)).toBe('dance');
     expect(nextIn('look', 2)).toBe(0);

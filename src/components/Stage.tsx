@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react';
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree, type ThreeEvent } from '@react-three/fiber';
 import { ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
@@ -8,7 +8,7 @@ import { VRMLoaderPlugin, VRMUtils, type VRM } from '@pixiv/three-vrm';
 import { page, section, itemIndex, playing, setPlaying, meebit, meebitList, manualClip, clipPlaying, poseStep, moodFor, type Mood, type MeebitEntry } from '../lib/stores';
 import { initMeebits, cycleMeebit } from '../lib/meebits';
 import { stepPose } from '../lib/poses';
-import { POOLS, clipUrl, clipName, poolFor, roleOf, loops, siblingsOf, nextIn, type Pool } from '../lib/anims';
+import { POOLS, BASE_IDLE, LOOP_POOLS, anim, clipUrl, clipName, poolFor, roleOf, loops, siblingsOf, nextIn, type Pool } from '../lib/anims';
 import type { ClipRole } from '../lib/rig';
 import { retargetMixamoClip } from '../lib/retarget';
 import { MeebitRig } from '../lib/rig';
@@ -17,11 +17,16 @@ interface Props {
   meebits: MeebitEntry[];
   still: string;
   alt: string;
+  /** The page being rendered, so the server and the first client render agree on the mood. */
+  page: 'home' | 'world' | 'manual' | '404';
   labels: { swap: string; prev: string; next: string; pose: string };
 }
 
 /** Normalized pointer position in [-1, 1], shared with the scene without re-rendering React. */
 const pointer = { x: 0, y: 0 };
+const qNeck = new THREE.Quaternion();
+const qHead = new THREE.Quaternion();
+const eOffset = new THREE.Euler();
 
 /** Lower body: gestures never touch it, so a wave sits on top of whatever the legs are doing. */
 const LOWER_BODY = ['hips', 'leftUpperLeg', 'rightUpperLeg', 'leftLowerLeg', 'rightLowerLeg', 'leftFoot', 'rightFoot', 'leftToes', 'rightToes'] as const;
@@ -58,24 +63,32 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
   const rig = useRef<MeebitRig | null>(null);
   const loading = useRef(new Map<string, Promise<boolean>>());
   const roles = useRef(new Map<string, ClipRole>());
-  const poolIndex = useRef<Record<Pool, number>>({ idle: 0, greet: 0, look: 0, dance: 0 });
+  const poolIndex = useRef<Record<Pool, number>>({ work: 0, greet: 0, look: 0, dance: 0 });
   const want = useRef({ mood, dancing, manual });
+  want.current = { mood, dancing, manual };
   const look = useRef({ yaw: 0, pitch: 0 });
   const camTarget = useRef<{ y: number; dist: number } | null>(null);
   const group = useRef<THREE.Group>(null);
   const t = useRef(0);
   const { camera, size } = useThree();
   const bounds = useRef<{ height: number; width: number; centerY: number } | null>(null);
-  const framesSinceLoad = useRef(0);
-  const measured = useRef(false);
 
-  // Measure the posed, skinned character (not the T-pose bind box) once it has rendered a couple of frames.
+  /**
+   * Measure the character once, right after load, in one fixed pose: the rest pose with the arms down.
+   * Measuring a live frame gave a different framing on every load depending on which clip frame it caught.
+   */
   const measure = (v: VRM) => {
+    const h = v.humanoid;
+    h.resetNormalizedPose();
+    h.getNormalizedBoneNode('leftUpperArm')?.rotation.set(0, 0, 1.15);
+    h.getNormalizedBoneNode('rightUpperArm')?.rotation.set(0, 0, -1.15);
+    h.update();
+    v.scene.updateMatrixWorld(true);
     const box = new THREE.Box3();
-    v.scene.updateWorldMatrix(true, true);
     v.scene.traverse((o) => {
       const m = o as THREE.SkinnedMesh;
       if (!m.isSkinnedMesh) return;
+      m.skeleton.update();
       m.computeBoundingBox();
       if (m.boundingBox) box.union(m.boundingBox.clone().applyMatrix4(m.matrixWorld));
     });
@@ -94,9 +107,12 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
     const distH = (b.height * 0.56) / Math.tan(vFov / 2);
     const distW = (b.width * 0.58) / (Math.tan(vFov / 2) * aspect);
     // A little air around the standing character; dances sprawl on the floor and jump, so the camera steps back further and aims lower.
-    const wide = want.current.dancing || (want.current.manual !== null && roleOf(want.current.manual.id) === 'action' && loops(want.current.manual.id));
-    const room = wide ? 1.7 : 1.12;
-    const target = { y: wide ? b.centerY * 0.7 : b.centerY, dist: Math.max(distH, distW) * room };
+    // Only dances get the wide framing: they sprawl on the floor and jump. A walk in place stays framed like an idle.
+    const wide = want.current.dancing || (want.current.manual !== null && anim(want.current.manual.id)?.category === 'dance');
+    // Pulling back keeps camera height and distance in the same ratio, so the floor stays on the same screen line
+    // and the feet stay on the grid; the dancer only gets a little more room, not a drop to a distant floating figure.
+    const room = wide ? 1.12 * 1.2 : 1.12;
+    const target = { y: b.centerY * (wide ? 1.2 : 1), dist: Math.max(distH, distW) * room };
     if (!camTarget.current) { cam.position.set(0, target.y, target.dist); cam.lookAt(0, target.y, 0); cam.updateProjectionMatrix(); }
     camTarget.current = target;
   };
@@ -136,7 +152,7 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
     if (!r) return;
     const w = { ...want.current };
     const stale = () => rig.current !== r || want.current.mood !== w.mood || want.current.dancing !== w.dancing || want.current.manual?.id !== w.manual?.id || want.current.manual?.nonce !== w.manual?.nonce;
-    const idleId = POOLS.idle[poolIndex.current.idle];
+    const idleId = BASE_IDLE;
     if (w.manual) {
       const id = w.manual.id;
       if (roleOf(id) === 'idle') {
@@ -158,20 +174,22 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
       r.startAction(id);
       return;
     }
-    const base = pool === 'look' ? id : idleId;
-    if (!(await ensure(base, 'idle')) || stale()) return;
-    r.stopAction();
-    r.playIdle(base);
-    if (pool === 'greet') {
-      if (!(await ensure(id, 'action')) || stale()) return;
-      r.startAction(id, 0.25);
+    if (LOOP_POOLS.has(pool) || roleOf(id) === 'idle') {
+      // The clip is the base layer itself.
+      if (!(await ensure(id, 'idle')) || stale()) return;
+      r.stopAction();
+      r.playIdle(id);
+      return;
     }
+    // A one-shot over the base idle: greeting, a line of talk, a reaction.
+    if (!(await ensure(idleId, 'idle')) || stale()) return;
+    r.stopAction();
+    r.playIdle(idleId);
+    if (!(await ensure(id, 'action')) || stale()) return;
+    r.startAction(id, 0.25);
   }, [ensure]);
 
-  useEffect(() => {
-    want.current = { mood, dancing, manual };
-    void sync();
-  }, [mood, dancing, manual, vrm, sync]);
+  useEffect(() => { void sync(); }, [mood, dancing, manual, vrm, sync]);
 
   /** Each step (a click on the character or the chip, a project change, the arrows in the world) moves through what is playing. */
   const lastStep = useRef(step.n);
@@ -207,9 +225,9 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
       rig.current.onChange = onClip;
       roles.current.clear();
       vrmRef.current = loaded;
-      measured.current = false;
-      framesSinceLoad.current = 0;
-      bounds.current = null;
+      measure(loaded);
+      camTarget.current = null; // snap the camera to the new character, then ease from there
+      fit();
       setVrm(loaded);
       onReady();
       void sync();
@@ -232,33 +250,31 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
     const time = t.current;
     const h = vrm.humanoid;
     const bone = (n: Parameters<typeof h.getNormalizedBoneNode>[0]) => h.getNormalizedBoneNode(n);
-    const hips = bone('hips'), neck = bone('neck'), head = bone('head');
+    const neck = bone('neck'), head = bone('head');
     const r = rig.current;
 
     if (r && r.current()) r.update(delta);
     else {
-      // Until the first clip is in: arms down from the T-pose, a slow breath.
+      // Until the first clip is in: the rest pose with the arms down. The hips stay put: the rig copies the
+      // normalized hips' world position onto the skeleton, so any offset here would move the whole body.
       const lUp = bone('leftUpperArm'), rUp = bone('rightUpperArm'), lLow = bone('leftLowerArm'), rLow = bone('rightLowerArm');
       if (lUp) lUp.rotation.set(0, 0, 1.15);
       if (rUp) rUp.rotation.set(0, 0, -1.15);
       if (lLow) lLow.rotation.set(0, 0, 0.15);
       if (rLow) rLow.rotation.set(0, 0, -0.15);
-      if (hips) hips.position.y = Math.sin(time * 1.6) * 0.008;
     }
 
-    // Head and neck follow the pointer on top of the clip, eased.
+    // Head and neck follow the pointer on top of the clip, eased. Composed as quaternions: adding to Euler angles
+    // decoded from a clip's quaternion flips near 90 degrees and made the head spin on some poses.
     const yaw = THREE.MathUtils.clamp(pointer.x * 0.55, -0.7, 0.7);
     const pitch = THREE.MathUtils.clamp(-pointer.y * 0.35, -0.4, 0.4);
     look.current.yaw = THREE.MathUtils.damp(look.current.yaw, yaw, 6, delta);
     look.current.pitch = THREE.MathUtils.damp(look.current.pitch, pitch, 6, delta);
-    if (neck) { neck.rotation.y += look.current.yaw * 0.4; neck.rotation.x += look.current.pitch * 0.4; }
-    if (head) { head.rotation.y += look.current.yaw * 0.6; head.rotation.x += look.current.pitch * 0.6; }
-
-    // Music on but no dance: a nod on the beat.
-    if (grooving && !dancing) {
-      const beat = Math.sin(time * Math.PI * 2 * 2.0);
-      if (head) head.rotation.x += Math.max(0, beat) * 0.14;
-    }
+    const nod = grooving && !dancing ? Math.max(0, Math.sin(time * Math.PI * 2 * 2.0)) * 0.14 : 0; // music on but no dance: a nod on the beat
+    qNeck.setFromEuler(eOffset.set(look.current.pitch * 0.4, look.current.yaw * 0.4, 0));
+    qHead.setFromEuler(eOffset.set(look.current.pitch * 0.6 + nod, look.current.yaw * 0.6, 0));
+    if (neck) neck.quaternion.multiply(qNeck);
+    if (head) head.quaternion.multiply(qHead);
 
     // Whole body turns a touch toward the pointer.
     if (group.current) group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, yaw * 0.25, 4, delta);
@@ -271,12 +287,12 @@ function Meebit({ url, mood, grooving, dancing, manual, step, onReady, onClip }:
       camera.lookAt(0, camera.position.y, 0);
     }
 
-    vrm.update(delta);
+    vrm.update(delta); // copies the normalized pose, offsets included, onto the skeleton for this frame
 
-    if (!measured.current && ++framesSinceLoad.current > 2) {
-      measure(vrm);
-      if (bounds.current) { measured.current = true; camTarget.current = null; fit(); }
-    }
+    // Take the offsets back off the normalized bones. Clips that do not animate the neck or head would otherwise
+    // keep last frame's offset and the additions would pile up into a spin.
+    if (neck) neck.quaternion.multiply(qNeck.invert());
+    if (head) head.quaternion.multiply(qHead.invert());
   });
 
   return <group ref={group} position={[0, -0.02, 0]}>{vrm && <primitive object={vrm.scene} onClick={onCharacterClick} />}</group>;
@@ -294,10 +310,13 @@ function Lights({ theme }: { theme: string }) {
   );
 }
 
-export default function Stage({ meebits, still, alt, labels }: Props) {
+export default function Stage({ meebits, still, alt, labels, page: pageProp }: Props) {
   const p = useStore(page);
   const s = useStore(section);
-  const ch = moodFor(p, s);
+  // Stores may already reflect the URL before hydration; until mounted, show what the server showed.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const ch = mounted ? moodFor(p, s) : moodFor(pageProp === 'world' ? 'world' : 'home', 'top');
   const on = useStore(playing);
   const set = useStore(setPlaying);
   const dancing = on && set !== null;
@@ -305,7 +324,7 @@ export default function Stage({ meebits, still, alt, labels }: Props) {
   const roster = useStore(meebitList);
   const manual = useStore(manualClip);
   useEffect(() => { manualClip.set(null); }, [p]);
-  const instance = useRef<string>(Math.random().toString(36).slice(2, 10));
+  const instance = useId(); // stable across server and client, unlike a random id
   const [gl, setGl] = useState<boolean | null>(null);
   const [ready, setReady] = useState(false);
   const [clip, setClip] = useState('');
@@ -338,7 +357,7 @@ export default function Stage({ meebits, still, alt, labels }: Props) {
   const onClip = useCallback((id: string) => { setClip(id); clipPlaying.set(id); }, []);
 
   return (
-    <figure className="stage" data-stage data-instance={instance.current} data-mood={ch} data-ready={ready ? 'true' : 'false'} data-meebit={entry.tokenId} data-clip={clip} title={labels.pose}>
+    <figure className="stage" data-stage data-instance={instance} data-mood={ch} data-ready={ready ? 'true' : 'false'} data-meebit={entry.tokenId} data-clip={clip} title={labels.pose}>
       {gl ? (
         <Canvas
           className="stage-canvas"

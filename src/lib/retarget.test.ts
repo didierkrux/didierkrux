@@ -59,6 +59,17 @@ describe('retargetMixamoClip', () => {
     const pos = clip.tracks.find((t) => t.name.endsWith('.position'))!;
     expect(Array.from(pos.values)).toEqual([0, 2, 0, 0, 6, 0]);
   });
+  it('uses the hips track height when the rig is collapsed, and drops hip travel when neither is usable', () => {
+    const collapsed = source();
+    collapsed.scene.getObjectByName('mixamorigHips')!.position.set(0, 0, 0);
+    collapsed.animations[0].tracks[0] = new THREE.VectorKeyframeTrack('mixamorigHips.position', [0, 1], [0, 1, 0, 0, 1.2, 0]);
+    const pos = retargetMixamoClip(collapsed, target('1', 0.5)).tracks.find((t) => t.name.endsWith('.position'))!;
+    expect(Array.from(pos.values).map((v) => Math.round(v * 1000) / 1000)).toEqual([0, 0.455, 0, 0, 0.545, 0]); // scaled by 0.5 / mean(1, 1.2)
+    const dead = source();
+    dead.scene.getObjectByName('mixamorigHips')!.position.set(0, 0, 0);
+    dead.animations[0].tracks[0] = new THREE.VectorKeyframeTrack('mixamorigHips.position', [0, 1], [0, 0.005, 0, 0, 0.005, 0]);
+    expect(retargetMixamoClip(dead, target('1')).tracks.some((t) => t.name.endsWith('.position'))).toBe(false);
+  });
   it('maps every bone Mixamo exports that VRM knows', () => {
     expect(MIXAMO_TO_VRM.mixamorigLeftUpLeg).toBe('leftUpperLeg');
     expect(MIXAMO_TO_VRM.mixamorigSpine2).toBe('upperChest');
