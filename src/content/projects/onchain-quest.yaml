@@ -1,0 +1,18 @@
+title: Onchain Quest and NewToWeb3
+kicker: An event app that gets newcomers onchain in an afternoon
+role: Creator and developer
+dates: { start: "2024-10" }
+screenshots: [/screens/onchain-quest.jpg]
+status: live
+era: web3
+tags: [Next.js, TypeScript, PostgreSQL, Chakra UI, PWA, ENS, EFP, EAS, POAP, Farcaster, Zupass, Multilingual]
+links:
+  - { label: onchainquest.fun, url: "https://onchainquest.fun/" }
+  - { label: GitHub, url: "https://github.com/didierkrux/onchainquest.fun" }
+  - { label: NewToWeb3 recap, url: "https://x.com/didierkrux/status/1855566049615511555" }
+story: |
+  NewToWeb3 was an event for people who had never touched Ethereum, organized with OrnellaWeb3 in November 2024. I built its app in six weeks as a side project: program, sponsors, planning, and hands-on quests to get your first crypto, mint a POAP and an NFT, claim an ENS on Base, and swap a token. Multilingual, because the room was.
+
+  It grew into Onchain Quest, a white-label event platform: wallet login, profiles, quests with points, booth check-ins by QR code, leaderboards, ENS subnames via Durin, EFP follows, EAS attestations, Zupass ticket proofs, a Farcaster mini app, and an onchain shop. The latest edition ran at EthCC.
+resume: Web3 event platform for onboarding newcomers, with quests, QR check-ins, ENS subnames, EFP, EAS, and Zupass, built for NewToWeb3 and EthCC.
+world: { height: 10, footprint: m, sign: lilac }

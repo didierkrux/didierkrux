@@ -1,0 +1,25 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { KEYMAP } from '../lib/keymap';
+
+const copy = (await getEntry('copy', 'copy'))!.data;
+const credits = await getCollection('credits');
+---
+<Base page="manual" title={`${copy.site.name} · ${copy.manual.title}`}>
+  <section class="manual-page">
+    <h1>{copy.manual.title}</h1>
+    <p class="lead">{copy.manual.intro}</p>
+    <dl class="manual-keys">
+      {KEYMAP.map((b) => <div><dt><kbd class:list={['key', /^[←→↑↓]$/.test(b.label) && 'arrow']}>{b.label}</kbd></dt><dd>{b.description}</dd></div>)}
+    </dl>
+    <h2>{copy.manual.stageTitle}</h2>
+    <ul>{copy.manual.stage.map((g) => <li>{g}</li>)}</ul>
+    <h2>On a phone</h2>
+    <ul>{copy.manual.gestures.map((g) => <li>{g}</li>)}</ul>
+    <h2>{copy.manual.creditsTitle}</h2>
+    <ul class="credits">
+      {credits.map((c) => <li><a href={c.data.url} target="_blank" rel="noopener">{c.data.name}</a> by {c.data.author}, {c.data.license}. {c.data.usedFor}.</li>)}
+    </ul>
+  </section>
+</Base>

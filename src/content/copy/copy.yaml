@@ -1,0 +1,73 @@
+site:
+  name: Didier Krux
+  tagline: Fullstack web3 developer. DJ after midnight.
+  description: Didier Krux, fullstack web3 developer on the Ethereum Foundation's Devcon team and lead dev at Bankless Academy. The work, and a voxel world.
+hero:
+  home:
+    title: gm, I'm Didier Krux.
+    sub: Fullstack web3 developer. I build the on-ramps people use at Ethereum events, and the tools that keep them around.
+  world:
+    title: Under construction.
+    sub: The world is being built in the open. The Meebit has the hard hat on. Come back in a few weeks, or watch it grow.
+sections:
+  web3: Web3
+  web2: Web 2.0
+  projects: Projects
+  world: World
+sectionIntros:
+  web3: Since 2021, everything I ship is about getting people onchain and keeping them there.
+  web2: Before Ethereum, newspapers read by millions and startups in Hong Kong.
+  projects: Side quests. Some still running, some retired with honors.
+work:
+  techLabel: Built with
+manual:
+  title: Operating manual
+  intro: Everything here runs on a few moves. They are the same on every screen, on the page and in the world.
+  gestures:
+    - Swipe left or right to move between projects.
+    - Scroll like any page.
+  close: Esc closes this
+  stageTitle: The Meebit
+  stage:
+    - Click or tap the Meebit, or the pose name under it, for another pose in whatever it is doing, idling, looking around the world or dancing to a set. The world tab lists every pose to pick by hand.
+    - Press M to swap to another of my Meebits.
+  creditsTitle: Made with
+world:
+  enter: Enter the world
+  hardHat: "A voxel city built from my work is going up here, one place at a time, in public. For now the streets are a foundation slab and a fence. The DJ booth already works."
+  fence: opening soon
+  open: open
+  back: Press W to head back to the work.
+  placesTitle: Places on the map
+  boothTitle: DJ booth
+  boothIntro: Two decks. Digital Krux on the left, the Meebits album on the right. One plays at a time.
+  deckSets: Digital Krux
+  deckSetsIntro: Ten years of my sets. Press play on one and the city switches to DJ mode. Press it again to stop.
+  deckAlbum: Turn On, the Meebits album
+  deckAlbumIntro: The record the rest of the site hums along to. Pick a track, or let it run from the top with Space.
+  posesTitle: Poses
+  posesIntro: Every move the Meebit knows, from the same crate meeb.cam uses. Pick one and it plays on the character; click the character to try the next one in that group. Leaving the world hands control back to the mood.
+  posesAuto: Follow the mood
+music:
+  play: Play
+  pause: Pause
+  nextTrack: Next track
+  prevTrack: Previous track
+  seek: Position in the track
+  attribution: "Ambient music: Meebits Turn On by WarpSound and Yuga Labs, Creative Commons Attribution."
+me:
+  linksTitle: Find me
+  resumeCta: Download the resume (PDF)
+a11y:
+  skip: Skip to content
+  stageAlt: Voxel render of one of Didier's Meebits, a blocky character with headphones
+  tabsLabel: Sections
+  keyBarLabel: Keyboard shortcuts
+meebits:
+  swap: Choose a Meebit
+  prev: Previous Meebit
+  next: Next Meebit
+  pose: Click the Meebit for another pose
+notFound:
+  title: Nothing here.
+  sub: Press Esc to get back to the top, or use the tabs below.

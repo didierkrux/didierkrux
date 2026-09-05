@@ -1,0 +1,12 @@
+title: Toasty Matchmaking
+kicker: Who should you meet at this event?
+role: Senior Software Engineer
+dates: { start: "2019-06", end: "2019-12" }
+screenshots: [/screens/toasty-matchmaking.jpg]
+status: archived
+era: web2
+roleRef: toasty
+tags: [React, TypeScript, Node.js, WebSocket, PostgreSQL, Python, NLP, Material UI, AWS, Serverless]
+story: |
+  A business matchmaking platform that paired event attendees using natural language processing. I built the admin panel, the meeting scheduler, the mobile web app, and a serverless matching engine that scored people against each other.
+world: { height: 5, footprint: s, sign: blue }

@@ -1,0 +1,741 @@
+{
+ "source": "https://meeb.cam/animations-glb (Mixamo clips as skeleton-only glTF)",
+ "categories": [
+  {
+   "id": "greetings",
+   "label": "Greetings",
+   "emoji": "\ud83d\udc4b"
+  },
+  {
+   "id": "idle",
+   "label": "Idle",
+   "emoji": "\ud83d\ude0c"
+  },
+  {
+   "id": "dance",
+   "label": "Dances",
+   "emoji": "\ud83d\udc83"
+  },
+  {
+   "id": "emote",
+   "label": "Emotes",
+   "emoji": "\ud83c\udfad"
+  },
+  {
+   "id": "reaction",
+   "label": "Reactions",
+   "emoji": "\ud83c\udfac"
+  },
+  {
+   "id": "interaction",
+   "label": "Interaction",
+   "emoji": "\ud83d\udcac"
+  },
+  {
+   "id": "performance",
+   "label": "Performance",
+   "emoji": "\ud83c\udfaa"
+  },
+  {
+   "id": "motion",
+   "label": "Motion",
+   "emoji": "\ud83c\udfc3"
+  },
+  {
+   "id": "combat",
+   "label": "Combat",
+   "emoji": "\u2694\ufe0f"
+  },
+  {
+   "id": "pose",
+   "label": "Poses",
+   "emoji": "\ud83e\uddd8"
+  }
+ ],
+ "animations": [
+  {
+   "id": "wave-hello",
+   "name": "Wave Hello",
+   "file": "wave-hello.glb",
+   "category": "greetings"
+  },
+  {
+   "id": "wave-hey",
+   "name": "Wave Hey",
+   "file": "wave-hey.glb",
+   "category": "greetings"
+  },
+  {
+   "id": "bow-1",
+   "name": "Bow 1",
+   "file": "bow-1.glb",
+   "category": "greetings"
+  },
+  {
+   "id": "bow-2",
+   "name": "Bow 2",
+   "file": "bow-2.glb",
+   "category": "greetings"
+  },
+  {
+   "id": "idle",
+   "name": "Idle",
+   "file": "idle-1.glb",
+   "category": "idle"
+  },
+  {
+   "id": "idle-2",
+   "name": "Idle 2",
+   "file": "idle-2.glb",
+   "category": "idle"
+  },
+  {
+   "id": "idle-3",
+   "name": "Idle 3",
+   "file": "idle-3.glb",
+   "category": "idle"
+  },
+  {
+   "id": "idle-4",
+   "name": "Idle 4",
+   "file": "idle-4.glb",
+   "category": "idle"
+  },
+  {
+   "id": "idle-5",
+   "name": "Idle 5",
+   "file": "idle-5.glb",
+   "category": "idle"
+  },
+  {
+   "id": "idle-6",
+   "name": "Idle 6",
+   "file": "idle-6.glb",
+   "category": "idle"
+  },
+  {
+   "id": "idle-7",
+   "name": "Idle 7",
+   "file": "idle-7.glb",
+   "category": "idle"
+  },
+  {
+   "id": "chilling",
+   "name": "Chilling",
+   "file": "standing.glb",
+   "category": "idle"
+  },
+  {
+   "id": "creepy",
+   "name": "Creepy",
+   "file": "creepy.glb",
+   "category": "idle"
+  },
+  {
+   "id": "belly-dance",
+   "name": "Belly Dance",
+   "file": "bellydance.glb",
+   "category": "dance"
+  },
+  {
+   "id": "belly-dance-2",
+   "name": "Belly Dance 2",
+   "file": "bellydance-2.glb",
+   "category": "dance"
+  },
+  {
+   "id": "boogie",
+   "name": "Boogie",
+   "file": "boogie.glb",
+   "category": "dance"
+  },
+  {
+   "id": "bottom-g",
+   "name": "Bottom G",
+   "file": "bottom-g.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-toprock",
+   "name": "Break Toprock",
+   "file": "break.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-2",
+   "name": "Break 2",
+   "file": "break-2.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-3",
+   "name": "Break 3",
+   "file": "break-3.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-4",
+   "name": "Break 4",
+   "file": "break-4.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-flare",
+   "name": "Break Flare",
+   "file": "break-5.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-6",
+   "name": "Break 6",
+   "file": "break-6.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-10",
+   "name": "Break 10",
+   "file": "break-10.glb",
+   "category": "dance"
+  },
+  {
+   "id": "break-wave",
+   "name": "Break Wave",
+   "file": "wave.glb",
+   "category": "dance"
+  },
+  {
+   "id": "cancan",
+   "name": "Cancan",
+   "file": "jazz.glb",
+   "category": "dance"
+  },
+  {
+   "id": "gangnam-style",
+   "name": "Gangnam Style",
+   "file": "gangnam.glb",
+   "category": "dance"
+  },
+  {
+   "id": "two-step",
+   "name": "Two Step",
+   "file": "hiphop.glb",
+   "category": "dance"
+  },
+  {
+   "id": "macarena",
+   "name": "Macarena",
+   "file": "macarena.glb",
+   "category": "dance"
+  },
+  {
+   "id": "pump-it-up",
+   "name": "Pump It Up",
+   "file": "pump-it-up.glb",
+   "category": "dance"
+  },
+  {
+   "id": "rumba",
+   "name": "Rumba",
+   "file": "rumba.glb",
+   "category": "dance"
+  },
+  {
+   "id": "salsa",
+   "name": "Salsa",
+   "file": "salsa.glb",
+   "category": "dance"
+  },
+  {
+   "id": "shuffling",
+   "name": "Shuffling",
+   "file": "shuffling.glb",
+   "category": "dance"
+  },
+  {
+   "id": "silly",
+   "name": "Silly",
+   "file": "silly.glb",
+   "category": "dance"
+  },
+  {
+   "id": "thriller",
+   "name": "Thriller",
+   "file": "thriller.glb",
+   "category": "dance"
+  },
+  {
+   "id": "thriller-2",
+   "name": "Thriller 2",
+   "file": "thriller-2.glb",
+   "category": "dance"
+  },
+  {
+   "id": "thriller-3",
+   "name": "Thriller 3",
+   "file": "thriller-3.glb",
+   "category": "dance"
+  },
+  {
+   "id": "thriller-4",
+   "name": "Thriller 4",
+   "file": "thriller-4.glb",
+   "category": "dance"
+  },
+  {
+   "id": "twerk",
+   "name": "Twerk",
+   "file": "twerk.glb",
+   "category": "dance"
+  },
+  {
+   "id": "wave-hip-hop",
+   "name": "Wave Hip Hop",
+   "file": "wave-hiphop.glb",
+   "category": "dance"
+  },
+  {
+   "id": "thumbs-up",
+   "name": "Thumbs Up",
+   "file": "thumbs-up.glb",
+   "category": "emote"
+  },
+  {
+   "id": "sitting-thumbs-up",
+   "name": "Sitting Thumbs Up",
+   "file": "sitting-thumbs-up.glb",
+   "category": "emote"
+  },
+  {
+   "id": "shrug",
+   "name": "Shrug",
+   "file": "shrug.glb",
+   "category": "emote"
+  },
+  {
+   "id": "taunt",
+   "name": "Taunt",
+   "file": "taunt.glb",
+   "category": "emote"
+  },
+  {
+   "id": "look-around",
+   "name": "Look Around",
+   "file": "look-around-1.glb",
+   "category": "emote"
+  },
+  {
+   "id": "look-behind",
+   "name": "Look Behind",
+   "file": "look-behind.glb",
+   "category": "emote"
+  },
+  {
+   "id": "look",
+   "name": "Look",
+   "file": "look.glb",
+   "category": "emote"
+  },
+  {
+   "id": "spin",
+   "name": "Spin",
+   "file": "spin.glb",
+   "category": "emote"
+  },
+  {
+   "id": "drunk",
+   "name": "Drunk",
+   "file": "drunk.glb",
+   "category": "emote"
+  },
+  {
+   "id": "angry",
+   "name": "Angry",
+   "file": "angry.glb",
+   "category": "reaction"
+  },
+  {
+   "id": "defeated",
+   "name": "Defeated",
+   "file": "defeated.glb",
+   "category": "reaction"
+  },
+  {
+   "id": "disappointed",
+   "name": "Disappointed",
+   "file": "disappointed.glb",
+   "category": "reaction"
+  },
+  {
+   "id": "excited",
+   "name": "Excited",
+   "file": "excited.glb",
+   "category": "reaction"
+  },
+  {
+   "id": "laughing",
+   "name": "Laughing",
+   "file": "laughing.glb",
+   "category": "reaction"
+  },
+  {
+   "id": "arguing",
+   "name": "Arguing",
+   "file": "arguing.glb",
+   "category": "interaction"
+  },
+  {
+   "id": "talking",
+   "name": "Talking",
+   "file": "talking.glb",
+   "category": "interaction"
+  },
+  {
+   "id": "talking-1",
+   "name": "Talking 1",
+   "file": "talking-1.glb",
+   "category": "interaction"
+  },
+  {
+   "id": "talking-2",
+   "name": "Talking 2",
+   "file": "talking-2.glb",
+   "category": "interaction"
+  },
+  {
+   "id": "talking-3",
+   "name": "Talking 3",
+   "file": "talking-3.glb",
+   "category": "interaction"
+  },
+  {
+   "id": "yelling",
+   "name": "Yelling",
+   "file": "yelling.glb",
+   "category": "interaction"
+  },
+  {
+   "id": "piano",
+   "name": "Piano",
+   "file": "piano.glb",
+   "category": "performance"
+  },
+  {
+   "id": "arcade",
+   "name": "Arcade",
+   "file": "arcade.glb",
+   "category": "performance"
+  },
+  {
+   "id": "chu",
+   "name": "Chu",
+   "file": "chu.glb",
+   "category": "performance"
+  },
+  {
+   "id": "chu-tpose",
+   "name": "Chu T-Pose",
+   "file": "chu-tpose.glb",
+   "category": "performance"
+  },
+  {
+   "id": "walk",
+   "name": "Walk",
+   "file": "walking.glb",
+   "category": "motion"
+  },
+  {
+   "id": "walk-basic",
+   "name": "Walk Basic",
+   "file": "walk.glb",
+   "category": "motion"
+  },
+  {
+   "id": "walk-backward",
+   "name": "Walk Backward",
+   "file": "walk-backward.glb",
+   "category": "motion"
+  },
+  {
+   "id": "walk-backwards",
+   "name": "Walk Backwards",
+   "file": "walk-backwards.glb",
+   "category": "motion"
+  },
+  {
+   "id": "walk-left",
+   "name": "Walk Left",
+   "file": "walk-left.glb",
+   "category": "motion"
+  },
+  {
+   "id": "walk-right",
+   "name": "Walk Right",
+   "file": "walk-right.glb",
+   "category": "motion"
+  },
+  {
+   "id": "sexy-walk",
+   "name": "Sexy Walk",
+   "file": "sexy-walk.glb",
+   "category": "motion"
+  },
+  {
+   "id": "run",
+   "name": "Run",
+   "file": "run.glb",
+   "category": "motion"
+  },
+  {
+   "id": "run-backwards",
+   "name": "Run Backwards",
+   "file": "run-backwards.glb",
+   "category": "motion"
+  },
+  {
+   "id": "run-left",
+   "name": "Run Left",
+   "file": "run-left.glb",
+   "category": "motion"
+  },
+  {
+   "id": "run-right",
+   "name": "Run Right",
+   "file": "run-right.glb",
+   "category": "motion"
+  },
+  {
+   "id": "run-ninja",
+   "name": "Run Ninja",
+   "file": "run-ninja.glb",
+   "category": "motion"
+  },
+  {
+   "id": "run-drunk",
+   "name": "Run Drunk",
+   "file": "run-drunk.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jog-backwards",
+   "name": "Jog Backwards",
+   "file": "jog-backwards.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jog-backward-diagonal-left",
+   "name": "Jog Diagonal Left Back",
+   "file": "jog-backward-diagonal-left.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jog-backward-diagonal-right",
+   "name": "Jog Diagonal Right Back",
+   "file": "jog-backward-diagonal-right.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jog-forward-diagonal-left",
+   "name": "Jog Diagonal Left",
+   "file": "jog-forward-diagonal-left.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jog-forward-diagonal-right",
+   "name": "Jog Diagonal Right",
+   "file": "jog-forward-diagonal-right.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jump",
+   "name": "Jump",
+   "file": "jump.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jump-up",
+   "name": "Jump Up",
+   "file": "jump-up.glb",
+   "category": "motion"
+  },
+  {
+   "id": "jump-run",
+   "name": "Jump Run",
+   "file": "jump-run.glb",
+   "category": "motion"
+  },
+  {
+   "id": "falling",
+   "name": "Falling",
+   "file": "falling.glb",
+   "category": "motion"
+  },
+  {
+   "id": "falling-idle",
+   "name": "Falling Idle",
+   "file": "falling-idle.glb",
+   "category": "motion"
+  },
+  {
+   "id": "landing",
+   "name": "Landing",
+   "file": "landing.glb",
+   "category": "motion"
+  },
+  {
+   "id": "landing-soft",
+   "name": "Landing Soft",
+   "file": "landing-soft.glb",
+   "category": "motion"
+  },
+  {
+   "id": "landing-hard",
+   "name": "Landing Hard",
+   "file": "landing-hard.glb",
+   "category": "motion"
+  },
+  {
+   "id": "landing-hard-2",
+   "name": "Landing Hard 2",
+   "file": "landing-hard-2.glb",
+   "category": "motion"
+  },
+  {
+   "id": "floating",
+   "name": "Floating",
+   "file": "floating.glb",
+   "category": "motion"
+  },
+  {
+   "id": "fly",
+   "name": "Fly",
+   "file": "fly.glb",
+   "category": "motion"
+  },
+  {
+   "id": "punch",
+   "name": "Punch",
+   "file": "jab.glb",
+   "category": "combat"
+  },
+  {
+   "id": "jab",
+   "name": "Jab",
+   "file": "jab.2.glb",
+   "category": "combat"
+  },
+  {
+   "id": "punch-alt",
+   "name": "Punch Alt",
+   "file": "punch.glb",
+   "category": "combat"
+  },
+  {
+   "id": "kick",
+   "name": "Kick",
+   "file": "kick.glb",
+   "category": "combat"
+  },
+  {
+   "id": "capoeira",
+   "name": "Capoeira",
+   "file": "capoeira.glb",
+   "category": "combat"
+  },
+  {
+   "id": "ninja",
+   "name": "Ninja",
+   "file": "ninja.glb",
+   "category": "combat"
+  },
+  {
+   "id": "fight-stance",
+   "name": "Fight Stance",
+   "file": "idle.glb",
+   "category": "combat"
+  },
+  {
+   "id": "guard",
+   "name": "Guard",
+   "file": "guard.glb",
+   "category": "combat"
+  },
+  {
+   "id": "hit",
+   "name": "Hit",
+   "file": "hit.glb",
+   "category": "combat"
+  },
+  {
+   "id": "tackle",
+   "name": "Tackle",
+   "file": "tackle.glb",
+   "category": "combat"
+  },
+  {
+   "id": "combo-1",
+   "name": "Combo 1",
+   "file": "combo-1.glb",
+   "category": "combat"
+  },
+  {
+   "id": "combo-2",
+   "name": "Combo 2",
+   "file": "combo-2.glb",
+   "category": "combat"
+  },
+  {
+   "id": "combo-3",
+   "name": "Combo 3",
+   "file": "combo-3.glb",
+   "category": "combat"
+  },
+  {
+   "id": "combo-4",
+   "name": "Combo 4",
+   "file": "combo-4.glb",
+   "category": "combat"
+  },
+  {
+   "id": "blast-1",
+   "name": "Blast 1",
+   "file": "blast-1.glb",
+   "category": "combat"
+  },
+  {
+   "id": "blast-2",
+   "name": "Blast 2",
+   "file": "blast-2.glb",
+   "category": "combat"
+  },
+  {
+   "id": "kamehameha",
+   "name": "Kamehameha",
+   "file": "kamehameha.glb",
+   "category": "combat"
+  },
+  {
+   "id": "female-laying-pose",
+   "name": "Female Laying Pose",
+   "file": "female-laying-pose.glb",
+   "category": "pose"
+  },
+  {
+   "id": "female-laying-pose-2",
+   "name": "Female Laying Pose 2",
+   "file": "female-laying-pose-2.glb",
+   "category": "pose"
+  },
+  {
+   "id": "male-laying-pose",
+   "name": "Male Laying Pose",
+   "file": "male-laying-pose.glb",
+   "category": "pose"
+  },
+  {
+   "id": "male-laying-pose-2",
+   "name": "Male Laying Pose 2",
+   "file": "male-laying-pose-2.glb",
+   "category": "pose"
+  }
+ ]
+}

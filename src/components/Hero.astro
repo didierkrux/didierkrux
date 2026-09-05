@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string; sub: string; paragraphs: string[];
+  links: { key: string; label: string; url: string }[];
+  resumeCta: string; worldCta: string; linksTitle: string;
+}
+const { title, sub, paragraphs, links, resumeCta, worldCta, linksTitle } = Astro.props;
+---
+<section class="hero" id="top" data-section="top">
+  <h1>{title}</h1>
+  <p class="lead">{sub}</p>
+  <div class="bio">{paragraphs.map((p) => <p>{p}</p>)}</div>
+  <p class="ctas">
+    <a class="cta" href="/Resume_Didier_Krux.pdf">{resumeCta}</a>
+    <button type="button" class="cta cta-world" data-action="enterWorld"><kbd>W</kbd> {worldCta}</button>
+  </p>
+  <p class="find" aria-label={linksTitle}>{links.map((l) => <a href={l.url} target="_blank" rel="noopener">{l.label}</a>)}</p>
+</section>

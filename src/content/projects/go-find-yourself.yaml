@@ -1,0 +1,11 @@
+title: Go Find Your SELF
+kicker: A coaching blog built for a friend, fully remote
+role: Volunteer developer
+dates: { start: "2017-06", end: "2017-09" }
+screenshots: [/screens/go-find-yourself.jpg]
+status: archived
+era: side
+tags: [WordPress, PHP, Fusion Builder, MailChimp, Responsive design]
+story: |
+  A personal development coaching blog I designed, advised on, and built from scratch for a friend, entirely remote, in the months between newspapers and Hong Kong.
+world: { height: 3, footprint: s, sign: magenta }

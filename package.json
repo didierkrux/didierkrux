@@ -1,0 +1,55 @@
+{
+  "name": "didierkrux.com",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/check-resume-fresh.mjs && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "import:episodes": "node scripts/import-episodes.mjs",
+    "resume:pdf": "node scripts/resume-pdf.mjs",
+    "og:images": "node scripts/og-images.mjs",
+    "import:animations": "node scripts/import-animations.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.5",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/chakra-petch": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/silkscreen": "^5.3.0",
+    "@nanostores/react": "^1.1.0",
+    "@pixiv/three-vrm": "^3.5.5",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "astro": "^7.3.1",
+    "nanostores": "^1.5.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@types/three": "^0.185.4",
+    "js-yaml": "^4.3.2",
+    "pdf-lib": "^1.17.1",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+# Meebits Turn On (Yuga Labs x WarpSound, 2022), Creative Commons Attribution.
+# Files live in public/audio/turn-on (83 MB); `source` keeps the original IPFS location for provenance.
+- id: glitch-museum-night
+  title: "Museum Night"
+  artist: GLiTCH
+  source: "https://w3s.link/ipfs/QmcA31ExMEo1rzJXyhFyjnojd8myMmEWHUSZrzXUsUKMyZ?filename=Glitch%20-%20Museum%20Night.mp3"
+  file: /audio/turn-on/glitch-museum-night.mp3
+  mood: calm
+  order: 1
+- id: nayomi-subtle-song
+  title: "Subtle Song"
+  artist: Nayomi
+  source: "https://w3s.link/ipfs/QmWUhpdbKuCS4BK1SfiT7eVdRTCi1Ws8TTqcxTciDzZnAi?filename=Nayomi%20-%20Subtle%20Song.mp3"
+  file: /audio/turn-on/nayomi-subtle-song.mp3
+  mood: calm
+  order: 2
+- id: gnar-heart-traveler
+  title: "Traveler"
+  artist: Gnar Heart
+  source: "https://w3s.link/ipfs/QmUGgs8MhCFpvqc2iywhS6iQtBhykPJssYzxgSGFEYNyUq?filename=Gnar%20Heart%20-%20Traveler.mp3"
+  file: /audio/turn-on/gnar-heart-traveler.mp3
+  mood: calm
+  order: 3
+- id: nayomi-aurora-for-laura
+  title: "Aurora For Laura"
+  artist: Nayomi
+  source: "https://w3s.link/ipfs/QmZzadjWMqy3rf4Au3MPpCSgpipm1edLTTNhjFqouTEsxS?filename=Nayomi%20-%20Aurora%20For%20Laura.mp3"
+  file: /audio/turn-on/nayomi-aurora-for-laura.mp3
+  mood: calm
+  order: 4
+- id: nayomi-bits-in-my-eye
+  title: "Bits In My Eye"
+  artist: Nayomi
+  source: "https://w3s.link/ipfs/QmTSp9HaKAuWpWK9Bu2EecLix8QZVT7Mqq33auRZeczyJp?filename=Nayomi%20-%20Bits%20In%20My%20Eye.mp3"
+  file: /audio/turn-on/nayomi-bits-in-my-eye.mp3
+  mood: calm
+  order: 5
+- id: dj-dragoon-arm-krust-kola
+  title: "Arm Krust Kola"
+  artist: DJ Dragoon
+  source: "https://w3s.link/ipfs/QmS9PnaLocUnbauLFbuKMbL77tYi3XmbbtY2YLngU4zGpF?filename=DJ%20Dragoon%20-%20Arm%20Krust%20Kola.mp3"
+  file: /audio/turn-on/dj-dragoon-arm-krust-kola.mp3
+  mood: up
+  order: 6
+- id: dj-dragoon-dubble-brothrz
+  title: "Dubble Brothrz"
+  artist: DJ Dragoon
+  source: "https://w3s.link/ipfs/QmNg85ZcQEGuew6EJfkQnygPjR2Vus4g3QJdyvvPV1qCHB?filename=DJ%20Dragoon%20-%20Dubble%20Brothrz.mp3"
+  file: /audio/turn-on/dj-dragoon-dubble-brothrz.mp3
+  mood: up
+  order: 7
+- id: dj-dragoon-fyoog-fire
+  title: "Fyoog Fire"
+  artist: DJ Dragoon
+  source: "https://w3s.link/ipfs/QmXNhPME2TPq9ZsjAHMPweMvBbh3vRf2kynSkZ9yxUzHtm?filename=DJ%20Dragoon%20-%20Fyoog%20Fire.mp3"
+  file: /audio/turn-on/dj-dragoon-fyoog-fire.mp3
+  mood: up
+  order: 8
+- id: dj-dragoon-not-my-kidz
+  title: "Not My Kidz"
+  artist: DJ Dragoon
+  source: "https://w3s.link/ipfs/QmZdyTSmd8dVocaai2Ys82HEQ8bJmFj23pkaSKyeckMWnC?filename=DJ%20Dragoon%20-%20Not%20My%20Kidz.mp3"
+  file: /audio/turn-on/dj-dragoon-not-my-kidz.mp3
+  mood: up
+  order: 9
+- id: dj-dragoon-retrosaurus-rx
+  title: "Retrosaurus Rx"
+  artist: DJ Dragoon
+  source: "https://w3s.link/ipfs/QmaPNAVqUFGee55UE7y5V23iTnVscimahAyuJXU4CMXiys?filename=DJ%20Dragoon%20-%20Retrosaurus%20Rx.mp3"
+  file: /audio/turn-on/dj-dragoon-retrosaurus-rx.mp3
+  mood: up
+  order: 10
+- id: dj-dragoon-trashkitball
+  title: "Trashkitball"
+  artist: DJ Dragoon
+  source: "https://w3s.link/ipfs/QmfVxHDBkEstn5VWSi9fcCxFrApccFfBXpvtqf36gRurW7?filename=DJ%20Dragoon%20-%20Trashkitball.mp3"
+  file: /audio/turn-on/dj-dragoon-trashkitball.mp3
+  mood: up
+  order: 11
+- id: glitch-be-art-my-heart
+  title: "Be Art, My Heart"
+  artist: GLiTCH
+  source: "https://w3s.link/ipfs/QmPmeEzZWTqHKrCQBCXuECceLgPJtEJ5bqQsUrciLGwVbD?filename=Glitch%20-%20Be%20Art,%20My%20Heart.mp3"
+  file: /audio/turn-on/glitch-be-art-my-heart.mp3
+  mood: up
+  order: 12
+- id: glitch-clap-for-chumps
+  title: "Clap For Chumps"
+  artist: GLiTCH
+  source: "https://w3s.link/ipfs/QmazBro6XVjjmhAyjUVVcxy25ypNJWKGEWuCVzmCUXsPo8?filename=Glitch%20-%20Clap%20For%20Chumps.mp3"
+  file: /audio/turn-on/glitch-clap-for-chumps.mp3
+  mood: up
+  order: 13
+- id: glitch-golden-ticket-club
+  title: "Golden Ticket Club"
+  artist: GLiTCH
+  source: "https://w3s.link/ipfs/QmbqLZydoS4TFHgwL23oYvQtmMrPdnPcLrAKznNiZwvnkT?filename=Glitch%20-%20Golden%20Ticket%20Club.mp3"
+  file: /audio/turn-on/glitch-golden-ticket-club.mp3
+  mood: up
+  order: 14
+- id: glitch-hornographic-arcade
+  title: "Hornographic Arcade"
+  artist: GLiTCH
+  source: "https://w3s.link/ipfs/QmNT9tyK8XWSRxiXtzwevzJ9igsnWs2FK2zzc8CGqzKyey?filename=Glitch%20-%20Hornographic%20Arcade.mp3"
+  file: /audio/turn-on/glitch-hornographic-arcade.mp3
+  mood: up
+  order: 15
+- id: gnar-heart-rendered-asteroid
+  title: "Rendered Asteroid"
+  artist: Gnar Heart
+  source: "https://w3s.link/ipfs/QmPSwwtmBwGb2TZCKshga54DRWEZXG7MkQ7ZtN9rf6QgBp?filename=Gnar%20Heart%20-%20Rendered%20Asteroid.mp3"
+  file: /audio/turn-on/gnar-heart-rendered-asteroid.mp3
+  mood: up
+  order: 16
+- id: gnar-heart-sitcom-for-bunnies
+  title: "Sitcom For Bunnies"
+  artist: Gnar Heart
+  source: "https://w3s.link/ipfs/QmQPHjo8S4jC1BwtXkftGv3ga7m44RG3escKWkQ4ry6b6Y?filename=Gnar%20Heart%20-%20Sitcom%20For%20Bunnies.mp3"
+  file: /audio/turn-on/gnar-heart-sitcom-for-bunnies.mp3
+  mood: up
+  order: 17
+- id: gnar-heart-teenage-halloween
+  title: "Teenage Halloween"
+  artist: Gnar Heart
+  source: "https://w3s.link/ipfs/QmVU4aakRfGWoYAALmixVUgowjfS2Nm4gHayPujHQP39XY?filename=Gnar%20Heart%20-%20Teenage%20Halloween.mp3"
+  file: /audio/turn-on/gnar-heart-teenage-halloween.mp3
+  mood: up
+  order: 18
+- id: gnar-heart-that-s-my-hoverboard
+  title: "That's My Hoverboard"
+  artist: Gnar Heart
+  source: "https://w3s.link/ipfs/QmdYH65pGQjxUaAt2n7G8WLoHNvHENfgo3DjsAQwVvHkkN?filename=Gnar%20Heart%20-%20That%27s%20My%20Hoverboard.mp3"
+  file: /audio/turn-on/gnar-heart-that-s-my-hoverboard.mp3
+  mood: up
+  order: 19
+- id: gnar-heart-the-magic-dragon-wagon
+  title: "The Magic Dragon Wagon"
+  artist: Gnar Heart
+  source: "https://w3s.link/ipfs/QmZdByH6wfQyxUteeUBDSXwbgfcCR1zpPxZw5Cybgg6f5c?filename=Gnar%20Heart%20-%20The%20Magic%20Dragon%20Wagon.mp3"
+  file: /audio/turn-on/gnar-heart-the-magic-dragon-wagon.mp3
+  mood: up
+  order: 20
+- id: nayomi-sinsomnia
+  title: "Sinsomnia"
+  artist: Nayomi
+  source: "https://w3s.link/ipfs/QmcxZPrB311mLsBfwpd7uh7Wtc4D8Z2HBtuVkxs8JN8ZTb?filename=Nayomi%20-%20Sinsomnia.mp3"
+  file: /audio/turn-on/nayomi-sinsomnia.mp3
+  mood: up
+  order: 21
+- id: nayomi-wet-debt
+  title: "Wet Debt"
+  artist: Nayomi
+  source: "https://w3s.link/ipfs/QmUne2azzTwy5h26ecEEeH63xsh3cb2pT8ypqyHKtVLVgL?filename=Nayomi%20-%20Wet%20Debt.mp3"
+  file: /audio/turn-on/nayomi-wet-debt.mp3
+  mood: up
+  order: 22

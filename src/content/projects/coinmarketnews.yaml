@@ -1,0 +1,14 @@
+title: CoinMarketNews
+kicker: A crypto tracker for iOS and Android, built in three weeks
+role: Product and mobile developer
+dates: { start: "2018-06", end: "2018-06" }
+screenshots: [/screens/coinmarketnews.jpg]
+status: archived
+era: side
+tags: [React Native, Redux, Node.js, PostgreSQL, Docker, AWS, OneSignal, cron]
+links:
+  - { label: coinmarketnews.krux.dev, url: "https://coinmarketnews.krux.dev/" }
+story: |
+  My bootcamp capstone and my first mobile app from scratch: prices for 1,600 coins in several currencies, favorites, sorting, tagged news, custom price and news alerts, and a dark mode, designed, built, shipped to both stores, and marketed in three weeks.
+resume: Cryptocurrency tracking app for iOS and Android with news, alerts, and 1,600 coins, built in three weeks.
+world: { height: 5, footprint: s, sign: magenta }

@@ -1,0 +1,17 @@
+title: EthPage
+kicker: Any ENS name, turned into a page
+role: Creator
+dates: { start: "2026-08" }
+screenshots: [/screens/ethpage.jpg]
+status: live
+era: web3
+tags: [TypeScript, React, Vite, Tailwind CSS, viem, ENS, EAS, EFP, IPFS, WalletConnect, Open source]
+links:
+  - { label: ethpage.eth.limo, url: "https://ethpage.eth.limo" }
+  - { label: GitHub, url: "https://github.com/didierkrux/ethpage" }
+story: |
+  EthPage reads your ENS records and turns them into a link-in-bio page: avatar, header, bio, socials, and your links, served from IPFS at yourname.eth.limo. Change a record on ENS and the page updates. No backend, no analytics, no API keys.
+
+  The twist is onchain recommendations. Visitors sign an EAS attestation on Base for a few cents, and it becomes public only when you follow the author on EFP. Follow is the moderation. Fork the repo, edit one config file, pin, and you have your own.
+resume: Open-source ENS profile page served from IPFS, with EAS recommendations gated by EFP follows.
+world: { piece: ens-sign, height: 8, footprint: s, sign: cyan }

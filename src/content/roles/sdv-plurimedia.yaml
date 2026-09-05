@@ -1,0 +1,13 @@
+employer: SdV Plurimedia
+title: Full Stack Developer
+type: employee
+dates: { start: "2008-11", end: "2017-05" }
+location: France
+summary: Nine years building custom CMS and websites for three of the ten biggest French newspapers, LeParisien.fr, LePoint.fr, and LesEchos.fr, with millions of daily visitors.
+highlights:
+  - Custom CMS and front-end development on large-scale infrastructure with strict quality standards.
+  - Single sign-on, payment gateways, Facebook API, ElasticSearch, and years of Symfony.
+tags: [PHP, Symfony, Laravel, MySQL, ElasticSearch, SSO, OAuth, Payment Gateways, jQuery, Responsive Design, SEO]
+links:
+  - { label: leparisien.fr, url: "https://www.leparisien.fr" }
+  - { label: lesechos.fr, url: "https://www.lesechos.fr" }

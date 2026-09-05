@@ -1,0 +1,15 @@
+- id: web3
+  label: Web3
+  tags: [Ethereum, ENS, EFP, EAS, viem, wagmi, ethers.js, Smart wallets, POAP, Farcaster, IPFS, Sign in with Ethereum]
+- id: frontend
+  label: Frontend
+  tags: [React, Next.js, Astro, TypeScript, Tailwind CSS, Chakra UI, three.js, PWA, Responsive design]
+- id: backend
+  label: Backend
+  tags: [Node.js, PostgreSQL, Redis, Knex.js, REST, WebSocket, Python, PHP, Symfony]
+- id: infra
+  label: Infrastructure
+  tags: [Vercel, AWS, Docker, Serverless, Nginx, Grafana, CI/CD]
+- id: product
+  label: Product
+  tags: [UX/UI, Notion as CMS, Localization pipelines, SEO, Analytics, Technical writing]

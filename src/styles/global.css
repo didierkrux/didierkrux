@@ -1,0 +1,52 @@
+@import '@fontsource/chakra-petch/500.css';
+@import '@fontsource/chakra-petch/600.css';
+@import '@fontsource/chakra-petch/700.css';
+@import '@fontsource-variable/instrument-sans';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/600.css';
+@import '@fontsource/silkscreen/400.css';
+@import './tokens.css';
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { color-scheme: light dark; -webkit-text-size-adjust: 100%; }
+[data-theme='light'] { color-scheme: light; }
+[data-theme='dark'], [data-dj='on'] { color-scheme: dark; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  transition: background-color var(--ease), color var(--ease);
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; letter-spacing: 0; margin: 0 0 var(--space-3); text-wrap: balance; }
+h1 { font-size: var(--text-2xl); font-weight: 700; line-height: 1.04; letter-spacing: -0.01em; }
+h2 { font-size: var(--text-xl); }
+h3 { font-size: var(--text-lg); }
+p { margin: 0 0 var(--space-2); text-wrap: pretty; }
+a { color: var(--accent-ink); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--fg); }
+button { font: inherit; color: inherit; background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-2) var(--space-3); cursor: pointer; }
+button:hover { border-color: var(--mark); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+[hidden] { display: none !important; }
+code, kbd { font-family: var(--font-mono); font-size: 0.85em; }
+
+.skip {
+  position: absolute; left: var(--space-4); top: -100px;
+  background: var(--surface); color: var(--fg); padding: var(--space-2) var(--space-3); border-radius: var(--radius); z-index: 100;
+}
+.skip:focus { top: var(--space-4); }
+
+.muted { color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

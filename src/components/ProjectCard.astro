@@ -1,0 +1,22 @@
+---
+import type { ProjectCard } from '../lib/types';
+interface Props { item: ProjectCard; index: number; techLabel: string }
+const { item, index, techLabel } = Astro.props;
+---
+<article class="item" id={item.id} data-item data-index={index} data-id={item.id} data-era={item.era}>
+  <h3>{item.title}</h3>
+  <p class="kicker">{item.kicker}</p>
+  <p class="meta">{item.meta}</p>
+  {item.image && (
+    <figure class="shot">
+      <img src={item.image} alt="" loading={index < 2 ? 'eager' : 'lazy'} decoding="async" width="1000" height="625" />
+    </figure>
+  )}
+  <div class="item-body">
+    <div class="story">{item.paragraphs.map((p) => <p>{p}</p>)}</div>
+    {item.tags.length > 0 && <ul class="tags" aria-label={techLabel}>{item.tags.map((t) => <li>{t}</li>)}</ul>}
+    {item.links.length > 0 && (
+      <p class="links">{item.links.map((l) => <a href={l.url} target="_blank" rel="noopener">{l.label}</a>)}</p>
+    )}
+  </div>
+</article>

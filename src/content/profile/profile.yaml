@@ -1,0 +1,34 @@
+name: Didier Krux
+headline: Fullstack web3 developer. DJ after midnight.
+resumeHeadline: Fullstack Web3 Developer
+bio: |
+  gm. I'm Didier, a fullstack web3 developer with 20 years of shipping: first for French newspapers read by millions every day, then for startups in Hong Kong, and since 2021 for Ethereum.
+
+  Today I build devcon.org, devconnect.org, and the Devcon event app for the Ethereum Foundation, and I lead development at Bankless Academy, a free education platform that walks newcomers into web3 one lesson at a time.
+
+  When the laptop closes I play records. Digital Krux is the name on the decks.
+nationality: French
+location: Remote
+languages:
+  - { name: French, level: native }
+  - { name: English, level: working proficiency }
+  - { name: German, level: limited working proficiency }
+personal:
+  - INFJ, the Advocate type. I care about why we build something before how.
+  - Growth mindset. I keep learning and keep improving what I ship.
+  - Flexible and adaptive. New challenges are fine, and I take ownership of them.
+  - Creative. I like to think outside the box and try the unusual route first.
+  - Clear communicator and team player. Happy to learn from others and to mentor junior developers.
+  - Attentive to details. I build interfaces and experiences that spark joy.
+links:
+  - { key: ens, label: didierkrux.eth, url: "https://didierkrux.eth.limo/" }
+  - { key: github, label: GitHub, url: "https://github.com/didierkrux" }
+  - { key: x, label: X, url: "https://x.com/didierkrux" }
+  - { key: linkedin, label: LinkedIn, url: "https://www.linkedin.com/in/didierkrux" }
+meebits:
+  - { tokenId: 11752, vrm: /meebit/11752.vrm }
+  - { tokenId: 17273, vrm: /meebit/17273.vrm }
+  - { tokenId: 13307, vrm: /meebit/13307.vrm }
+  - { tokenId: 19522, vrm: /meebit/19522.vrm }
+meebitStill: /meebit/still.jpg
+meebitLicense: "Meebits #11752, #17273, #13307 and #19522, rendered under the Meebits NFT License as their holder"

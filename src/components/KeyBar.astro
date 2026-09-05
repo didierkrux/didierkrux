@@ -1,0 +1,19 @@
+---
+import { visibleBindings } from '../lib/keymap';
+interface Props { label: string }
+const { label } = Astro.props;
+const bindings = visibleBindings();
+const groups = ['sections', 'items', 'system'] as const;
+---
+<nav class="keybar" aria-label={label} data-keybar>
+  {groups.map((g, gi) => (
+    <Fragment>
+      {gi > 0 && <span class="sep" aria-hidden="true">|</span>}
+      {bindings.filter((b) => b.group === g).map((b) => (
+        <button type="button" data-action={b.action} data-key={b.keys[0]} data-tab={b.section} title={b.description}>
+          <kbd>{b.label}</kbd> <span>{b.hint}</span>
+        </button>
+      ))}
+    </Fragment>
+  ))}
+</nav>

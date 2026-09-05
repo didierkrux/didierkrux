@@ -1,0 +1,103 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { trackLabel } from '../lib/playlist';
+import { latestSets } from '../lib/content';
+import { ANIMS, CATEGORIES } from '../lib/anims';
+
+const copy = (await getEntry('copy', 'copy'))!.data;
+const album = (await getEntry('credits', 'turn-on'))!.data;
+const places = (await getCollection('places')).sort((a, b) => a.data.order - b.data.order);
+const sets = latestSets(await getCollection('episodes'));
+const year = (iso: string) => new Date(iso).getFullYear();
+const turnOn = (await getCollection('ambient')).sort((a, b) => a.data.order - b.data.order).map((t, i) => ({ index: i, title: t.data.title, artist: t.data.artist, label: trackLabel({ id: t.id, title: t.data.title, artist: t.data.artist, url: t.data.file }) }));
+---
+<Base page="world" title={`${copy.site.name} · World`} description={copy.hero.world.sub}>
+  <section class="world" data-section="top">
+    <header class="world-head">
+      <h1>{copy.hero.world.title}</h1>
+      <p class="lead">{copy.hero.world.sub}</p>
+      <p class="world-note">{copy.world.hardHat}</p>
+    </header>
+
+    <h2 class="world-h2">{copy.world.placesTitle}</h2>
+    <ul class="places">
+      {places.map((pl) => (
+        <li class:list={['place', pl.data.built && 'is-open']}>
+          <span class="place-name">{pl.data.label}</span>
+          <span class="place-status">{pl.data.built ? copy.world.open : copy.world.fence}</span>
+        </li>
+      ))}
+    </ul>
+
+    <section class="booth" aria-labelledby="booth-title">
+      <h2 id="booth-title" class="world-h2">{copy.world.boothTitle}</h2>
+      <p class="lead">{copy.world.boothIntro}</p>
+      <div class="decks">
+        <section class="deck deck-sets" aria-labelledby="deck-sets-title">
+          <h3 id="deck-sets-title" class="deck-title">{copy.world.deckSets}</h3>
+          <p class="deck-intro">{copy.world.deckSetsIntro}</p>
+          <div class="deck-now">
+            <p class="now-playing" data-now-playing="set" hidden></p>
+            <input class="seek deck-seek" type="range" min="0" max="1000" step="1" value="0" data-seek="set" aria-label={copy.music.seek} disabled />
+            <span class="deck-time" data-time="set"></span>
+          </div>
+          <ul class="sets">
+            {sets.map((s) => (
+              <li>
+                <button type="button" class="set" data-set-url={s.data.audio} data-set-title={s.data.title} aria-pressed="false">
+                  <span class="set-play" aria-hidden="true">▶</span>
+                  <span class="set-title">{s.data.title}</span>
+                  <span class="set-year">{year(s.data.date)}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="deck deck-album" aria-labelledby="deck-album-title">
+          <h3 id="deck-album-title" class="deck-title">{copy.world.deckAlbum}</h3>
+          <p class="deck-intro">{copy.world.deckAlbumIntro}</p>
+          <p class="album-credit"><a href={album.url} target="_blank" rel="noopener">{album.name}</a> by {album.author}, {album.license}.</p>
+          <div class="deck-now">
+            <p class="now-playing" data-now-playing="track" hidden></p>
+            <input class="seek deck-seek" type="range" min="0" max="1000" step="1" value="0" data-seek="track" aria-label={copy.music.seek} disabled />
+            <span class="deck-time" data-time="track"></span>
+          </div>
+          <ul class="sets">
+            {turnOn.map((t) => (
+              <li>
+                <button type="button" class="set" data-track-index={t.index} data-track-label={t.label} aria-pressed="false">
+                  <span class="set-play" aria-hidden="true">▶</span>
+                  <span class="set-title">{t.title}</span>
+                  <span class="set-year">{t.artist}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </section>
+    <section class="poses" aria-labelledby="poses-title">
+      <h2 id="poses-title" class="world-h2">{copy.world.posesTitle}</h2>
+      <p class="lead">{copy.world.posesIntro}</p>
+      <p><button type="button" class="set set-auto" data-anim-auto aria-pressed="true"><span class="set-play" aria-hidden="true">✦</span><span class="set-title">{copy.world.posesAuto}</span></button></p>
+      {CATEGORIES.map((c) => (
+        <div class="pose-group">
+          <h3 class="deck-title"><span aria-hidden="true">{c.emoji}</span> {c.label}</h3>
+          <ul class="sets">
+            {ANIMS.filter((a) => a.category === c.id).map((a) => (
+              <li>
+                <button type="button" class="set" data-anim={a.id} aria-pressed="false">
+                  <span class="set-play" aria-hidden="true">▶</span>
+                  <span class="set-title">{a.name}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+    <p class="muted">{copy.world.back}</p>
+  </section>
+</Base>

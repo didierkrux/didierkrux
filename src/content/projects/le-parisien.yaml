@@ -1,0 +1,14 @@
+title: Le Parisien
+kicker: Millions of daily readers, one custom CMS
+role: Full Stack Developer
+dates: { start: "2008-09", end: "2015-05" }
+screenshots: [/screens/le-parisien.jpg]
+status: archived
+era: web2
+roleRef: sdv-plurimedia
+tags: [PHP, Symfony, MySQL, SSO, Facebook API, Payment gateways, jQuery, XML, SEO]
+links:
+  - { label: leparisien.fr, url: "https://www.leparisien.fr" }
+story: |
+  Almost seven years on leparisien.fr: custom CMS, front-end, single sign-on, payment gateways, the Facebook API, and the discipline of shipping to millions of daily visitors without breaking the morning paper.
+world: { height: 9, footprint: l, sign: blue }

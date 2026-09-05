@@ -1,0 +1,14 @@
+title: Les Echos
+kicker: The number one French financial newspaper, online
+role: Full Stack Developer
+dates: { start: "2016-05", end: "2017-04" }
+screenshots: [/screens/les-echos.jpg]
+status: archived
+era: web2
+roleRef: sdv-plurimedia
+tags: [PHP, Symfony, MySQL, ElasticSearch, Git, Responsive design, HTTPS, Agile]
+links:
+  - { label: lesechos.fr, url: "https://www.lesechos.fr" }
+story: |
+  Custom CMS and front-end work for lesechos.fr, the last of my newspaper years, on a team running Symfony, ElasticSearch, and agile sprints for a site read by the whole French business world every morning.
+world: { height: 6, footprint: m, sign: blue }

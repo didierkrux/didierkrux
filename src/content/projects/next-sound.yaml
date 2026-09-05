@@ -1,0 +1,11 @@
+title: Next Sound
+kicker: Electronic music news, imported automatically
+role: Founder and developer
+dates: { start: "2010-06", end: "2025-06" }
+screenshots: [/screens/next-sound.jpg]
+status: archived
+era: side
+tags: [WordPress, PHP, jQuery, Bootstrap, YouTube API, SoundCloud API, Beatport, Shazam, cron]
+story: |
+  A personal electronic music news site with a custom responsive admin panel and automatic track imports from YouTube, SoundCloud, iTunes, Beatport, and Shazam. Fifteen years of new releases, retired in 2025.
+world: { height: 5, footprint: s, sign: magenta }

@@ -1,0 +1,14 @@
+title: Juven
+kicker: Events, memberships, and tickets in one platform
+role: Software Engineer
+dates: { start: "2018-09", end: "2019-06" }
+screenshots: [/screens/juven.jpg]
+status: archived
+era: web2
+roleRef: juven
+tags: [React, Next.js, React Native, Redux, Node.js, MySQL, AWS, SEO]
+links:
+  - { label: Juven on LinkedIn, url: "https://www.linkedin.com/company/juven/about/" }
+story: |
+  Event discovery, ticket purchasing, and the admin panel behind them. The piece I still like: a dynamic image resizing architecture on AWS with Thumbor, Lambda, and CloudFront that made pages load up to fifteen times faster.
+world: { height: 6, footprint: m, sign: blue }

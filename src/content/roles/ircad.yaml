@@ -1,0 +1,11 @@
+employer: IRCAD, WeBSurg
+title: Web Developer, work-study
+type: training
+dates: { start: "2007-09", end: "2008-09" }
+location: France
+summary: Websites and internal tools for a leading international medical research institute.
+highlights:
+  - Geolocation map with Google Maps, email filtering, and dynamic generation of course seating maps.
+tags: [PHP, JavaScript, XML, Google Maps API]
+links:
+  - { label: ircad.fr, url: "https://www.ircad.fr/" }

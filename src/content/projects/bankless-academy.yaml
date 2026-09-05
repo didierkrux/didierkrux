@@ -1,0 +1,20 @@
+title: Bankless Academy
+kicker: A free education platform that walks newcomers into web3
+role: Lead Developer and Co-Founder
+dates: { start: "2021-05" }
+screenshots: [/screens/bankless-academy.jpg]
+status: live
+era: web3
+order: 2
+roleRef: bankless-academy
+tags: [React, TypeScript, Next.js, PostgreSQL, Chakra UI, ethers.js, Notion API, ENS, EFP, PWA, AI]
+links:
+  - { label: banklessacademy.com, url: "https://app.banklessacademy.com/" }
+story: |
+  Bankless Academy teaches Ethereum, DeFi, NFTs, and DAOs through short lessons and quests, for free, as a public good. I have led development since the first lesson in 2021.
+
+  The lessons are written in Notion and published by a pipeline I built, translated through Crowdin, and finished with quests that make you actually do the thing: bridge, swap on a DEX, cast an onchain vote. Learners sign in with Ethereum and bring their ENS, EFP, Farcaster, or Lens identity with them. Badges are gasless and sybil-resistant thanks to Gitcoin Passport.
+
+  Around the core: an installable PWA, an onchain indexer that tracks progress inside and outside the Academy, dynamic social images with your score, a white-label version for partners, lessons co-built with 1inch, Optimism, Velodrome, Gitcoin, and Zerion, and an AI assistant on Discord, Telegram, and X that answers crypto questions with a link to the right lesson.
+resume: Free web3 education platform with a Notion-to-lesson pipeline, onchain quests, sybil-resistant badges, and an AI lesson assistant.
+world: { height: 30, footprint: l, sign: lilac }

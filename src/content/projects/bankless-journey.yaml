@@ -1,0 +1,14 @@
+title: Bankless Journey
+kicker: Proof of competence, tracked
+role: Developer
+dates: { start: "2022-01", end: "2022-01" }
+screenshots: [/screens/bankless-journey.jpg]
+status: archived
+era: web3
+roleRef: banklessdao
+tags: [React, TypeScript, Next.js, Chakra UI]
+links:
+  - { label: banklessjourney.com, url: "https://banklessjourney.com/" }
+story: |
+  A companion to the BanklessDAO proof-of-competence tasks: it tracked the POAPs and NFTs you earned along the way and showed where you stood on the journey.
+world: { height: 4, footprint: s, sign: lilac }

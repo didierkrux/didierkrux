@@ -1,0 +1,20 @@
+employer: Bankless Academy
+title: Lead Developer and Co-Founder
+type: founder
+dates: { start: "2021-05" }
+location: Lisbon
+remote: true
+order: 2
+summary: A free, public-good education platform that onboards people to Ethereum, lesson by lesson, quest by quest.
+highlights:
+  - Content pipeline that turns Notion pages into published lessons, translated through Crowdin.
+  - Gasless, sybil-resistant badges built on Gitcoin Passport, and a white-label version of the platform for partners.
+  - Lessons built with 1inch, Optimism, Velodrome, Gitcoin, and Zerion.
+  - "Interactive onchain quests: bridging, a DEX swap, an onchain vote."
+  - Sign in with Ethereum, plus ENS, EFP, Farcaster, Unstoppable Domains, and Lens profiles.
+  - Installable PWA with guided setup, and an onchain indexer that tracks progress across lessons and outside achievements.
+  - Dynamic social images per learner, with score and achievements.
+  - An AI assistant on Discord, Telegram, and X that answers crypto questions and points to the right lesson.
+tags: [React, TypeScript, Next.js, PostgreSQL, Chakra UI, ethers.js, Notion API, ENS, NFTs, AI]
+links:
+  - { label: banklessacademy.com, url: "https://app.banklessacademy.com/" }

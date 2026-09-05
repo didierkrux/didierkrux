@@ -1,0 +1,17 @@
+---
+import type { AmbientTrack } from '../lib/playlist';
+interface Props { labels: { play: string; pause: string; nextTrack: string; prevTrack: string; seek: string; attribution: string }; first: string }
+const { labels, first } = Astro.props;
+export type { AmbientTrack };
+---
+<div class="player" data-player data-playing="false" title={labels.attribution}>
+  <button type="button" class="player-prev" data-action="prevTrack" aria-label={labels.prevTrack}>‹</button>
+  <button type="button" class="player-toggle" data-action="play" aria-pressed="false" aria-label={labels.play} data-label-on={labels.pause} data-label-off={labels.play}>
+    <span class="player-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <span class="player-text">
+    <span class="player-title" data-track>{first}</span>
+    <input class="player-seek seek" type="range" min="0" max="1000" step="1" value="0" data-seek aria-label={labels.seek} disabled />
+  </span>
+  <button type="button" class="player-next" data-action="nextTrack" aria-label={labels.nextTrack}>›</button>
+</div>

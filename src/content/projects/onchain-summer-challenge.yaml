@@ -1,0 +1,14 @@
+title: Onchain Summer Challenge
+kicker: Onchain in under sixty seconds
+role: Hackathon project
+dates: { start: "2024-06", end: "2024-06" }
+screenshots: [/screens/onchain-summer-challenge.jpg]
+status: hackathon
+era: web3
+tags: [React, TypeScript, Next.js, Coinbase Smart Wallet, Paymaster, NFTs]
+links:
+  - { label: Try it, url: "https://app.banklessacademy.com/onchain-summer-challenge" }
+story: |
+  A hackathon entry for Base's Onchain Summer: an onboarding challenge that takes someone from zero to their first onchain action in less than a minute, with a Coinbase Smart Wallet created on the spot and gas covered by a paymaster.
+resume: Base Onchain Summer hackathon entry, first onchain action in under a minute with a smart wallet and a paymaster.
+world: { height: 4, footprint: s, sign: lilac }

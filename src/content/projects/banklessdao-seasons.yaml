@@ -1,0 +1,14 @@
+title: BanklessDAO season launches
+kicker: Four launch sites, each with its own trick
+role: Lead developer
+dates: { start: "2021-11", end: "2023-11" }
+screenshots: [/screens/banklessdao-seasons.jpg]
+status: archived
+era: web3
+roleRef: banklessdao
+tags: [three.js, JavaScript, Tailwind CSS]
+links:
+  - { label: Season 4 site, url: "https://season4-bankless-community.vercel.app/" }
+story: |
+  Every BanklessDAO season opened with a launch site, and I built four of them. Season 4 showcased 36 projects with an interactive 3D scene; another one ran a hex shader; the last one spun a dodecahedron. Small sites, big community, a good excuse to learn three.js in public.
+world: { height: 6, footprint: m, sign: lilac }

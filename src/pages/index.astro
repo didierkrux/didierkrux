@@ -1,0 +1,41 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import type { ProjectCard as Card, Era } from '../lib/types';
+import { orderProjects, formatRange, paragraphs, ERA_ORDER } from '../lib/content';
+import { KEYMAP } from '../lib/keymap';
+
+const copy = (await getEntry('copy', 'copy'))!.data;
+const profile = (await getEntry('profile', 'profile'))!.data;
+const projects = orderProjects(await getCollection('projects'));
+const cards: Card[] = projects.map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  kicker: p.data.kicker,
+  meta: `${p.data.role}, ${formatRange(p.data.dates)}`,
+  tags: p.data.tags,
+  links: p.data.links,
+  paragraphs: paragraphs(p.data.story),
+  era: p.data.era as Era,
+  image: p.data.screenshots[0],
+}));
+const sectionIds: Record<Era, 'web3' | 'web2' | 'projects'> = { web3: 'web3', web2: 'web2', side: 'projects' };
+let index = 0;
+const keyFor = (id: string) => KEYMAP.find((b) => b.section === id)?.label ?? '';
+const groups = ERA_ORDER.map((era) => ({ era, id: sectionIds[era], key: keyFor(sectionIds[era]), label: copy.sections[sectionIds[era]], intro: copy.sectionIntros[sectionIds[era]], cards: cards.filter((c) => c.era === era) }));
+---
+<Base page="home" title={`${copy.site.name}, ${copy.site.tagline}`}>
+  <Hero title={copy.hero.home.title} sub={copy.hero.home.sub} paragraphs={paragraphs(profile.bio)} links={profile.links} resumeCta={copy.me.resumeCta} worldCta={copy.world.enter} linksTitle={copy.me.linksTitle} />
+  {groups.map((g) => (
+    <section class="work-section" id={g.id} data-section={g.id} data-era={g.era}>
+      <header class="section-head">
+        <kbd class="key" aria-hidden="true">{g.key}</kbd>
+        <h2>{g.label}</h2>
+        <p class="lead">{g.intro}</p>
+      </header>
+      {g.cards.map((c) => <ProjectCard item={c} index={index++} techLabel={copy.work.techLabel} />)}
+    </section>
+  ))}
+</Base>

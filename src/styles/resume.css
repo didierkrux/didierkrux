@@ -1,0 +1,58 @@
+@import '@fontsource-variable/instrument-sans';
+
+:root {
+  --rs-page-w: 210mm;
+  --rs-page-h: 296.9mm; /* a hair under A4 so Chrome never spills a blank page */
+  --rs-margin: 14mm;
+  --rs-scale: 1;
+  --rs-ink: #1f2430;
+  --rs-muted: #5b6070;
+  --rs-accent: #8b5cf6;
+  --rs-line: #d9d2c3;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e9e6df; color: var(--rs-ink); font-family: 'Instrument Sans Variable', system-ui, sans-serif; }
+#resume { font-size: calc(10.5pt * var(--rs-scale)); line-height: 1.35; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+a { color: inherit; text-decoration: none; }
+
+.rs-toolbar { display: flex; gap: 12px; justify-content: center; padding: 12px; font-size: 14px; }
+.rs-toolbar a { color: var(--rs-accent); text-decoration: underline; }
+
+/* The flow is only for measuring; it has the same inner width as a page. */
+.rs-flow { width: var(--rs-page-w); padding: var(--rs-margin); margin: 0 auto; background: #fff; }
+.rs-page {
+  width: var(--rs-page-w); height: var(--rs-page-h); padding: var(--rs-margin); margin: 16px auto;
+  background: #fff; display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12); break-after: page;
+}
+.rs-page:last-child { break-after: auto; }
+.rs-item { break-inside: avoid; }
+
+.rs-head { display: grid; grid-template-columns: 1fr auto; gap: 8mm; padding-bottom: 4mm; border-bottom: 2px solid var(--rs-accent); }
+.rs-name { font-size: 2.2em; font-weight: 700; line-height: 1; }
+.rs-headline { font-size: 1.15em; color: var(--rs-accent); margin-top: 2mm; }
+.rs-summary { margin-top: 2mm; max-width: 60ch; }
+.rs-contact { font-size: 0.85em; color: var(--rs-muted); text-align: right; font-style: normal; }
+.rs-contact a { display: block; }
+
+.rs-h2 { font-size: 1em; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rs-accent); padding-bottom: 1mm; border-bottom: 1px solid var(--rs-line); }
+.rs-entry { display: grid; grid-template-columns: 34mm 1fr; gap: 4mm; }
+.rs-when { font-size: 0.85em; color: var(--rs-muted); }
+.rs-title { font-weight: 600; }
+.rs-org { color: var(--rs-muted); }
+.rs-entry ul { padding-left: 4mm; margin-top: 1mm; }
+.rs-entry li { margin-bottom: 0.5mm; }
+.rs-tags { font-size: 0.8em; color: var(--rs-muted); margin-top: 1mm; }
+.rs-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.rs-skill-group b { display: block; }
+.rs-list { padding-left: 4mm; columns: 2; column-gap: 8mm; }
+.rs-list li { margin-bottom: 1mm; break-inside: avoid; }
+
+@media print {
+  html, body { background: #fff; }
+  .rs-page { margin: 0; box-shadow: none; }
+  .rs-toolbar { display: none !important; }
+}
+@page { size: A4; margin: 0; }

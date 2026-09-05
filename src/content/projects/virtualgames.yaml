@@ -1,0 +1,15 @@
+title: VirtualGames
+kicker: Board games with friends, inside a video call
+role: Founder and developer
+dates: { start: "2020-04", end: "2020-04" }
+screenshots: [/screens/virtualgames.jpg]
+status: archived
+era: side
+tags: [React, TypeScript, Jitsi, Open source]
+links:
+  - { label: virtualgames.krux.dev, url: "https://virtualgames.krux.dev/" }
+  - { label: GitHub, url: "https://github.com/didierkrux/virtualgames.fun" }
+story: |
+  Built during the first COVID lockdown so friends could play together online: an open-source gaming platform with a private Jitsi video room built in. Free, no account, share a link and play.
+resume: Open-source online gaming platform with built-in video conferencing, built during the 2020 lockdown.
+world: { height: 5, footprint: s, sign: magenta }

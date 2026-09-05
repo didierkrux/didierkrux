@@ -1,0 +1,19 @@
+---
+import { KEYMAP } from '../lib/keymap';
+interface Props { title: string; intro: string; gestures: string[]; close: string; stageTitle: string; stage: string[] }
+const { title, intro, gestures, close, stageTitle, stage } = Astro.props;
+---
+<dialog class="manual" data-manual aria-labelledby="manual-title">
+  <h2 id="manual-title">{title}</h2>
+  <p>{intro}</p>
+  <dl class="manual-keys">
+    {KEYMAP.map((b) => (
+      <div><dt><kbd class:list={['key', /^[←→↑↓]$/.test(b.label) && 'arrow']}>{b.label}</kbd></dt><dd>{b.description}</dd></div>
+    ))}
+  </dl>
+  <h3>{stageTitle}</h3>
+  <ul>{stage.map((g) => <li>{g}</li>)}</ul>
+  <h3>On a phone</h3>
+  <ul>{gestures.map((g) => <li>{g}</li>)}</ul>
+  <p><button type="button" data-action="back">{close}</button></p>
+</dialog>

@@ -1,0 +1,12 @@
+title: Peermatch
+kicker: Swipe to find who to hack with
+role: Hackathon project, ETHGlobal Lisbon
+dates: { start: "2023-05", end: "2023-05" }
+screenshots: [/screens/peermatch.jpg]
+status: hackathon
+era: web3
+tags: [AI, Lens Protocol, Optimism, EAS, The Graph, Worldcoin, Airstack]
+story: |
+  A Tinder-like app to find peers, co-founders, mentors, or a team at a hackathon, built in a weekend at ETHGlobal Lisbon. It won the Optimism Silver prize for Decentralize Our Identities, plus the Worldcoin and The Graph pool prizes.
+resume: ETHGlobal Lisbon 2023, Optimism Silver prize plus Worldcoin and The Graph pool prizes.
+world: { height: 4, footprint: s, sign: lilac }

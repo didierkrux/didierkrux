@@ -1,0 +1,13 @@
+title: Snapchat Meebit filter
+kicker: My Meebit on my face, on every video call
+role: Creator
+dates: { start: "2022-02", end: "2022-02" }
+screenshots: [/screens/snapchat-meebit-filter.jpg]
+status: archived
+era: side
+tags: [Snapchat Lens Studio, JavaScript, Photoshop]
+links:
+  - { label: Open in Snapchat, url: "https://lens.snapchat.com/eae7920781964cb69fee6f51e4c6e1fc" }
+story: |
+  A Snapchat lens that puts Meebit number 11752 on my face for Zoom and Jitsi calls, with mouth tracking and eye blinking. The same character now lives on this site.
+world: { height: 3, footprint: s, sign: magenta }

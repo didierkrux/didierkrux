@@ -1,0 +1,11 @@
+title: WeBelong Foundation
+kicker: A website rescued before a conference in China
+role: Volunteer developer
+dates: { start: "2016-10", end: "2016-10" }
+screenshots: [/screens/webelong.jpg]
+status: archived
+era: side
+tags: [WordPress, PHP, Responsive design]
+story: |
+  A sustainable lifestyle and innovation platform that needed its site working before a major conference in China. I moved it to new hosting, fixed desktop and mobile, and made it load ten times faster.
+world: { height: 3, footprint: s, sign: magenta }

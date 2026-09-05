@@ -1,0 +1,12 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const copy = (await getEntry('copy', 'copy'))!.data;
+---
+<Base page="404" title={`${copy.site.name} · 404`} noindex>
+  <section class="manual-page">
+    <h1>{copy.notFound.title}</h1>
+    <p class="lead">{copy.notFound.sub}</p>
+  </section>
+</Base>

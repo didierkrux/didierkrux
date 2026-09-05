@@ -1,0 +1,6 @@
+school: Ivan on Tech Academy
+degree: Smart Contract Programming
+dates: { start: "2019" }
+location: Remote
+notes: Programming smart contracts and building dApps on Ethereum, EOS, and NEM, from developer tools to testnet and mainnet deployment.
+tags: [Solidity, web3.js, Ethereum, EOS, NEM]

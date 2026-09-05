@@ -1,0 +1,42 @@
+- id: meebits
+  name: "Meebits #11752, #17273, #13307 and #19522"
+  author: Larva Labs, now stewarded by MeebCo
+  license: Meebits NFT License, holder use
+  url: "https://meebits.com/legal/license"
+  usedFor: The characters on every page, rendered from the holder VRM files
+- id: mixamo
+  name: Mixamo animations
+  author: Adobe
+  license: Mixamo terms, royalty-free inside a finished project
+  url: "https://www.mixamo.com/"
+  usedFor: The 114 clips the Meebit can play, packaged as skeleton-only glTF the way meeb.cam ships them
+- id: chakra-petch
+  name: Chakra Petch
+  author: Cadson Demak
+  license: SIL Open Font License 1.1
+  url: "https://fonts.google.com/specimen/Chakra+Petch"
+  usedFor: Headings
+- id: instrument-sans
+  name: Instrument Sans
+  author: Rodrigo Fuenzalida and Jordan Egstad
+  license: SIL Open Font License 1.1
+  url: "https://fonts.google.com/specimen/Instrument+Sans"
+  usedFor: Body text
+- id: jetbrains-mono
+  name: JetBrains Mono
+  author: JetBrains
+  license: SIL Open Font License 1.1
+  url: "https://www.jetbrains.com/lp/mono/"
+  usedFor: The HUD and keyboard hints
+- id: silkscreen
+  name: Silkscreen
+  author: Jason Kottke
+  license: SIL Open Font License 1.1
+  url: "https://fonts.google.com/specimen/Silkscreen"
+  usedFor: Titles and signs in DJ mode
+- id: turn-on
+  name: Meebits Turn On
+  author: WarpSound with Yuga Labs
+  license: Creative Commons Attribution
+  url: "https://www.theblock.co/post/197189/yuga-labs-nft-collection-meebits-drops-a-collectible-music-album"
+  usedFor: The ambient music

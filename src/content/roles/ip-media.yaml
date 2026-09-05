@@ -1,0 +1,7 @@
+employer: IP-Media
+title: Web Developer Intern
+type: internship
+dates: { start: "2007-04", end: "2007-08" }
+location: France
+summary: Admin panel and Jabber server web interface for a videoconferencing product.
+tags: [PHP, JavaScript, XML, Jabber]
