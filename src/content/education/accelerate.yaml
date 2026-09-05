@@ -2,5 +2,5 @@ school: Accelerate
 degree: Full-time immersive coding bootcamp
 dates: { start: "2018-03", end: "2018-06" }
 location: Hong Kong
-notes: Sixteen weeks and a thousand-plus hours building modern web and mobile apps, from React and React Native to Docker, CI with CircleCI, and both app stores.
+notes: "Sixteen weeks and over a thousand hours building web and mobile apps: React, React Native, Docker, CI, and both app stores."
 tags: [Node.js, React, React Native, TypeScript, PostgreSQL, Redis, Docker, AWS]

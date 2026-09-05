@@ -8,9 +8,8 @@ status: archived
 era: side
 tags: [Node.js, WebSocket, jQuery, Chart.js, Knex.js, Mobile web app, UX/UI]
 links:
-  - { label: pieneer.krux.dev, url: "https://pieneer.krux.dev/" }
   - { label: GitHub, url: "https://github.com/didierkrux/pieneer.live" }
 story: |
-  A one-week build for teachers and speakers: create a slideshow, then let the room draw on it, ask questions, and vote in live polls from their phones, all over WebSocket.
-resume: Interactive presentation tool with live drawing, Q&A, and polling over WebSocket, built in one week.
+  A one-week build for teachers and speakers: a slideshow the room can draw on, ask questions about, and vote on from their phones, all over WebSocket.
+resume: "Interactive presentation tool: live drawing, Q&A, and polls over WebSocket, built in one week."
 world: { height: 4, footprint: s, sign: magenta }

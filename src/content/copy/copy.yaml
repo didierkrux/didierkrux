@@ -5,7 +5,7 @@ site:
 hero:
   home:
     title: gm, I'm Didier Krux.
-    sub: Fullstack web3 developer. I build the on-ramps people use at Ethereum events, and the tools that keep them around.
+    sub: "Fullstack web3 developer. I build products that onboard people into Ethereum: event apps, learning platforms, and the tools behind them."
   world:
     title: Under construction.
     sub: The world is being built in the open. The Meebit has the hard hat on. Come back in a few weeks, or watch it grow.
@@ -15,7 +15,7 @@ sections:
   projects: Projects
   world: World
 sectionIntros:
-  web3: Since 2021, everything I ship is about getting people onchain and keeping them there.
+  web3: Since 2021, everything I ship helps people get onchain and level up from there.
   web2: Before Ethereum, newspapers read by millions and startups in Hong Kong.
   projects: Side quests. Some still running, some retired with honors.
 work:
@@ -34,7 +34,6 @@ manual:
   creditsTitle: Made with
 world:
   enter: Enter the world
-  hardHat: "A voxel city built from my work is going up here, one place at a time, in public. For now the streets are a foundation slab and a fence. The DJ booth already works."
   fence: opening soon
   open: open
   tabsLabel: World sections
@@ -43,7 +42,7 @@ world:
     poses: Poses
     meebit: Meebit
     places: Places
-  boothIntro: Two decks. Digital Krux on the left, the Meebits album on the right. One plays at a time.
+  boothIntro: Two decks, Digital Krux sets and the Meebits album. One plays at a time.
   deckSets: Digital Krux
   deckSetsIntro: Ten years of my sets. Press play on one and the city switches to DJ mode. Press it again to stop.
   deckAlbum: Turn On, the Meebits album
@@ -56,6 +55,7 @@ music:
   nextTrack: Next track
   prevTrack: Previous track
   seek: Position in the track
+  dance: Digital Krux mode, a set and the dance floor. Press again to stop
   attribution: "Ambient music: Meebits Turn On by WarpSound and Yuga Labs, Creative Commons Attribution."
 me:
   linksTitle: Find me

@@ -4,13 +4,12 @@ type: employee
 dates: { start: "2019-06", end: "2020-10" }
 location: Hong Kong
 remote: true
-summary: Video conferencing for interactive virtual meetings, and before that a business matchmaking platform driven by natural language processing.
+summary: Video conferencing for interactive virtual meetings, and before it a business matchmaking platform driven by natural language processing.
 highlights:
-  - Admin panel and the interactive videoconference web app for Toasty Virtual.
-  - Set up and deployed dedicated Jitsi servers with live monitoring on AWS.
-  - Wrote technical specs, ran code review and UAT, mentored junior developers, handled deployments.
-  - Proposed and shipped backend structure changes that cut development time.
-  - "For Toasty Matchmaking: admin panel, meeting scheduler, mobile web app, and a serverless matching engine scoring people with NLP."
+  - "Toasty Virtual: admin panel, the interactive videoconference web app, and dedicated Jitsi servers on AWS with live monitoring."
+  - "Toasty Matchmaking: admin panel, meeting scheduler, mobile web app, and a serverless matching engine scoring people with NLP."
+  - Technical specs, code review, UAT, deployments, and mentoring of junior developers.
+  - Backend structure changes that cut development time.
 tags: [React, TypeScript, Redux-Saga, Node.js, WebSocket, Redis, PostgreSQL, Python, NLP, Material UI, Jitsi, AWS, Grafana, Nginx]
 links:
   - { label: Toasty on LinkedIn, url: "https://www.linkedin.com/company/toastyai/" }

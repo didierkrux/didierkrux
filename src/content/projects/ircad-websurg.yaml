@@ -10,6 +10,7 @@ roleRef: ircad
 tags: [PHP, JavaScript, XML, Google Maps API]
 links:
   - { label: ircad.fr, url: "https://www.ircad.fr/" }
+  - { label: websurg.com, url: "https://www.websurg.com/" }
 story: |
-  A work-study year at IRCAD: the institute's websites and internal tools, including a Google Maps geolocation map, email filtering, and seating maps generated on the fly for surgical courses.
+  A work-study year at IRCAD: the institute's websites and internal tools, from a geolocation map to seating plans generated on the fly for surgical courses.
 world: { height: 4, footprint: s, sign: blue }

@@ -49,7 +49,7 @@ export function initAudio(tracks: AmbientTrack[], setList: SetEntry[] = []): voi
   ready = true;
   list = tracks;
   sets = setList;
-  index = 0;
+  index = list.length ? Math.floor(Math.random() * list.length) : 0; // a different opener every visit
   track.set(trackLabel(list[index]));
 
   ambient = new Audio();
@@ -164,7 +164,7 @@ export function playTrack(i: number): void {
 /** D key: Digital Krux mode on (the latest set plays, the Meebit dances) or off again. */
 export function toggleDj(): void {
   if (setPlaying.get() !== null) stopSet();
-  else loadSet(0);
+  else loadSet(Math.floor(Math.random() * sets.length)); // a different set every time the mode comes on
 }
 
 /** Take the set off the deck. DJ mode ends; if the transport is running the album resumes where it was. */

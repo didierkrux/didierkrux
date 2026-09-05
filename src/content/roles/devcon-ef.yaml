@@ -5,13 +5,13 @@ dates: { start: "2025-05" }
 location: Remote
 remote: true
 order: 1
-summary: I build and maintain the web apps behind Devcon and Devconnect, the Ethereum Foundation's flagship events.
+summary: The web apps behind Devcon and Devconnect, the Ethereum Foundation's flagship events.
 highlights:
-  - devcon.org, devconnect.org, and the interactive event app, a PWA attendees use on site.
-  - Showcased real-world Ethereum applications at the Devconnect World Fair in Buenos Aires, November 2025.
-  - New event and event app for Mumbai, with crypto payments for tickets through the pretix Ethereum payment plugin.
-  - Ethereum adoption work in Argentina and across the global ecosystem.
-tags: [Next.js, TypeScript, PWA, Ethereum, pretix, Ticketing]
+  - "Devcon and Devconnect websites, and the event app attendees carry on site: schedule, map, live program."
+  - "Devconnect World Fair, Buenos Aires, November 2025: a week of real Ethereum applications, with in-person crypto payments across the venue."
+  - Crypto ticket payments through the pretix Ethereum payment plugin (2026).
+  - Ethereum adoption work with the Argentine community and the wider ecosystem.
+tags: [Next.js, TypeScript, Web app, Ethereum, pretix, Ticketing]
 links:
   - { label: devcon.org, url: "https://devcon.org" }
   - { label: devconnect.org, url: "https://devconnect.org" }

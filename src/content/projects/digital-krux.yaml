@@ -1,6 +1,6 @@
 title: Digital Krux
 pose: shuffling
-kicker: Ten years of DJ sets, rebuilt as a player in 2025
+kicker: Ten years of DJ sets, one player
 role: DJ and developer
 dates: { start: "2007-05" }
 screenshots: [/screens/digital-krux.jpg]
@@ -10,6 +10,6 @@ tags: [Vue, Vite, Howler.js, GSAP, RSS, PWA]
 links:
   - { label: digitalkrux.com, url: "https://www.digitalkrux.com/" }
 story: |
-  Digital Krux is my DJ alias: seventy podcasts and live sets between 2007 and 2017, from Karnakut parties to Miami. The site started as a WordPress blog synced to iTunes, and in 2025 I rebuilt it as a Vue player with a canvas grid that lights up to the music. The same sets play in the Music channel here.
-resume: DJ podcast with seventy sets and an audio-reactive Vue player, RSS feed included.
+  Digital Krux is my DJ alias: seventy podcasts and live sets between 2007 and 2017, from Karnakut parties to Miami. Once a WordPress blog synced to iTunes, since 2025 a Vue player with a canvas grid that lights up to the music. The same sets play in the DJ booth here.
+resume: DJ podcast, seventy sets, an audio-reactive Vue player with an RSS feed.
 world: { piece: dj-booth, height: 6, footprint: m, sign: magenta }

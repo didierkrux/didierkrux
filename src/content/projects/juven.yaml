@@ -11,5 +11,5 @@ tags: [React, Next.js, React Native, Redux, Node.js, MySQL, AWS, SEO]
 links:
   - { label: Juven on LinkedIn, url: "https://www.linkedin.com/company/juven/about/" }
 story: |
-  Event discovery, ticket purchasing, and the admin panel behind them. The piece I still like: a dynamic image resizing architecture on AWS with Thumbor, Lambda, and CloudFront that made pages load up to fifteen times faster.
+  Event discovery, ticketing, and the admin panel behind them. The piece worth keeping: dynamic image resizing on AWS with Thumbor, Lambda, and CloudFront, pages up to fifteen times faster.
 world: { height: 6, footprint: m, sign: blue }

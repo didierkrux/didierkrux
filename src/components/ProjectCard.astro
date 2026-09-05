@@ -9,7 +9,13 @@ const { item, index, techLabel } = Astro.props;
   <p class="meta">{item.meta}</p>
   {item.image && (
     <figure class="shot">
-      <img src={item.image} alt="" loading={index < 2 ? 'eager' : 'lazy'} decoding="async" width="1000" height="625" />
+      {item.links[0] ? (
+        <a href={item.links[0].url} target="_blank" rel="noopener" aria-label={item.links[0].label}>
+          <img src={item.image} alt="" loading={index < 2 ? 'eager' : 'lazy'} decoding="async" width="1000" height="625" />
+        </a>
+      ) : (
+        <img src={item.image} alt="" loading={index < 2 ? 'eager' : 'lazy'} decoding="async" width="1000" height="625" />
+      )}
     </figure>
   )}
   <div class="item-body">

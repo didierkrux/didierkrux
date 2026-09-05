@@ -7,6 +7,8 @@ screenshots: [/screens/next-sound.jpg]
 status: archived
 era: side
 tags: [WordPress, PHP, jQuery, Bootstrap, YouTube API, SoundCloud API, Beatport, Shazam, cron]
+links:
+  - { label: Facebook, url: "https://www.facebook.com/NextSound" }
 story: |
-  A personal electronic music news site with a custom responsive admin panel and automatic track imports from YouTube, SoundCloud, iTunes, Beatport, and Shazam. Fifteen years of new releases, retired in 2025.
+  An electronic music news site with a custom admin panel and automatic track imports from YouTube, SoundCloud, iTunes, Beatport, and Shazam. Fifteen years of new releases.
 world: { height: 5, footprint: s, sign: magenta }

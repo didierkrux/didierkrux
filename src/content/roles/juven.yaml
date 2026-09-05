@@ -3,11 +3,11 @@ title: Software Engineer
 type: employee
 dates: { start: "2018-09", end: "2019-06" }
 location: Hong Kong
-summary: Event management, membership, and online ticketing platform.
+summary: Events, memberships, and online ticketing in one platform.
 highlights:
   - Admin panel, event discovery, and ticket purchasing.
-  - Dynamic image resizing on AWS with Thumbor, Lambda, and CloudFront, up to 15 times faster page loads.
-  - SEO work and a custom Google Analytics dashboard in Data Studio.
+  - "Dynamic image resizing on AWS with Thumbor, Lambda, and CloudFront: pages up to fifteen times faster."
+  - SEO and a custom analytics dashboard in Data Studio.
 tags: [React, Next.js, React Native, Redux, Node.js, MySQL, Knex.js, AWS, SEO]
 links:
   - { label: Juven on LinkedIn, url: "https://www.linkedin.com/company/juven/about/" }

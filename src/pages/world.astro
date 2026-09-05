@@ -109,7 +109,6 @@ const turnOn = (await getCollection('ambient')).sort((a, b) => a.data.order - b.
     </section>
     <section class="world-panel" id="places" data-world-panel="places" aria-labelledby="places-title">
       <h2 id="places-title" class="world-h2">{copy.world.tabs.places}</h2>
-      <p class="lead">{copy.world.hardHat}</p>
     <ul class="places">
       {places.map((pl) => (
         <li class:list={['place', pl.data.built && 'is-open']}>

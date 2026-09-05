@@ -9,7 +9,7 @@ era: web3
 roleRef: banklessdao
 tags: [React, TypeScript, Next.js, Chakra UI]
 links:
-  - { label: banklessjourney.com, url: "https://banklessjourney.com/" }
+  - { label: GitHub, url: "https://github.com/bankless-academy/bankless-journey" }
 story: |
-  A companion to the BanklessDAO proof-of-competence tasks: it tracked the POAPs and NFTs you earned along the way and showed where you stood on the journey.
+  A companion to the BanklessDAO proof-of-competence tasks: the POAPs and NFTs earned along the way, and where you stand on the journey.
 world: { height: 4, footprint: s, sign: lilac }

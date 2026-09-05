@@ -9,7 +9,8 @@ era: web3
 roleRef: banklessdao
 tags: [three.js, JavaScript, Tailwind CSS]
 links:
-  - { label: Season 4 site, url: "https://season4-bankless-community.vercel.app/" }
+  - { label: Season 4, url: "https://season4-bankless-community.vercel.app/" }
+  - { label: GitHub, url: "https://github.com/didierkrux/season4.bankless.community" }
 story: |
-  Every BanklessDAO season opened with a launch site, and I built four of them. Season 4 showcased 36 projects with an interactive 3D scene; another one ran a hex shader; the last one spun a dodecahedron. Small sites, big community, a good excuse to learn three.js in public.
+  Every BanklessDAO season opened with a launch site. Four of them: one showcased 36 projects in an interactive 3D scene, one ran a hex shader, one spun a dodecahedron. Small sites for a big community, and three.js learned in public.
 world: { height: 6, footprint: m, sign: lilac }

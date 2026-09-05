@@ -1,4 +1,5 @@
 ---
+import { BRAND_ICONS as ICONS } from '../lib/icons';
 interface Props {
   title: string; sub: string; paragraphs: string[];
   links: { key: string; label: string; url: string }[];
@@ -12,7 +13,11 @@ const { title, sub, paragraphs, links, resumeCta, worldCta, linksTitle } = Astro
   <div class="bio">{paragraphs.map((p) => <p>{p}</p>)}</div>
   <p class="ctas">
     <a class="cta" href="/Resume_Didier_Krux.pdf">{resumeCta}</a>
-    <button type="button" class="cta cta-world" data-action="enterWorld"><kbd>W</kbd> {worldCta}</button>
+    <button type="button" class="cta cta-world" data-action="enterWorld"><kbd>5</kbd> {worldCta}</button>
   </p>
-  <p class="find" aria-label={linksTitle}>{links.map((l) => <a href={l.url} target="_blank" rel="noopener">{l.label}</a>)}</p>
+  <p class="find" aria-label={linksTitle}>
+    {links.map((l) => ICONS[l.key] && l.key !== 'ens'
+      ? <a class="mark" href={l.url} target="_blank" rel="noopener" aria-label={l.label} title={l.label}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d={ICONS[l.key]} /></svg></a>
+      : <a href={l.url} target="_blank" rel="noopener">{l.label}</a>)}
+  </p>
 </section>

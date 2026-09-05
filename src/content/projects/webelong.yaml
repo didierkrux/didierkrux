@@ -7,6 +7,8 @@ screenshots: [/screens/webelong.jpg]
 status: archived
 era: side
 tags: [WordPress, PHP, Responsive design]
+links:
+  - { label: WeBelong on LinkedIn, url: "https://www.linkedin.com/company/belong&partners/about/" }
 story: |
-  A sustainable lifestyle and innovation platform that needed its site working before a major conference in China. I moved it to new hosting, fixed desktop and mobile, and made it load ten times faster.
+  A sustainable lifestyle and innovation platform whose site had to work before a major conference in China: new hosting, desktop and mobile fixed, pages ten times faster.
 world: { height: 3, footprint: s, sign: magenta }

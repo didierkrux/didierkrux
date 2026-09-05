@@ -11,5 +11,5 @@ tags: [React, TypeScript, Redux-Saga, Node.js, WebSocket, Redis, PostgreSQL, Mat
 links:
   - { label: Toasty on LinkedIn, url: "https://www.linkedin.com/company/toastyai/" }
 story: |
-  A video conferencing product for interactive virtual meetings, launched into the first months of the pandemic. I built the admin panel and the videoconference web app, and set up dedicated Jitsi servers on AWS with live monitoring.
+  A video conferencing product for interactive virtual meetings, launched into the first months of the pandemic: admin panel, videoconference web app, and dedicated Jitsi servers on AWS with live monitoring.
 world: { height: 7, footprint: m, sign: blue }

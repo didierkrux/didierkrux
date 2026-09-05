@@ -67,6 +67,7 @@ export const educationSchema = z.object({
 export const skillGroupSchema = z.object({
   id: z.string().min(1),
   label: z.string().min(1),
+  emoji: z.string().optional(),
   tags: z.array(z.string().min(1)).min(1),
 });
 
@@ -116,8 +117,8 @@ export const copySchema = z.object({
   sectionIntros: z.object({ web3: z.string(), web2: z.string(), projects: z.string() }),
   work: z.object({ techLabel: z.string() }),
   manual: z.object({ title: z.string(), intro: z.string(), gestures: z.array(z.string()).min(1), close: z.string(), creditsTitle: z.string(), stageTitle: z.string(), stage: z.array(z.string()) }),
-  world: z.object({ enter: z.string(), hardHat: z.string(), fence: z.string(), open: z.string(), tabsLabel: z.string(), tabs: z.object({ booth: z.string(), poses: z.string(), meebit: z.string(), places: z.string() }), boothIntro: z.string(), deckSets: z.string(), deckSetsIntro: z.string(), deckAlbum: z.string(), deckAlbumIntro: z.string(), posesIntro: z.string(), meebitIntro: z.string() }),
-  music: z.object({ play: z.string(), pause: z.string(), nextTrack: z.string(), prevTrack: z.string(), seek: z.string(), attribution: z.string() }),
+  world: z.object({ enter: z.string(), fence: z.string(), open: z.string(), tabsLabel: z.string(), tabs: z.object({ booth: z.string(), poses: z.string(), meebit: z.string(), places: z.string() }), boothIntro: z.string(), deckSets: z.string(), deckSetsIntro: z.string(), deckAlbum: z.string(), deckAlbumIntro: z.string(), posesIntro: z.string(), meebitIntro: z.string() }),
+  music: z.object({ play: z.string(), pause: z.string(), nextTrack: z.string(), prevTrack: z.string(), seek: z.string(), attribution: z.string(), dance: z.string() }),
   me: z.object({ linksTitle: z.string(), resumeCta: z.string() }),
   a11y: z.object({ skip: z.string(), stageAlt: z.string(), keyBarLabel: z.string() }),
   meebits: z.object({ swap: z.string(), pose: z.string() }),
@@ -128,6 +129,8 @@ export const profileSchema = z.object({
   name: z.string().min(1),
   headline: z.string().max(80),
   resumeHeadline: z.string().max(80),
+  /** The resume's opening line; falls back to the bio's first paragraph. */
+  resumeSummary: z.string().max(320).optional(),
   bio: z.string().min(40),
   nationality: z.string().min(1),
   location: z.string().min(1),

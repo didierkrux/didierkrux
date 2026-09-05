@@ -11,5 +11,5 @@ tags: [PHP, Symfony, MySQL, SSO, Facebook API, Payment gateways, jQuery, XML, SE
 links:
   - { label: leparisien.fr, url: "https://www.leparisien.fr" }
 story: |
-  Almost seven years on leparisien.fr: custom CMS, front-end, single sign-on, payment gateways, the Facebook API, and the discipline of shipping to millions of daily visitors without breaking the morning paper.
+  Almost seven years at Le Parisien: custom CMS, front-end, single sign-on, payment gateways, the Facebook API, and shipping to millions of daily readers without breaking the morning paper.
 world: { height: 9, footprint: l, sign: blue }

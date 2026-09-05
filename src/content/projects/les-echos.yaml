@@ -11,5 +11,5 @@ tags: [PHP, Symfony, MySQL, ElasticSearch, Git, Responsive design, HTTPS, Agile]
 links:
   - { label: lesechos.fr, url: "https://www.lesechos.fr" }
 story: |
-  Custom CMS and front-end work for lesechos.fr, the last of my newspaper years, on a team running Symfony, ElasticSearch, and agile sprints for a site read by the whole French business world every morning.
+  Custom CMS and front-end work at Les Echos, on a team running Symfony, ElasticSearch, and agile sprints for a site the French business world reads every morning.
 world: { height: 6, footprint: m, sign: blue }

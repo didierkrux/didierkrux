@@ -8,15 +8,15 @@ status: live
 era: web3
 order: 1
 roleRef: devcon-ef
-tags: [Next.js, TypeScript, PWA, pretix, Ethereum payments, Ticketing]
+tags: [Next.js, TypeScript, Web app, pretix, Ethereum payments, Ticketing]
 links:
   - { label: devcon.org, url: "https://devcon.org" }
   - { label: devconnect.org, url: "https://devconnect.org" }
 story: |
-  I build and maintain devcon.org, devconnect.org, and the interactive event app, an installable PWA attendees carry around the venue for the schedule, the map, and what is happening right now.
+  The Devcon and Devconnect websites and the interactive event app: a web app attendees install on their phone for the schedule, the map, and what is happening right now.
 
-  In November 2025 the app ran the Devconnect World Fair in Buenos Aires, a week of showing real Ethereum applications to real people. Next up is a new event and a new edition of the app for Mumbai, with tickets paid in crypto through the pretix Ethereum payment plugin.
+  The app ran the Devconnect World Fair in Buenos Aires in November 2025, a week of real Ethereum applications for real people, with in-person crypto payments across the venue. Since 2026, tickets can be bought onchain through the pretix Ethereum payment plugin.
 
-  The quiet part of the job is adoption work: helping the Argentine community and the wider ecosystem use Ethereum for things people actually need.
-resume: devcon.org, devconnect.org, and the Devcon event PWA for the Ethereum Foundation, including crypto ticket payments for the Mumbai event.
+  The quiet part of the job is adoption: helping the Argentine community and the wider ecosystem use Ethereum for things people actually need.
+resume: Devcon and Devconnect websites and the Devcon event web app for the Ethereum Foundation, with in-person crypto payments in Buenos Aires and crypto ticket payments through pretix.
 world: { piece: devcon-stage, height: 14, footprint: l, sign: emerald }

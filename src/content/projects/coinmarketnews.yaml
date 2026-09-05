@@ -8,8 +8,8 @@ status: archived
 era: side
 tags: [React Native, Redux, Node.js, PostgreSQL, Docker, AWS, OneSignal, cron]
 links:
-  - { label: coinmarketnews.krux.dev, url: "https://coinmarketnews.krux.dev/" }
+  - { label: Archived site, url: "https://web.archive.org/web/20260608084912/https://coinmarketnews.krux.dev/" }
 story: |
-  My bootcamp capstone and my first mobile app from scratch: prices for 1,600 coins in several currencies, favorites, sorting, tagged news, custom price and news alerts, and a dark mode, designed, built, shipped to both stores, and marketed in three weeks.
-resume: Cryptocurrency tracking app for iOS and Android with news, alerts, and 1,600 coins, built in three weeks.
+  A bootcamp capstone and a first mobile app: prices for 1,600 coins in several currencies, favorites, tagged news, price and news alerts, dark mode. Designed, shipped to both stores, and marketed in three weeks.
+resume: "Crypto tracker for iOS and Android: 1,600 coins, news, and alerts, built in three weeks."
 world: { height: 5, footprint: s, sign: magenta }

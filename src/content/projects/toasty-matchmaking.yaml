@@ -8,6 +8,8 @@ status: archived
 era: web2
 roleRef: toasty
 tags: [React, TypeScript, Node.js, WebSocket, PostgreSQL, Python, NLP, Material UI, AWS, Serverless]
+links:
+  - { label: Toasty on LinkedIn, url: "https://www.linkedin.com/company/toastyai/about/" }
 story: |
-  A business matchmaking platform that paired event attendees using natural language processing. I built the admin panel, the meeting scheduler, the mobile web app, and a serverless matching engine that scored people against each other.
+  A business matchmaking platform pairing event attendees with natural language processing: admin panel, meeting scheduler, mobile web app, and a serverless matching engine scoring people against each other.
 world: { height: 5, footprint: s, sign: blue }

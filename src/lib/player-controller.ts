@@ -59,6 +59,7 @@ export function mountPlayer(): void {
       if (!on && document.activeElement === b) b.blur(); // a focus ring on the old choice would look like it still plays
     };
     for (const b of document.querySelectorAll<HTMLElement>('[data-set-title]')) press(b, b.dataset.setTitle === set);
+    for (const b of document.querySelectorAll<HTMLElement>('[data-dj-toggle]')) press(b, set !== null);
     const ambientOn = set === null && playing.get();
     for (const b of document.querySelectorAll<HTMLElement>('[data-track-label]')) press(b, ambientOn && b.dataset.trackLabel === track.get());
   };

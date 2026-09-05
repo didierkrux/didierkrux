@@ -2,5 +2,5 @@ school: Ivan on Tech Academy
 degree: Blockchain Deep Fundamentals
 dates: { start: "2018" }
 location: Remote
-notes: Cryptography, Bitcoin and Ethereum basics, scaling, consensus, UTXO, tokens, and smart contract use cases.
+notes: Cryptography, Bitcoin and Ethereum fundamentals, scaling, consensus, UTXO, tokens, smart contract use cases.
 tags: [Blockchain, Bitcoin, Ethereum]

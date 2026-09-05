@@ -4,9 +4,9 @@ type: volunteer
 dates: { start: "2021-05", end: "2023-11" }
 location: Remote
 remote: true
-summary: Led development of four BanklessDAO season launch websites and helped the Education and Dev guilds get going in the early days.
+summary: Four season launch websites for BanklessDAO, and early help getting the Education and Dev guilds started.
 highlights:
-  - Season 2 to season 5 launch sites, each with its own interactive twist, including a three.js hex shader and a rotating 3D scene.
+  - "Season 2 to 5 launch sites, each with an interactive twist: a three.js hex shader, a rotating 3D scene, a spinning dodecahedron."
 tags: [Tailwind CSS, three.js, JavaScript]
 links:
   - { label: bankless.community, url: "https://bankless.community" }

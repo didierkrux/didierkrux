@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import ResumeLayout from '../layouts/ResumeLayout.astro';
 import { orderRoles, orderProjects, formatRange, paragraphs } from '../lib/content';
+import { BRAND_ICONS } from '../lib/icons';
 
 const profile = (await getEntry('profile', 'profile'))!.data;
 const roles = orderRoles(await getCollection('roles'));
@@ -9,29 +10,37 @@ const projects = orderProjects(await getCollection('projects')).filter((p) => p.
 const education = (await getCollection('education')).sort((a, b) => b.data.dates.start.localeCompare(a.data.dates.start));
 const skills = await getCollection('skills');
 const contact = ['ens', 'github', 'linkedin', 'x'].map((k) => profile.links.find((l) => l.key === k)!);
-const summary = paragraphs(profile.bio)[0].replace(/^gm\. I'm Didier, /, 'Didier Krux is ').replace(' I ', ' he ');
+const FLAGS: Record<string, string> = { French: '🇫🇷', English: '🇬🇧', German: '🇩🇪' };
+const place = (loc: string, remote?: boolean) => (loc.toLowerCase() === 'remote' ? '🌎 Remote' : `📍 ${loc}${remote ? ' · 🌎 remote' : ''}`);
+const summary = profile.resumeSummary ?? paragraphs(profile.bio)[0].replace(/^gm\. I'm Didier, /, 'Didier Krux is ').replace(' I ', ' he ');
 ---
 <ResumeLayout title={`${profile.name} · Resume`} description={`Resume of ${profile.name}, ${profile.resumeHeadline}`}>
   <nav class="rs-toolbar"><a href="/Resume_Didier_Krux.pdf">Download the PDF</a><a href="/work">Back to the site</a></nav>
   <main id="resume" data-min-pages="2" data-max-pages="3" data-hard-max="4">
     <div class="rs-flow" data-flow>
       <header class="rs-item rs-head" data-rs-item="head">
+        <img class="rs-photo" src="/resume/headshot.png" alt="" width="240" height="240" />
         <div>
           <h1 class="rs-name">{profile.name}</h1>
           <p class="rs-headline">{profile.resumeHeadline}</p>
           <p class="rs-summary">{summary}</p>
         </div>
         <address class="rs-contact">
-          <a href="https://www.didierkrux.com">didierkrux.com</a>
-          {contact.map((l) => <a href={l.url}>{l.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</a>)}
-          <span>{profile.nationality} · {profile.location}</span>
+          <a href="https://www.didierkrux.com"><span class="rs-emo" aria-hidden="true">🌐</span>didierkrux.com</a>
+          {contact.map((l) => (
+            <a href={l.url}>
+              {BRAND_ICONS[l.key] && <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d={BRAND_ICONS[l.key]} /></svg>}
+              {l.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+            </a>
+          ))}
+          <span>{place(profile.location)} · {profile.nationality}</span>
         </address>
       </header>
 
-      <h2 class="rs-item rs-h2" data-rs-item="h-experience" data-keep-next>Experience</h2>
+      <h2 class="rs-item rs-h2" data-rs-item="h-experience" data-keep-next><span class="rs-emo" aria-hidden="true">💼</span>Experience</h2>
       {roles.map((r) => (
         <article class="rs-item rs-entry" data-rs-item={`role-${r.id}`}>
-          <div class="rs-when">{formatRange(r.data.dates, { present: 'Present' })}<br />{r.data.location}{r.data.remote && r.data.location.toLowerCase() !== 'remote' ? ', remote' : ''}</div>
+          <div class="rs-when">{formatRange(r.data.dates, { present: 'Present' })}<br />{place(r.data.location, r.data.remote)}</div>
           <div>
             <p><span class="rs-title">{r.data.title}</span> · <span class="rs-org">{r.data.employer}</span></p>
             <p>{r.data.summary}</p>
@@ -41,7 +50,7 @@ const summary = paragraphs(profile.bio)[0].replace(/^gm\. I'm Didier, /, 'Didier
         </article>
       ))}
 
-      <h2 class="rs-item rs-h2" data-rs-item="h-projects" data-keep-next>Selected projects</h2>
+      <h2 class="rs-item rs-h2" data-rs-item="h-projects" data-keep-next><span class="rs-emo" aria-hidden="true">🚀</span>Selected projects</h2>
       {projects.map((p) => (
         <article class="rs-item rs-entry" data-rs-item={`project-${p.id}`}>
           <div class="rs-when">{formatRange(p.data.dates, { present: 'Present' })}</div>
@@ -52,10 +61,10 @@ const summary = paragraphs(profile.bio)[0].replace(/^gm\. I'm Didier, /, 'Didier
         </article>
       ))}
 
-      <h2 class="rs-item rs-h2" data-rs-item="h-education" data-keep-next>Education</h2>
+      <h2 class="rs-item rs-h2" data-rs-item="h-education" data-keep-next><span class="rs-emo" aria-hidden="true">🎓</span>Education</h2>
       {education.map((e) => (
         <article class="rs-item rs-entry" data-rs-item={`edu-${e.id}`}>
-          <div class="rs-when">{formatRange(e.data.dates)}<br />{e.data.location}</div>
+          <div class="rs-when">{formatRange(e.data.dates)}<br />{place(e.data.location)}</div>
           <div>
             <p><span class="rs-title">{e.data.degree}</span> · <span class="rs-org">{e.data.school}</span></p>
             {e.data.notes && <p>{e.data.notes}</p>}
@@ -63,19 +72,20 @@ const summary = paragraphs(profile.bio)[0].replace(/^gm\. I'm Didier, /, 'Didier
         </article>
       ))}
 
-      <h2 class="rs-item rs-h2" data-rs-item="h-skills" data-keep-next>Skills</h2>
+      <h2 class="rs-item rs-h2" data-rs-item="h-skills" data-keep-next><span class="rs-emo" aria-hidden="true">🛠️</span>Skills</h2>
       <section class="rs-item rs-cols" data-rs-item="skills">
-        {skills.map((g) => <p class="rs-skill-group"><b>{g.data.label}</b>{g.data.tags.join(', ')}</p>)}
+        {skills.map((g) => <p class="rs-skill-group"><b>{g.data.emoji && <span class="rs-emo" aria-hidden="true">{g.data.emoji}</span>}{g.data.label}</b>{g.data.tags.join(', ')}</p>)}
       </section>
 
-      <h2 class="rs-item rs-h2" data-rs-item="h-personal" data-keep-next>Personal skills</h2>
-      <section class="rs-item" data-rs-item="personal">
+      <h2 class="rs-item rs-h2" data-rs-item="h-personal" data-keep-next><span class="rs-emo" aria-hidden="true">✨</span>Personal skills</h2>
+      <section class="rs-item rs-personal" data-rs-item="personal">
         <ul class="rs-list">{profile.personal.map((line) => <li>{line}</li>)}</ul>
+        <a class="rs-personality" href="https://www.16personalities.com/enfj-personality"><img src="/resume/enfj-protagonist-male.svg" alt="ENFJ, the Protagonist" width="400" height="400" /></a>
       </section>
 
-      <h2 class="rs-item rs-h2" data-rs-item="h-languages" data-keep-next>Languages</h2>
+      <h2 class="rs-item rs-h2" data-rs-item="h-languages" data-keep-next><span class="rs-emo" aria-hidden="true">🌍</span>Languages</h2>
       <section class="rs-item" data-rs-item="languages">
-        <p>{profile.languages.map((l) => `${l.name}, ${l.level}`).join(' · ')}</p>
+        <p>{profile.languages.map((l) => `${FLAGS[l.name] ?? ''} ${l.name}, ${l.level}`.trim()).join(' · ')}</p>
       </section>
     </div>
     <div class="rs-pages" data-pages hidden></div>

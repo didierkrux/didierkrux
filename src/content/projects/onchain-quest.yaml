@@ -11,9 +11,11 @@ links:
   - { label: onchainquest.fun, url: "https://onchainquest.fun/" }
   - { label: GitHub, url: "https://github.com/didierkrux/onchainquest.fun" }
   - { label: NewToWeb3 recap, url: "https://x.com/didierkrux/status/1855566049615511555" }
+  - { label: newtoweb3.io, url: "https://newtoweb3.io/" }
+  - { label: Event video, url: "https://x.com/OrnellaWeb3/status/1876649569976471615" }
 story: |
-  NewToWeb3 was an event for people who had never touched Ethereum, organized with OrnellaWeb3 in November 2024. I built its app in six weeks as a side project: program, sponsors, planning, and hands-on quests to get your first crypto, mint a POAP and an NFT, claim an ENS on Base, and swap a token. Multilingual, because the room was.
+  NewToWeb3, November 2024, was an event for people who had never touched Ethereum, organized with OrnellaWeb3. Its app, built in six weeks: program, sponsors, and hands-on quests to get your first crypto, mint a POAP and an NFT, claim an ENS on Base, and swap a token. Multilingual, because the room was.
 
-  It grew into Onchain Quest, a white-label event platform: wallet login, profiles, quests with points, booth check-ins by QR code, leaderboards, ENS subnames via Durin, EFP follows, EAS attestations, Zupass ticket proofs, a Farcaster mini app, and an onchain shop. The latest edition ran at EthCC.
-resume: Web3 event platform for onboarding newcomers, with quests, QR check-ins, ENS subnames, EFP, EAS, and Zupass, built for NewToWeb3 and EthCC.
+  It grew into Onchain Quest, a white-label event platform: wallet login, profiles, quests with points, QR booth check-ins, leaderboards, ENS subnames via Durin, EFP follows, EAS attestations, Zupass ticket proofs, a Farcaster mini app, and an onchain shop. It has since run at EthCC.
+resume: Web3 event platform onboarding newcomers with quests, QR check-ins, ENS subnames, EFP, EAS, and Zupass, run at NewToWeb3 and EthCC.
 world: { height: 10, footprint: m, sign: lilac }

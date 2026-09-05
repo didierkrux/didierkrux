@@ -43,9 +43,14 @@ const jsonLd = page === 'home'
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="application-name" content={copy.site.name} />
+    <meta name="apple-mobile-web-app-title" content={copy.site.name} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#0e0a1f" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#eef2f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f6fa" media="(prefers-color-scheme: light)" />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
     <script is:inline>
       (function () {

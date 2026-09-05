@@ -13,7 +13,10 @@ body { touch-action: pan-y; scroll-behavior: smooth; background: linear-gradient
 .theme-toggle:hover { color: var(--fg); }
 
 .player { display: flex; align-items: center; gap: var(--space-1); margin-left: auto; color: var(--muted); font-size: var(--text-xs); white-space: nowrap; }
-.player-toggle { border: 1px solid var(--line); border-radius: 999px; width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; background: var(--surface); }
+.player-toggle, .player-dance { border: 1px solid var(--line); border-radius: 999px; width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; background: var(--surface); }
+.player-dance { font-size: 15px; line-height: 1; margin-right: var(--space-1); filter: grayscale(1); opacity: 0.7; }
+.player-dance:hover { filter: none; opacity: 1; border-color: var(--accent); }
+.player-dance[aria-pressed='true'] { filter: none; opacity: 1; border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 12px var(--glow); }
 .player-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
 .player-bars i { display: block; width: 3px; height: 4px; background: var(--muted); border-radius: 1px; }
 .player[data-playing='true'] .player-toggle { border-color: var(--accent); background: var(--accent-soft); }
@@ -115,7 +118,9 @@ a.cta:hover { background: var(--accent-ink); color: var(--on-accent); }
 .cta-world { border: 1px solid var(--line); color: var(--fg); background: var(--accent-soft); }
 .cta-world:hover { border-color: var(--accent); }
 .cta-world kbd { border: 1px solid var(--line); border-radius: 5px; padding: 0 6px; font-size: 0.8em; background: var(--surface); color: var(--fg); }
-.find { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); font-size: var(--text-sm); }
+.find { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); font-size: var(--text-sm); }
+.find .mark { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; }
+.find .mark:hover { color: var(--accent-ink); background: var(--accent-soft); text-decoration: none; }
 .find a { color: var(--muted); text-decoration: none; }
 .find a:hover { color: var(--accent-ink); text-decoration: underline; }
 
@@ -144,6 +149,8 @@ kbd.key, .keybar kbd, .manual-keys kbd {
 .kicker { color: var(--muted); font-size: var(--text-sm); margin: 0 0 var(--space-1); max-width: 60ch; }
 .meta { color: var(--muted); margin: 0 0 var(--space-2); font-size: var(--text-xs); }
 .shot { max-width: none; }
+.shot a { display: block; border-radius: 10px; }
+.shot a:hover img { border-color: var(--accent); }
 .shot img {
   display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top;
   border-radius: 10px; border: 1px solid var(--line);
@@ -164,8 +171,9 @@ kbd.key, .keybar kbd, .manual-keys kbd {
 .keybar button[aria-current='true'] kbd { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 60%, black); }
 
 .bottombar {
-  position: fixed; left: 0; right: 0; bottom: 0; height: var(--tabs-h); display: none; z-index: 6;
-  background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom);
+  /* The home indicator's safe area is added to the height, not carved out of it: in a standalone PWA the buttons keep their full row. */
+  position: fixed; left: 0; right: 0; bottom: 0; height: calc(var(--tabs-h) + env(safe-area-inset-bottom, 0px)); display: none; z-index: 6;
+  background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .bottombar .keybar { justify-content: space-around; overflow: visible; padding: 0 var(--space-2); }
 .bottombar .keybar .sep, .bottombar .keybar kbd, .bottombar .keybar button[data-action='openManual'] { display: none; } /* no key numbers on touch */
@@ -234,9 +242,9 @@ kbd.key.arrow, .keybar kbd.arrow { font-family: var(--font-sans); font-size: 0.9
 /* Touch and narrow screens: the character in a band at the top, the header transparent over it,
    the same key bar pinned to the bottom, the content scrolling underneath the stage. */
 @media (max-width: 900px), (pointer: coarse) {
-  body { padding-bottom: calc(var(--tabs-h) + var(--space-4)); }
+  body { padding-bottom: calc(var(--tabs-h) + env(safe-area-inset-bottom, 0px) + var(--space-4)); }
   .decks { grid-template-columns: 1fr; }
-  .topbar { position: fixed; left: 0; right: 0; padding: 0 var(--space-4); gap: var(--space-4); background: transparent; backdrop-filter: none; }
+  .topbar { position: fixed; left: 0; right: 0; padding: env(safe-area-inset-top, 0px) var(--space-4) 0; height: calc(var(--header-h) + env(safe-area-inset-top, 0px)); gap: var(--space-4); background: transparent; backdrop-filter: none; }
   .topbar .keybar { display: none; }
   .player-text { display: none; }
   .bottombar { display: flex; }
