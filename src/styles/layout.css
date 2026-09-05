@@ -234,6 +234,7 @@ kbd.key.arrow, .keybar kbd.arrow { font-family: var(--font-sans); font-size: 0.9
 .set:hover { background: var(--accent-soft); border-color: var(--accent); }
 .set[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-ink); }
 .set-play { font-size: 0.7rem; }
+.set-num { display: inline-block; min-width: 2.2em; color: var(--muted); font-family: var(--font-mono); font-size: var(--text-xs); }
 .set[aria-pressed='true'] .set-play::before { content: '■'; }
 .set[aria-pressed='true'] .set-play { font-size: 0; }
 .set-title { min-width: 0; overflow-wrap: anywhere; }

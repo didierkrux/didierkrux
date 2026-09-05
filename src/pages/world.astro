@@ -65,7 +65,7 @@ const turnOn = (await getCollection('ambient')).sort((a, b) => a.data.order - b.
               <li>
                 <button type="button" class="set" data-track-index={t.index} data-track-label={t.label} aria-pressed="false">
                   <span class="set-play" aria-hidden="true">▶</span>
-                  <span class="set-title">{t.title}</span>
+                  <span class="set-title"><span class="set-num">{String(t.index + 1).padStart(2, '0')}</span>{t.title}</span>
                   <span class="set-year">{t.artist}</span>
                 </button>
               </li>
