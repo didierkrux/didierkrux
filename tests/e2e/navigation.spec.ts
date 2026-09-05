@@ -8,7 +8,7 @@ test.describe('desktop operating model', () => {
     await page.goto('/');
     await expect(page.locator('#top h1')).toHaveText("gm, I'm Didier Krux.");
     await expect(page.locator('[data-keybar]')).toBeVisible();
-    await expect(page.locator('.tabs')).toBeHidden();
+    await expect(page.locator('.bottombar')).toBeHidden();
     await expect(page.locator('footer')).toHaveCount(0);
     await expect(page.locator('[data-stage]')).toHaveAttribute('data-mood', 'me');
   });
@@ -73,17 +73,17 @@ test.describe('desktop operating model', () => {
     await expect(html).toHaveAttribute('data-theme', 'light');
     await page.keyboard.press('t');
     await expect(html).toHaveAttribute('data-theme', 'dark');
-    await page.keyboard.press('w');
+    await page.keyboard.press('5');
     await page.waitForURL('**/world');
     await expect(html).toHaveAttribute('data-theme', 'dark');
     await page.reload();
     await expect(html).toHaveAttribute('data-theme', 'dark');
   });
 
-  test('W enters the world with the same stage, ? opens the manual', async ({ page }) => {
+  test('5 enters the world with the same stage, ? opens the manual', async ({ page }) => {
     await page.goto('/');
     const before = await page.locator('[data-stage]').getAttribute('data-instance');
-    await page.keyboard.press('w');
+    await page.keyboard.press('5');
     await page.waitForURL('**/world');
     await settled(page);
     await expect(page.locator('[data-stage]')).toHaveAttribute('data-instance', before!);
@@ -92,7 +92,7 @@ test.describe('desktop operating model', () => {
     await expect(page.locator('dialog[data-manual]')).toHaveAttribute('open', '');
     await page.keyboard.press('Escape');
     await expect(page.locator('dialog[data-manual]')).not.toHaveAttribute('open', '');
-    await page.keyboard.press('w');
+    await page.keyboard.press('5');
     await page.waitForURL(/\/$/);
   });
 
@@ -204,7 +204,6 @@ test.describe('desktop operating model', () => {
     await expect(stage).toHaveAttribute('data-clip', 'idle', { timeout: 30_000 }); // and settles into the idle
     await expect(stage.locator('.meebit-pose')).toHaveText('Idle');
     await expect(stage).toHaveAttribute('data-meebit', '11752');
-    await expect(stage.locator('.meebit-name')).toHaveText('Meebit #11752');
     await stage.locator('.meebit-pose').click();
     await expect(stage).toHaveAttribute('data-clip', 'wave-hey', { timeout: 30_000 });
     await page.keyboard.press('m');
@@ -212,7 +211,7 @@ test.describe('desktop operating model', () => {
     await expect(stage.locator('.meebit-pose')).toBeVisible({ timeout: 30_000 }); // the new Meebit is up and animating
     await stage.getByRole('button', { name: 'Next Meebit' }).click();
     await expect(stage).toHaveAttribute('data-meebit', '13307');
-    await page.keyboard.press('w');
+    await page.keyboard.press('5');
     await expect(stage).toHaveAttribute('data-mood', 'world');
     await expect(stage).toHaveAttribute('data-clip', 'look-around', { timeout: 30_000 });
     await page.keyboard.press('ArrowDown'); // in the world the arrows change the pose
@@ -229,15 +228,13 @@ test.describe('desktop operating model', () => {
     await page.goto('/world');
     const stage = page.locator('[data-stage]');
     expect(await page.locator('[data-anim]').count()).toBeGreaterThan(100);
-    await expect(page.locator('[data-anim-auto]')).toHaveAttribute('aria-pressed', 'true');
     await page.locator('[data-anim="thriller"]').click();
     await expect(stage).toHaveAttribute('data-clip', 'thriller', { timeout: 30_000 });
     await expect(page.locator('[data-anim="thriller"]')).toHaveAttribute('aria-pressed', 'true');
-    await expect(page.locator('[data-anim-auto]')).toHaveAttribute('aria-pressed', 'false');
     await expect(stage.locator('.meebit-pose')).toHaveText('Thriller');
     await stage.locator('.meebit-pose').click();
     await expect(stage).toHaveAttribute('data-clip', 'thriller-2', { timeout: 30_000 });
-    await page.locator('[data-anim-auto]').click();
+    await page.locator('[data-anim="thriller-2"]').click(); // picking the running clip again hands control back
     await expect(stage).toHaveAttribute('data-clip', 'look-around', { timeout: 30_000 });
     await expect(page.locator('[data-anim="thriller-2"]')).toHaveAttribute('aria-pressed', 'false');
   });

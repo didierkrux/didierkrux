@@ -4,8 +4,10 @@ import Base from '../layouts/Base.astro';
 import { trackLabel } from '../lib/playlist';
 import { latestSets } from '../lib/content';
 import { ANIMS, CATEGORIES } from '../lib/anims';
+import { WORLD_TABS } from '../lib/world-tabs';
 
 const copy = (await getEntry('copy', 'copy'))!.data;
+const profile = (await getEntry('profile', 'profile'))!.data;
 const album = (await getEntry('credits', 'turn-on'))!.data;
 const places = (await getCollection('places')).sort((a, b) => a.data.order - b.data.order);
 const sets = latestSets(await getCollection('episodes'));
@@ -17,21 +19,15 @@ const turnOn = (await getCollection('ambient')).sort((a, b) => a.data.order - b.
     <header class="world-head">
       <h1>{copy.hero.world.title}</h1>
       <p class="lead">{copy.hero.world.sub}</p>
-      <p class="world-note">{copy.world.hardHat}</p>
     </header>
-
-    <h2 class="world-h2">{copy.world.placesTitle}</h2>
-    <ul class="places">
-      {places.map((pl) => (
-        <li class:list={['place', pl.data.built && 'is-open']}>
-          <span class="place-name">{pl.data.label}</span>
-          <span class="place-status">{pl.data.built ? copy.world.open : copy.world.fence}</span>
-        </li>
+    <nav class="world-tabs" aria-label={copy.world.tabsLabel}>
+      {WORLD_TABS.map((t) => (
+        <a href={`#${t}`} aria-current={t === 'booth' ? 'true' : 'false'} data-world-tab={t}>{copy.world.tabs[t]}</a>
       ))}
-    </ul>
+    </nav>
 
-    <section class="booth" aria-labelledby="booth-title">
-      <h2 id="booth-title" class="world-h2">{copy.world.boothTitle}</h2>
+    <section class="world-panel booth" id="booth" data-world-panel="booth" aria-labelledby="booth-title">
+      <h2 id="booth-title" class="world-h2">{copy.world.tabs.booth}</h2>
       <p class="lead">{copy.world.boothIntro}</p>
       <div class="decks">
         <section class="deck deck-sets" aria-labelledby="deck-sets-title">
@@ -78,10 +74,23 @@ const turnOn = (await getCollection('ambient')).sort((a, b) => a.data.order - b.
         </section>
       </div>
     </section>
-    <section class="poses" aria-labelledby="poses-title">
-      <h2 id="poses-title" class="world-h2">{copy.world.posesTitle}</h2>
+    <section class="world-panel poses" id="meebit" data-world-panel="meebit" aria-labelledby="meebit-title">
+      <h2 id="meebit-title" class="world-h2">{copy.world.tabs.meebit}</h2>
+      <p class="lead">{copy.world.meebitIntro}</p>
+      <ul class="sets" aria-label={copy.meebits.swap}>
+        {profile.meebits.map((m) => (
+          <li>
+            <button type="button" class="set" data-meebit-pick={m.tokenId} aria-pressed="false">
+              <span class="set-play" aria-hidden="true">◆</span>
+              <span class="set-title">Meebit #{m.tokenId}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section class="world-panel poses" id="poses" data-world-panel="poses" aria-labelledby="poses-title">
+      <h2 id="poses-title" class="world-h2">{copy.world.tabs.poses}</h2>
       <p class="lead">{copy.world.posesIntro}</p>
-      <p><button type="button" class="set set-auto" data-anim-auto aria-pressed="true"><span class="set-play" aria-hidden="true">✦</span><span class="set-title">{copy.world.posesAuto}</span></button></p>
       {CATEGORIES.map((c) => (
         <div class="pose-group">
           <h3 class="deck-title"><span aria-hidden="true">{c.emoji}</span> {c.label}</h3>
@@ -98,6 +107,17 @@ const turnOn = (await getCollection('ambient')).sort((a, b) => a.data.order - b.
         </div>
       ))}
     </section>
-    <p class="muted">{copy.world.back}</p>
+    <section class="world-panel" id="places" data-world-panel="places" aria-labelledby="places-title">
+      <h2 id="places-title" class="world-h2">{copy.world.tabs.places}</h2>
+      <p class="lead">{copy.world.hardHat}</p>
+    <ul class="places">
+      {places.map((pl) => (
+        <li class:list={['place', pl.data.built && 'is-open']}>
+          <span class="place-name">{pl.data.label}</span>
+          <span class="place-status">{pl.data.built ? copy.world.open : copy.world.fence}</span>
+        </li>
+      ))}
+    </ul>
+    </section>
   </section>
 </Base>

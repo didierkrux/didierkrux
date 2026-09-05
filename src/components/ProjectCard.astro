@@ -3,7 +3,7 @@ import type { ProjectCard } from '../lib/types';
 interface Props { item: ProjectCard; index: number; techLabel: string }
 const { item, index, techLabel } = Astro.props;
 ---
-<article class="item" id={item.id} data-item data-index={index} data-id={item.id} data-era={item.era}>
+<article class="item" id={item.id} data-item data-index={index} data-id={item.id} data-era={item.era} data-pose={item.pose}>
   <h3>{item.title}</h3>
   <p class="kicker">{item.kicker}</p>
   <p class="meta">{item.meta}</p>

@@ -161,6 +161,12 @@ export function playTrack(i: number): void {
   if (!playing.get()) playing.set(true);
 }
 
+/** D key: Digital Krux mode on (the latest set plays, the Meebit dances) or off again. */
+export function toggleDj(): void {
+  if (setPlaying.get() !== null) stopSet();
+  else loadSet(0);
+}
+
 /** Take the set off the deck. DJ mode ends; if the transport is running the album resumes where it was. */
 export function stopSet(): void {
   if (setPlaying.get() === null) return;

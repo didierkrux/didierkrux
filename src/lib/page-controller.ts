@@ -1,14 +1,45 @@
-import { itemIndex, itemCount, panel, section, page, isSection, type Section } from './stores';
+import { itemIndex, itemCount, itemPose, panel, section, page, isSection, type Section } from './stores';
 
 let unsubs: Array<() => void> = [];
 let observers: IntersectionObserver[] = [];
 let programmatic = 0;
 
-function scrollTo(el: Element | null): void {
-  if (!el) return;
+/** Where a scrolled-to element lands: just below whatever covers the top of the content column, measured from the
+    layout itself rather than from CSS values. On desktop that is the header; on touch the stage band the header floats
+    over (the stage is only counted when it spans the content horizontally). Cards and, under the band, the sections
+    keep a small breathing gap. Picking the current item uses the same number, so highlight and scroll targets agree. */
+export function landing(el: Element): number {
+  const content = document.getElementById('main')?.getBoundingClientRect();
+  let covered = 0, banded = false;
+  for (const sel of ['.topbar', '.stage']) {
+    const box = document.querySelector(sel)?.getBoundingClientRect();
+    if (!box || !content) continue;
+    const overlapsX = box.right > content.left + 1 && box.left < content.right - 1;
+    if (!overlapsX || box.top > 1) continue;
+    covered = Math.max(covered, box.bottom);
+    if (sel === '.stage') banded = true;
+  }
+  const gap = el.hasAttribute('data-item') || banded ? 16 : 0;
+  return covered + gap;
+}
+
+/** Bottom of the readable area: above the bottom bar when it is shown. */
+function readableBottom(): number {
+  const bar = document.querySelector('.bottombar');
+  return window.innerHeight - (bar ? bar.getBoundingClientRect().height : 0);
+}
+
+/** Scroll so `el` lands at its landing offset (plus `extra`, for a sticky bar of the page's own). Computed rather than
+    scrollIntoView, which does not honor scroll-margin-top in every mobile browser. */
+export function scrollToElement(el: Element, extra = 0): void {
   programmatic = performance.now();
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  const top = el.getBoundingClientRect().top + window.scrollY - landing(el) - extra;
+  window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+}
+
+function scrollTo(el: Element | null): void {
+  if (el) scrollToElement(el);
 }
 
 export function scrollToSection(s: Section): void {
@@ -38,6 +69,7 @@ export function mountPage(): void {
 
   const render = () => {
     const i = itemIndex.get();
+    itemPose.set(items[i]?.dataset.pose ?? null);
     items.forEach((el, k) => {
       if (k === i) el.setAttribute('data-current', '');
       else el.removeAttribute('data-current');
@@ -51,34 +83,49 @@ export function mountPage(): void {
   };
   unsubs.push(itemIndex.subscribe(render), panel.subscribe(render), section.subscribe(render), page.subscribe(render));
 
+  const pickItem = () => {
+    if (!items.length || performance.now() - programmatic < 1000) return;
+    // The current item is the one closest to where a scroll would land it.
+    const anchor = landing(items[0]);
+    let best = 0, bestDist = Infinity;
+    items.forEach((el, k) => {
+      const r = el.getBoundingClientRect();
+      const dist = Math.abs(r.top - anchor);
+      if (r.bottom > anchor && dist < bestDist) { best = k; bestDist = dist; }
+    });
+    if (best !== itemIndex.get()) itemIndex.set(best);
+  };
+
+  const pickSection = () => {
+    if (!sections.length || performance.now() - programmatic < 1000) return;
+    // Entries can be stale by the time an observer callback runs (first observation, or a key press
+    // that scrolled the page in between), so decide from the current geometry: the section under
+    // the midline of the readable area wins.
+    const mid = (landing(sections[0]) + readableBottom()) / 2;
+    const hit = sections.find((el) => { const r = el.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
+    const id = hit?.dataset.section;
+    if (id && isSection(id) && id !== section.get()) section.set(id);
+  };
+
   if (items.length) {
-    // The current item is the one closest to the top of the viewport, measured in a band below the HUD.
-    const io = new IntersectionObserver(() => {
-      if (performance.now() - programmatic < 1000) return;
-      let best = 0, bestDist = Infinity;
-      items.forEach((el, k) => {
-        const r = el.getBoundingClientRect();
-        const dist = Math.abs(r.top - 96);
-        if (r.bottom > 80 && dist < bestDist) { best = k; bestDist = dist; }
-      });
-      if (best !== itemIndex.get()) itemIndex.set(best);
-    }, { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+    const io = new IntersectionObserver(pickItem, { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
     items.forEach((el) => io.observe(el));
     observers.push(io);
   }
 
   if (sections.length) {
-    // Entries can be stale by the time the callback runs (first observation, or a key press that
-    // scrolled the page in between), so decide from the current geometry: the section under the
-    // viewport's midline wins.
-    const io = new IntersectionObserver(() => {
-      if (performance.now() - programmatic < 1000) return;
-      const mid = window.innerHeight * 0.5;
-      const hit = sections.find((el) => { const r = el.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
-      const id = hit?.dataset.section;
-      if (id && isSection(id) && id !== section.get()) section.set(id);
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.5, 1] });
+    const io = new IntersectionObserver(pickSection, { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.5, 1] });
     sections.forEach((el) => io.observe(el));
     observers.push(io);
   }
+
+  // Observers fire on band crossings, which can leave the last stop of a scroll unjudged; settle on
+  // the final geometry once the scroll ends.
+  let raf = 0;
+  const onScroll = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => { raf = 0; pickItem(); pickSection(); });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  unsubs.push(() => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); });
 }

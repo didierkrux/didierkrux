@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import yaml from 'js-yaml';
 import { ANIMS, CATEGORIES, POOLS, BASE_IDLE, clipUrl, clipName, clipsIn, loops, roleOf, siblingsOf, poolFor, nextIn } from './anims';
 
 describe('anims catalog', () => {
@@ -32,5 +33,16 @@ describe('anims catalog', () => {
     expect(roleOf('idle-2')).toBe('idle');
     expect(roleOf('thriller')).toBe('action');
     expect(siblingsOf('bow-1')).toEqual(clipsIn('greetings'));
+  });
+});
+
+describe('project poses', () => {
+  it('every project pose is a catalogued clip', () => {
+    const dir = 'src/content/projects';
+    const ids = new Set(ANIMS.map((a) => a.id));
+    for (const f of readdirSync(dir).filter((n) => n.endsWith('.yaml'))) {
+      const data = yaml.load(readFileSync(`${dir}/${f}`, 'utf8')) as { pose?: string };
+      if (data.pose) expect(ids.has(data.pose), `${f}: ${data.pose}`).toBe(true);
+    }
   });
 });

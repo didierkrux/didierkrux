@@ -10,4 +10,6 @@ export interface ProjectCard {
   paragraphs: string[];
   era: Era;
   image?: string;
+  /** Clip the Meebit plays while this card is current. */
+  pose?: string;
 }

@@ -13,7 +13,7 @@
 
 html { color-scheme: light dark; -webkit-text-size-adjust: 100%; }
 [data-theme='light'] { color-scheme: light; }
-[data-theme='dark'], [data-dj='on'] { color-scheme: dark; }
+[data-theme='dark'] { color-scheme: dark; }
 
 body {
   margin: 0;

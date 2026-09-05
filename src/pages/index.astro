@@ -14,6 +14,7 @@ const cards: Card[] = projects.map((p) => ({
   id: p.id,
   title: p.data.title,
   kicker: p.data.kicker,
+  pose: p.data.pose,
   meta: `${p.data.role}, ${formatRange(p.data.dates)}`,
   tags: p.data.tags,
   links: p.data.links,

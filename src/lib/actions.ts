@@ -5,7 +5,7 @@ import { pageUrl } from './url';
 export type ActionName =
   | 'section:top' | 'section:web3' | 'section:web2' | 'section:projects'
   | 'nextItem' | 'prevItem' | 'back' | 'play' | 'nextTrack' | 'prevTrack'
-  | 'cycleTheme' | 'enterWorld' | 'openManual' | 'cycleMeebit';
+  | 'cycleTheme' | 'enterWorld' | 'openManual' | 'cycleMeebit' | 'toggleDj';
 
 export interface AppState {
   page: Page;
@@ -23,7 +23,7 @@ export type Effect =
   | { type: 'navigate'; page: Page }
   | { type: 'scrollSection'; section: Section }
   | { type: 'scrollItem'; index: number }
-  | { type: 'audio'; op: 'toggle' | 'next' | 'prev' }
+  | { type: 'audio'; op: 'toggle' | 'next' | 'prev' | 'dj' }
   | { type: 'meebit' }
   | { type: 'pose'; dir: 1 | -1 };
 
@@ -71,6 +71,7 @@ export function applyAction(s: AppState, a: ActionName): Result {
     case 'enterWorld': return goTo(s, s.page === 'world' ? 'home' : 'world');
     case 'openManual': return { state: { ...s, panel: s.panel === 'manual' ? 'none' : 'manual' }, effects: [] };
     case 'cycleMeebit': return { state: s, effects: [{ type: 'meebit' }] };
+    case 'toggleDj': return { state: s, effects: [{ type: 'audio', op: 'dj' }] };
   }
 }
 
@@ -78,7 +79,7 @@ export interface Effector {
   navigate(url: string): void;
   scrollSection(section: Section): void;
   scrollItem(index: number): void;
-  audio(op: 'toggle' | 'next' | 'prev'): void;
+  audio(op: 'toggle' | 'next' | 'prev' | 'dj'): void;
   meebit(): void;
   pose(dir: 1 | -1): void;
 }

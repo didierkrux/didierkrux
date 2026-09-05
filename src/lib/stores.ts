@@ -24,6 +24,7 @@ export const progress = atom<{ current: number; duration: number }>({ current: 0
 export interface MeebitEntry { tokenId: number; vrm: string }
 export const meebitList = atom<MeebitEntry[]>([]); // the Meebits Didier owns, from the profile
 export const meebit = atom<number>(0); // token id on stage
+export const itemPose = atom<string | null>(null); // the current project's own clip, from its card; null = the mood pool
 export const manualClip = atom<{ id: string; nonce: number } | null>(null); // a pose picked by hand in the world; null = follow the mood
 export const clipPlaying = atom<string>(''); // what the body does right now, published by the stage
 export const poseStep = atom<{ dir: 1 | -1; n: number }>({ dir: 1, n: 0 }); // each change asks the stage for the next or previous pose

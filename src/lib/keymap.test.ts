@@ -15,19 +15,19 @@ describe('keymap', () => {
     expect(actionForKey({ key: 'ArrowRight', shiftKey: true })).toBeNull();
     expect(actionForKey({ key: 'n' })).toBeNull();
     expect(actionForKey({ key: 'T' })).toBe('cycleTheme');
-    expect(actionForKey({ key: 'w' })).toBe('enterWorld');
+    expect(actionForKey({ key: '5' })).toBe('enterWorld');
     expect(actionForKey({ key: '?' })).toBe('openManual');
   });
   it('ignores modifiers, editable targets, and unknown keys', () => {
     expect(actionForKey({ key: '1', metaKey: true })).toBeNull();
     expect(actionForKey({ key: 'd', ctrlKey: true })).toBeNull();
     expect(actionForKey({ key: 'ArrowRight', isEditable: true })).toBeNull();
-    expect(actionForKey({ key: '5' })).toBeNull();
+    expect(actionForKey({ key: '9' })).toBeNull();
     expect(actionForKey({ key: 'Enter' })).toBeNull();
     expect(actionForKey({ key: 'x' })).toBeNull();
   });
-  it('has no D or Escape binding', () => {
-    expect(actionForKey({ key: 'd' })).toBeNull();
+  it('D toggles Digital Krux mode, Escape does nothing', () => {
+    expect(actionForKey({ key: 'd' })).toBe('toggleDj');
     expect(actionForKey({ key: 'Escape' })).toBeNull();
   });
   it('has a label, hint, and description for every binding', () => {

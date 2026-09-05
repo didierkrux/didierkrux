@@ -1,5 +1,5 @@
 import { navigate } from 'astro:transitions/client';
-import { page, section, itemIndex, panel, themePref, systemDark, dj } from './stores';
+import { page, section, itemIndex, panel, themePref, systemDark, dj, manualClip } from './stores';
 import { dispatch, setEffector, type ActionName } from './actions';
 import { actionForKey } from './keymap';
 import { createSwipeRecognizer, type PointerSample } from './gestures';
@@ -8,10 +8,11 @@ import { applyTheme, readPref, resolveTheme, writePref } from './theme';
 import { mountPage, scrollToSection, scrollToItem } from './page-controller';
 import { mountManual } from './manual-controller';
 import { mountPlayer } from './player-controller';
-import { initAudio, togglePlay, nextTrack, prevTrack, playSet, playTrack } from './audio';
+import { initAudio, togglePlay, nextTrack, prevTrack, playSet, playTrack, toggleDj } from './audio';
 import { parsePlaylist, parseSets } from './playlist';
-import { cycleMeebit } from './meebits';
+import { cycleMeebit, selectMeebit, mountMeebitPicker } from './meebits';
 import { requestClip, clearManualClip, mountPoses, stepPose } from './poses';
+import { mountWorldTabs } from './world-tabs';
 
 declare global {
   interface Window { __dkBooted?: boolean }
@@ -34,7 +35,7 @@ export function boot(): void {
     navigate: (url) => { void navigate(url); },
     scrollSection: (s) => { scrollToSection(s); if (s !== 'top') history.replaceState(history.state, '', `#${s}`); else history.replaceState(history.state, '', location.pathname); },
     scrollItem: (i) => scrollToItem(i),
-    audio: (op) => (op === 'toggle' ? togglePlay() : op === 'next' ? nextTrack() : prevTrack()),
+    audio: (op) => (op === 'toggle' ? togglePlay() : op === 'next' ? nextTrack() : op === 'prev' ? prevTrack() : toggleDj()),
     meebit: () => cycleMeebit(1),
     pose: (dir) => stepPose(dir),
   });
@@ -69,8 +70,9 @@ export function boot(): void {
     const trackBtn = target?.closest<HTMLElement>('[data-track-index]');
     if (trackBtn) { e.preventDefault(); playTrack(Number(trackBtn.dataset.trackIndex)); trackBtn.blur(); return; }
     const animBtn = target?.closest<HTMLElement>('[data-anim]');
-    if (animBtn) { e.preventDefault(); requestClip(animBtn.dataset.anim ?? ''); return; }
-    if (target?.closest('[data-anim-auto]')) { e.preventDefault(); clearManualClip(); return; }
+    if (animBtn) { e.preventDefault(); const id = animBtn.dataset.anim ?? ''; if (manualClip.get()?.id === id) clearManualClip(); else requestClip(id); return; } // picking the running one again hands control back to the mood
+    const meebitBtn = target?.closest<HTMLElement>('[data-meebit-pick]');
+    if (meebitBtn) { e.preventDefault(); selectMeebit(Number(meebitBtn.dataset.meebitPick)); return; }
     const el = target?.closest<HTMLElement>('[data-action]');
     if (!el) return;
     e.preventDefault();
@@ -102,6 +104,8 @@ export function boot(): void {
     mountManual(document.querySelector<HTMLDialogElement>('[data-manual]'));
     mountPlayer();
     mountPoses();
+    mountMeebitPicker();
+    mountWorldTabs();
     if (p === 'home' && location.hash) scrollToSection(sectionFromHash(location.hash));
   });
 }

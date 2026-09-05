@@ -1,5 +1,5 @@
 /* One page. A quiet header with the keys, the Meebit standing on the left under a spotlight,
-   everything else scrolling on the right. Tabs replace the keys on touch. */
+   everything else scrolling on the right. On touch the keys move to a bottom bar. */
 body { touch-action: pan-y; scroll-behavior: smooth; background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 40%) fixed; }
 
 .topbar {
@@ -53,19 +53,55 @@ body { touch-action: pan-y; scroll-behavior: smooth; background: linear-gradient
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
 }
-.stage::after {
-  /* The floor: a perspective grid of squares. */
-  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 36%;
+.stage-canvas { position: absolute; inset: 0; z-index: 1; }
+
+/* The sky behind the character: a starfield and the disco ball's glow (the ball, diamonds and invaders are 3D, in the scene).
+   Nothing here moves until a set plays (data-dancing on the stage). */
+.stage-sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.sky-stars {
+  position: absolute; inset: 0; opacity: 0.7; color: var(--accent-ink);
   background-image:
-    linear-gradient(color-mix(in srgb, var(--accent) 55%, transparent) 1.5px, transparent 1.5px),
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 55%, transparent) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-  transform: perspective(420px) rotateX(60deg); transform-origin: bottom center;
+    radial-gradient(1.2px 1.2px at 12% 18%, currentColor 60%, transparent 62%),
+    radial-gradient(1px 1px at 38% 62%, currentColor 60%, transparent 62%),
+    radial-gradient(1.4px 1.4px at 64% 28%, currentColor 60%, transparent 62%),
+    radial-gradient(1px 1px at 82% 74%, currentColor 60%, transparent 62%),
+    radial-gradient(1.2px 1.2px at 50% 88%, currentColor 60%, transparent 62%),
+    radial-gradient(0.9px 0.9px at 26% 44%, currentColor 60%, transparent 62%);
+  background-size: 220px 190px;
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 80%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 80%);
+  animation: twinkle 2.8s ease-in-out infinite alternate paused;
+}
+.sky-moon {
+  /* The halo behind the character at rest; it fades while a set plays and the disco ball takes over in the corner. */
+  position: absolute; left: 50%; top: -3%; height: 42%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; opacity: 0.55;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-ink) 34%, transparent) 0 40%, color-mix(in srgb, var(--accent-ink) 14%, transparent) 58%, transparent 74%);
+  transition: opacity 0.6s;
+}
+.stage[data-dancing='true'] .sky-moon { opacity: 0; }
+.stage[data-dancing='true'] .sky-stars { animation-play-state: running; }
+@keyframes twinkle { from { opacity: 0.45; } to { opacity: 0.9; } }
+
+/* The floor: a perspective grid of cells. Each cell has its own period and delay (--t, --d, set inline),
+   and lights up in one of the two accents while a set plays; otherwise the grid stands still and dark. */
+.stage-floor {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 50%; pointer-events: none;
+  display: grid; grid-template-columns: repeat(14, 1fr); grid-template-rows: repeat(8, 1fr);
+  transform: perspective(560px) rotateX(60deg); transform-origin: bottom center;
   mask-image: linear-gradient(180deg, transparent 0%, #000 45%, #000 100%);
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 45%, #000 100%);
-  opacity: 1;
 }
-.stage-canvas { position: absolute; inset: 0; z-index: 1; }
+.stage-floor i { display: block; box-shadow: inset 0 0 0 0.75px color-mix(in srgb, var(--accent) 55%, transparent); background: transparent; }
+.stage[data-dancing='true'] .stage-floor i { animation: tile var(--t) steps(1, end) var(--d) infinite; color: var(--accent); }
+.stage[data-dancing='true'] .stage-floor i:nth-child(odd) { color: var(--accent-ink); }
+.stage[data-dancing='true'] .stage-floor i:nth-child(3n) { animation-timing-function: ease-out; }
+@keyframes tile {
+  0%, 100% { background-color: transparent; }
+  6% { background-color: color-mix(in srgb, currentColor 62%, transparent); }
+  20% { background-color: color-mix(in srgb, currentColor 22%, transparent); }
+  30% { background-color: transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .sky-stars, .stage-floor i { animation: none !important; } }
 .stage .stage-still { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 88%; width: auto; z-index: 1; filter: drop-shadow(0 24px 40px var(--shadow)); }
 
 .hero { min-height: calc(88vh - var(--header-h)); display: flex; flex-direction: column; justify-content: center; padding: var(--space-8) 0 var(--space-8); scroll-margin-top: var(--header-h); }
@@ -92,7 +128,7 @@ a.cta:hover { background: var(--accent-ink); color: var(--on-accent); }
 /* One keycap everywhere: section numbers, the header bar, the manual. */
 kbd.key, .keybar kbd, .manual-keys kbd {
   display: inline-flex; align-items: center; justify-content: center; min-width: 1.6rem; height: 1.6rem; padding: 0 0.4rem;
-  border-radius: 6px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); box-shadow: 0 2px 0 var(--line);
+  border-radius: 3px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); box-shadow: 0 2px 0 var(--line);
   font-family: var(--font-mono); font-size: 0.72rem; line-height: 1; white-space: nowrap;
 }
 
@@ -120,19 +156,22 @@ kbd.key, .keybar kbd, .manual-keys kbd {
 
 .keybar { display: flex; align-items: center; gap: 0; overflow-x: auto; min-width: 0; flex: 1; font-size: 0.82rem; scrollbar-width: none; }
 .keybar::-webkit-scrollbar { display: none; }
-.keybar button { border: none; border-radius: 7px; padding: 4px 6px; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
+.keybar button { border: none; border-radius: 4px; padding: 4px 6px; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
 .keybar button:hover { color: var(--fg); background: var(--accent-soft); }
-.keybar kbd { min-width: 1.5rem; height: 1.5rem; padding: 0 0.35rem; border-radius: 5px; font-size: 0.7rem; }
+.keybar kbd { min-width: 1.5rem; height: 1.5rem; padding: 0 0.35rem; border-radius: 3px; font-size: 0.7rem; }
 .keybar .sep { color: var(--line); padding: 0 var(--space-1); }
 .keybar button[aria-current='true'] { color: var(--fg); }
 .keybar button[aria-current='true'] kbd { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 60%, black); }
 
-.tabs {
+.bottombar {
   position: fixed; left: 0; right: 0; bottom: 0; height: var(--tabs-h); display: none; z-index: 6;
   background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom);
 }
-.tabs a { flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--muted); font-size: var(--text-sm); }
-.tabs a[aria-current='true'] { color: var(--fg); font-weight: 600; box-shadow: inset 0 2px 0 var(--accent); }
+.bottombar .keybar { justify-content: space-around; overflow: visible; padding: 0 var(--space-2); }
+.bottombar .keybar .sep, .bottombar .keybar kbd, .bottombar .keybar button[data-action='openManual'] { display: none; } /* no key numbers on touch */
+.bottombar .keybar button { flex: 1; justify-content: center; height: 100%; border-radius: 0; padding: 0 4px; font-size: 0.8rem; font-weight: 600; font-family: var(--font-display); line-height: 1; }
+.bottombar .keybar button:hover { background: transparent; }
+.bottombar .keybar button[aria-current='true'] { color: var(--accent-ink); box-shadow: inset 0 2px 0 var(--accent); }
 
 .manual { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); max-width: 36rem; padding: var(--space-8); }
 .manual::backdrop { background: rgba(6, 4, 20, 0.6); backdrop-filter: blur(4px); }
@@ -147,14 +186,29 @@ kbd.key.arrow, .keybar kbd.arrow { font-family: var(--font-sans); font-size: 0.9
 
 .world { padding: var(--space-8) 0; }
 .world-head .lead { color: var(--muted); font-size: var(--text-lg); max-width: 46ch; }
-.world-note { max-width: 62ch; }
-.world-h2 { margin-top: var(--space-8); }
+.world-tabs {
+  position: sticky; top: var(--header-h); z-index: 3; display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-6) 0 0;
+}
+/* Bare pills in the flow; once the bar sticks (data-stuck, set from the scroll position) a translucent ground spanning
+   the whole column appears behind them, without changing the bar's box. The bar must not clip overflow for this to show. */
+.world-tabs::before {
+  content: ''; position: absolute; z-index: -1; opacity: 0; transition: opacity 0.2s;
+  top: calc(-1 * var(--space-3)); bottom: calc(-1 * var(--space-3)); left: calc(-1 * var(--space-8)); right: calc(-1 * var(--space-8));
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--line);
+}
+.world-tabs[data-stuck]::before { opacity: 1; }
+.world-tabs a { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--muted); background: var(--surface); white-space: nowrap; text-decoration: none; }
+.world-tabs a:hover { color: var(--fg); border-color: var(--accent); }
+.world-tabs a[aria-current='true'] { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+/* Every part is on the page; the bar scrolls to one and names the one in view. Native hash jumps clear the header and the bar. */
+.world-panel { padding: var(--space-8) 0 var(--space-4); scroll-margin-top: calc(var(--header-h) + 60px); }
+.world-panel .world-h2 { margin: 0 0 var(--space-2); }
+.world-panel > .lead { color: var(--muted); max-width: 62ch; margin-top: 0; }
 .places { list-style: none; padding: 0; margin: 0 0 var(--space-4); display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-3); }
 .place { border: 1px dashed var(--line); border-radius: var(--radius); padding: var(--space-3) var(--space-4); display: flex; flex-direction: column; gap: var(--space-1); color: var(--muted); }
 .place.is-open { border-style: solid; border-color: var(--accent); color: var(--fg); background: var(--accent-soft); }
 .place-name { font-family: var(--font-display); font-size: var(--text-md); }
 .place-status { font-size: var(--text-xs); }
-.booth .lead { color: var(--muted); max-width: 62ch; }
 .decks { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items: start; }
 .deck { border: 1px solid var(--line); border-radius: var(--radius-lg, 12px); padding: var(--space-4); background: color-mix(in srgb, var(--bg-2, var(--bg)) 70%, transparent); }
 .deck-title { font-family: var(--font-display); font-size: var(--text-lg); margin: 0 0 var(--space-1); }
@@ -166,9 +220,6 @@ kbd.key.arrow, .keybar kbd.arrow { font-family: var(--font-sans); font-size: 0.9
 .pose-group { margin-top: var(--space-4); }
 .pose-group .deck-title { font-size: var(--text-md); margin-bottom: var(--space-2); }
 .poses .sets { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
-.poses .set-auto { width: auto; display: inline-flex; gap: var(--space-2); padding-right: var(--space-4); }
-.poses .set-auto .set-title { white-space: nowrap; overflow-wrap: normal; }
-.poses .set-auto[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-ink); }
 .now-playing { font-family: var(--font-display); color: var(--accent-ink); }
 .sets { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-2); }
 .set { width: 100%; display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-3); align-items: center; text-align: left; padding: var(--space-2) var(--space-3); border-radius: var(--radius); }
@@ -180,17 +231,24 @@ kbd.key.arrow, .keybar kbd.arrow { font-family: var(--font-sans); font-size: 0.9
 .set-title { min-width: 0; overflow-wrap: anywhere; }
 .set-year { color: var(--muted); font-size: var(--text-xs); white-space: nowrap; }
 
-/* Touch and narrow screens: tabs instead of the key bar, the character on top */
+/* Touch and narrow screens: the character in a band at the top, the header transparent over it,
+   the same key bar pinned to the bottom, the content scrolling underneath the stage. */
 @media (max-width: 900px), (pointer: coarse) {
   body { padding-bottom: calc(var(--tabs-h) + var(--space-4)); }
   .decks { grid-template-columns: 1fr; }
-  .keybar { display: none; }
+  .topbar { position: fixed; left: 0; right: 0; padding: 0 var(--space-4); gap: var(--space-4); background: transparent; backdrop-filter: none; }
+  .topbar .keybar { display: none; }
   .player-text { display: none; }
-  .tabs { display: flex; }
+  .bottombar { display: flex; }
   .frame { grid-template-columns: 1fr; gap: var(--space-4); padding: 0; }
   .content { padding: 0 var(--space-4) var(--space-16); }
-  .topbar { padding: 0 var(--space-4); gap: var(--space-4); }
-  .stage { position: static; height: 46vh; min-height: 320px; }
+  .stage { position: sticky; top: 0; height: var(--stage-h-mobile); min-height: 0; z-index: 4; box-shadow: 0 1px 0 var(--line); }
+  /* A short band needs a deep floor: the plane spans the whole band and recedes to a horizon about a third of the way up. */
+  .stage-floor { height: 100%; transform: perspective(400px) rotateX(56deg); }
+  .world-tabs { top: var(--stage-h-mobile); padding-top: 16px; }
+  /* Edge to edge whatever the column padding: the bar is centered in the viewport, so span the viewport from its center. */
+  .world-tabs::before { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+  .world-panel { scroll-margin-top: calc(var(--stage-h-mobile) + 60px); }
   .hero { min-height: 0; padding-top: var(--space-4); }
   .item { grid-template-columns: 1fr; padding: var(--space-6) 0; }
   .item > *, .item > .shot { grid-column: 1; grid-row: auto; }
@@ -198,12 +256,8 @@ kbd.key.arrow, .keybar kbd.arrow { font-family: var(--font-sans); font-size: 0.9
   .section-head { grid-template-columns: auto 1fr; }
 }
 
-/* Meebit picker and pose chip, pinned to the bottom of the stage */
+/* The pose chip, pinned to the bottom of the stage */
 .stage-canvas { cursor: pointer; }
 .meebit-hud { position: absolute; left: 50%; bottom: var(--space-3); transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: calc(100% - 2 * var(--space-3)); }
-.meebit-picker { display: inline-flex; align-items: center; gap: 2px; padding: 2px; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(6px); font-family: var(--font-mono); font-size: 0.72rem; }
-.meebit-picker button { border: none; background: transparent; width: 24px; height: 24px; border-radius: 50%; color: var(--muted); display: inline-flex; align-items: center; justify-content: center; }
-.meebit-picker button:hover { color: var(--fg); background: var(--accent-soft); }
-.meebit-name { padding: 0 4px; color: var(--fg); white-space: nowrap; }
 .meebit-pose { height: 24px; max-width: 100%; padding: 0 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(6px); color: var(--accent-ink); font-family: var(--font-mono); font-size: 0.72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .meebit-pose:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }

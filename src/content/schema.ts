@@ -25,6 +25,8 @@ export const worldSchema = z.object({
 export const projectSchema = z.object({
   title: z.string().min(1),
   kicker: z.string().min(1).max(90),
+  /** The clip the Meebit plays while this project is the current one; a catalogued id (see anims.test). */
+  pose: z.string().optional(),
   story: z.string().min(20),
   role: z.string().min(1),
   dates: dateRangeSchema,
@@ -114,11 +116,11 @@ export const copySchema = z.object({
   sectionIntros: z.object({ web3: z.string(), web2: z.string(), projects: z.string() }),
   work: z.object({ techLabel: z.string() }),
   manual: z.object({ title: z.string(), intro: z.string(), gestures: z.array(z.string()).min(1), close: z.string(), creditsTitle: z.string(), stageTitle: z.string(), stage: z.array(z.string()) }),
-  world: z.object({ enter: z.string(), hardHat: z.string(), fence: z.string(), open: z.string(), back: z.string(), placesTitle: z.string(), boothTitle: z.string(), boothIntro: z.string(), deckSets: z.string(), deckSetsIntro: z.string(), deckAlbum: z.string(), deckAlbumIntro: z.string(), posesTitle: z.string(), posesIntro: z.string(), posesAuto: z.string() }),
+  world: z.object({ enter: z.string(), hardHat: z.string(), fence: z.string(), open: z.string(), tabsLabel: z.string(), tabs: z.object({ booth: z.string(), poses: z.string(), meebit: z.string(), places: z.string() }), boothIntro: z.string(), deckSets: z.string(), deckSetsIntro: z.string(), deckAlbum: z.string(), deckAlbumIntro: z.string(), posesIntro: z.string(), meebitIntro: z.string() }),
   music: z.object({ play: z.string(), pause: z.string(), nextTrack: z.string(), prevTrack: z.string(), seek: z.string(), attribution: z.string() }),
   me: z.object({ linksTitle: z.string(), resumeCta: z.string() }),
-  a11y: z.object({ skip: z.string(), stageAlt: z.string(), tabsLabel: z.string(), keyBarLabel: z.string() }),
-  meebits: z.object({ swap: z.string(), prev: z.string(), next: z.string(), pose: z.string() }),
+  a11y: z.object({ skip: z.string(), stageAlt: z.string(), keyBarLabel: z.string() }),
+  meebits: z.object({ swap: z.string(), pose: z.string() }),
   notFound: z.object({ title: z.string(), sub: z.string() }),
 });
 

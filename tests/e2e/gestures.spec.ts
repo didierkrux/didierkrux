@@ -4,13 +4,13 @@ import { swipe, centerOf } from './helpers';
 test.describe('mobile gestures', () => {
   test.skip(({ isMobile }) => !isMobile, 'mobile only');
 
-  test('tabs replace the key bar and jump to sections', async ({ page }) => {
+  test('the bottom bar carries the keys and jumps to sections', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('.tabs')).toBeVisible();
+    await expect(page.locator('.bottombar')).toBeVisible();
     await expect(page.locator('[data-keybar]')).toBeHidden();
-    await page.locator('.tabs [data-tab="web2"]').tap();
+    await page.locator('.bottombar [data-tab="web2"]').tap();
     await expect(page).toHaveURL(/#web2$/);
-    await expect(page.locator('.tabs [data-tab="web2"]')).toHaveAttribute('aria-current', 'true');
+    await expect(page.locator('.bottombar [data-tab="web2"]')).toHaveAttribute('aria-current', 'true');
   });
 
   test('horizontal swipes move between projects', async ({ page }) => {
@@ -32,8 +32,8 @@ test.describe('mobile gestures', () => {
 
   test('the world tab navigates', async ({ page }) => {
     await page.goto('/');
-    await page.locator('.tabs [data-tab="world"]').tap();
+    await page.locator('.bottombar [data-tab="world"]').tap();
     await page.waitForURL('**/world');
-    await expect(page.locator('.tabs [data-tab="world"]')).toHaveAttribute('aria-current', 'true');
+    await expect(page.locator('.bottombar [data-tab="world"]')).toHaveAttribute('aria-current', 'true');
   });
 });

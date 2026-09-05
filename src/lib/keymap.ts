@@ -10,7 +10,7 @@ export interface KeyBinding {
   /** Listed in the manual but not shown in the header bar. */
   hidden?: boolean;
   /** Section this key jumps to, used to highlight the current one. */
-  section?: 'top' | 'web3' | 'web2' | 'projects';
+  section?: 'top' | 'web3' | 'web2' | 'projects' | 'world';
 }
 
 export const KEYMAP: readonly KeyBinding[] = [
@@ -24,7 +24,8 @@ export const KEYMAP: readonly KeyBinding[] = [
   { keys: ['ArrowLeft'], action: 'prevTrack', label: '←', hint: 'Prev track', description: 'Previous track, or the previous set while one plays', group: 'system', hidden: true },
   { keys: ['ArrowRight'], action: 'nextTrack', label: '→', hint: 'Next track', description: 'Next track, or the next set while one plays', group: 'system', hidden: true },
   { keys: ['t', 'T'], action: 'cycleTheme', label: 'T', hint: 'Theme', description: 'Switch between light and dark', group: 'system', hidden: true },
-  { keys: ['w', 'W'], action: 'enterWorld', label: 'W', hint: 'World', description: 'Enter or leave the world', group: 'system' },
+  { keys: ['5'], action: 'enterWorld', label: '5', hint: 'World', description: 'Enter or leave the world', group: 'sections', section: 'world' },
+  { keys: ['d', 'D'], action: 'toggleDj', label: 'D', hint: 'Dance', description: 'Digital Krux mode: the latest set plays and the Meebit dances; press again to stop', group: 'system', hidden: true },
   { keys: ['m', 'M'], action: 'cycleMeebit', label: 'M', hint: 'Meebit', description: 'Swap to another of my Meebits', group: 'system', hidden: true },
   { keys: ['?'], action: 'openManual', label: '?', hint: 'Manual', description: 'Open or close this manual', group: 'system' },
 ];

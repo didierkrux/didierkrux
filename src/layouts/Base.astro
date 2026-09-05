@@ -3,7 +3,6 @@ import { ClientRouter } from 'astro:transitions';
 import { getCollection, getEntry } from 'astro:content';
 import Stage from '../components/Stage';
 import KeyBar from '../components/KeyBar.astro';
-import Tabs from '../components/Tabs.astro';
 import Manual from '../components/Manual.astro';
 import Player from '../components/Player.astro';
 import { latestSets } from '../lib/content';
@@ -24,7 +23,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const jsonLd = page === 'home'
   ? { '@context': 'https://schema.org', '@type': 'Person', name: profile.name, url: Astro.site?.href, jobTitle: profile.resumeHeadline, nationality: profile.nationality, sameAs: profile.links.map((l) => l.url) }
   : { '@context': 'https://schema.org', '@type': 'WebSite', name: copy.site.name, url: Astro.site?.href, description: copy.site.description };
-const tabLabels = { web3: copy.sections.web3, web2: copy.sections.web2, projects: copy.sections.projects, world: copy.sections.world };
 ---
 <!doctype html>
 <html lang="en">
@@ -82,7 +80,7 @@ const tabLabels = { web3: copy.sections.web3, web2: copy.sections.web2, projects
       <Stage client:load transition:persist="stage" page={page} meebits={profile.meebits} still={profile.meebitStill} alt={copy.a11y.stageAlt} labels={copy.meebits} />
       <main id="main" class="content"><slot /></main>
     </div>
-    <Tabs page={page} labels={tabLabels} label={copy.a11y.tabsLabel} />
+    <div class="bottombar"><KeyBar label={copy.a11y.keyBarLabel} /></div>
     <Manual title={copy.manual.title} intro={copy.manual.intro} gestures={copy.manual.gestures} close={copy.manual.close} stageTitle={copy.manual.stageTitle} stage={copy.manual.stage} />
   </body>
 </html>

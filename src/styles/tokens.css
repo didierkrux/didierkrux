@@ -1,46 +1,26 @@
-/* Three themes, one token set. Light and dark follow the visitor; DJ mode is an event (world only).
-   Both themes share the violet of didierkrux.eth.limo (#8b5cf6); only the ink tints differ for contrast. */
+/* Two themes, one token set: the Digital Krux palette (electric blue and magenta) on near-black for dark,
+   and a white version of the same for light. Playing a set (data-dj="on") changes behavior, not colors. */
 :root,
 [data-theme='light'] {
-  --bg: #f3f4f8;
-  --bg-2: #e6e8f2;
+  --bg: #f6f6fa;
+  --bg-2: #eaebf4;
   --surface: #ffffff;
-  --fg: #171528;
-  --muted: #5f5d78;
-  --accent: #8b5cf6;
-  --accent-ink: #6d3fe0;
-  --accent-soft: rgba(139, 92, 246, 0.12);
-  --mark: #8b5cf6;
-  --line: #d8d9e6;
-  --lamp: #ffd166;
-  --focus: #8b5cf6;
-  --shadow: rgba(23, 21, 40, 0.18);
-  --glow: rgba(139, 92, 246, 0.24);
-  --glow-2: rgba(139, 92, 246, 0.09);
+  --fg: #0a0a0a;
+  --muted: #5a5f7a;
+  --accent: #e737e9;
+  --accent-ink: #0a62dc;
+  --accent-soft: rgba(11, 111, 244, 0.12);
+  --mark: #0a62dc;
+  --line: #dadce8;
+  --lamp: #e8efff;
+  --focus: #e737e9;
+  --shadow: rgba(10, 10, 30, 0.18);
+  --glow: rgba(11, 111, 244, 0.22);
+  --glow-2: rgba(231, 55, 233, 0.1);
   --on-accent: #ffffff;
 }
 
 [data-theme='dark'] {
-  --bg: #0c0919;
-  --bg-2: #171233;
-  --surface: #130f28;
-  --fg: #ece9ff;
-  --muted: #a39dcc;
-  --accent: #8b5cf6;
-  --accent-ink: #a78bfa;
-  --accent-soft: rgba(139, 92, 246, 0.16);
-  --mark: #c4b5fd;
-  --line: #262147;
-  --lamp: #ffd9a3;
-  --focus: #a78bfa;
-  --shadow: rgba(0, 0, 0, 0.55);
-  --glow: rgba(139, 92, 246, 0.36);
-  --glow-2: rgba(139, 92, 246, 0.1);
-  --on-accent: #ffffff;
-}
-
-[data-dj='on'] {
-  /* Digital Krux: the podcast site's electric blue and magenta on near-black. */
   --bg: #0a0a0a;
   --bg-2: #1a1a2e;
   --surface: #121220;
@@ -51,7 +31,7 @@
   --accent-soft: rgba(11, 111, 244, 0.16);
   --mark: #0b6ff4;
   --line: #262640;
-  --lamp: #0b6ff4;
+  --lamp: #dfe7ff;
   --focus: #e737e9;
   --shadow: rgba(0, 0, 0, 0.7);
   --glow: rgba(11, 111, 244, 0.42);
@@ -87,5 +67,6 @@
   --radius: 10px;
   --header-h: 52px;
   --tabs-h: 56px;
+  --stage-h-mobile: clamp(220px, 36svh, 300px);
   --ease: 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
